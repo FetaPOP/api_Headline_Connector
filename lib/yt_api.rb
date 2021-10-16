@@ -7,7 +7,6 @@ require_relative 'channel'
 module HeadlineConnector
   # Library for Github Web API
   class YoutubeApi
-    API_KEY = 'AIzaSyAXaC7TITl7pHR5dp0Si2E_hrFyxNpQTUo'
     API_PROJECT_ROOT = 'https://youtube.googleapis.com/youtube/v3/'
     module Errors
       class NotFound < StandardError; end
@@ -19,8 +18,8 @@ module HeadlineConnector
       404 => Errors::NotFound
     }.freeze
 
-    def initialize(token)
-      @ACCESS_TOKEN = token
+    def initialize(key)
+      @API_KEY = key
     end
 
     def data_collect(id)
