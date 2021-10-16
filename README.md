@@ -9,20 +9,14 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 
 ## Elements
 
-- search result
-  - list: matched videos
-  - q: querying keyword
 - video
-  - list: video data for a single video
   - tags
   - id
   - title
   - description
 - channel
-  - list: channel data for a single channel
   - title
   - id
-
 
 ## Entities
 
