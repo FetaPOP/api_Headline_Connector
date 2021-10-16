@@ -7,12 +7,13 @@ module HeadlineConnector
       @channel = channel_data
     end
 
+    def id
+      @channel['items']['snippet']['channelId']
+    end
+
     def title
       @channel['items']['snippet']['channelTitle']
     end
 
-    def id
-      @channel['items']['snippet']['channelId']
-    end
   end
 end

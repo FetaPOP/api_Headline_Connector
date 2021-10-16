@@ -11,6 +11,7 @@ VIDEO_ID = 'YPBT-app'
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
 YOUTUBE_TOKEN = CONFIG['YOUTUBE_TOKEN']
 CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
+#Have to wait until know the strucutre of the .yaml file
 
 describe 'Tests Youtube API library' do
   describe 'Video information' do
@@ -39,27 +40,11 @@ describe 'Tests Youtube API library' do
   end
 
   describe 'Channel information' do
-    before do
-      @video = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN)
-                                      .video(VIDEO_ID, video_NAME)
-    end
-
-    it 'HAPPY: should recognize owner' do
-      _(@video.owner).must_be_kind_of HeadlineConnector::Channel
-    end
-
-    it 'HAPPY: should identify owner' do
-      _(@video.owner.username).wont_be_nil
-      _(@video.owner.username).must_equal CORRECT['owner']['login']
-    end
-
-    it 'HAPPY: should identify contributors' do
-      contributors = @video.contributors
-      _(contributors.count).must_equal CORRECT['contributors'].count
-
-      usernames = contributors.map(&:username)
-      correct_usernames = CORRECT['contributors'].map { |c| c['login'] }
-      _(usernames).must_equal correct_usernames
-    end
+    it 'HAPPY: should provide correct channel information' do
+        channel = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN)
+                                       .channel(VIDEO_ID)
+        _(channel.id).must_equal CORRECT['id']
+        _(channel.title).must_equal CORRECT['title']
+      end
   end
 end
