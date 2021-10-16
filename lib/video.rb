@@ -26,11 +26,11 @@ module HeadlineConnector
     end
 
     def tags
-        @video['items'][0]['snippet']['tags'].each
+        @video['items'][0]['snippet']['tags']
     end
 
     def channel
-      @channel ||= @data_source.channel(@video['channel'])
+        @video['items'][0]['snippet']['channelTitle']
     end
   end
 end
