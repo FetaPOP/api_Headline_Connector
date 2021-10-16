@@ -8,11 +8,11 @@ module HeadlineConnector
     end
 
     def id
-      @channel['items']['snippet']['channelId']
+      @channel['items'][0]['snippet']['channelId']
     end
 
     def title
-      @channel['items']['snippet']['channelTitle']
+      @channel['items'][0]['snippet']['channelTitle']
     end
 
   end
