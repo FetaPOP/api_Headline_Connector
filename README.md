@@ -5,7 +5,6 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 ## Resources
 - search result
 - video
-- videoCategory
 - channel
 
 ## Elements
@@ -13,17 +12,17 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 - search result
   - list: matched videos
   - q: querying keyword
-  - publishedAfter: A date
-  - order: returned video order
-  - eventType: restrict the search result to broadcast events
-  - regionCode
-  - relevanceLanguage
 - video
   - list: video data for a single video
-- videoCategory
-  - list: a list of categories that can be associated with YouTube videos
+  - tags
+  - id
+  - title
+  - description
 - channel
   - list: channel data for a single channel
+  - title
+  - id
+
 
 ## Entities
 
