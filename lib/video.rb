@@ -5,29 +5,32 @@ require_relative 'channel'
 module HeadlineConnector
   # Model for Video
   class Video
+
+    attr_accessor :video
+
     def initialize(video_data, data_source)
       @video = video_data
       @data_source = data_source
     end
 
     def id
-        @video['items']['id']
+        @video['items'][0]['id']
     end
 
     def title
-        @video['items']['snippet']['title']
+        @video['items'][0]['snippet']['title']
     end
 
     def description
-        @video['items']['snippet']['description']
+        @video['items'][0]['snippet']['description']
     end
 
     def tags
-        @video['items']['snippet']['tags'].each
+        @video['items'][0]['snippet']['tags']
     end
 
     def channel
-      @channel ||= @data_source.channel(@video['channel'])
+        @video['items'][0]['snippet']['channelTitle']
     end
   end
 end
