@@ -19,31 +19,26 @@ module HeadlineConnector
     }.freeze
 
     def initialize(key)
-      @API_KEY = key
+      @api_key = key
     end
 
     def data_collect(id)
         req_url = yt_path(id)
-        video_data = call_yt_url(req_url).parse
+        data = call_yt_url(req_url).parse
     end
 
     def video(data)
-        Video.new(video_data, self)
-
+        Video.new(data, self)
     end
 
     def channel(data)
-        Channel.new(channel_data, self)
+        Channel.new(data, self)
     end
 
     private
 
     def yt_path(path)
-      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{API_KEY}"
-    end
-
-    def yt_channel_path(path)
-      "#{API_PROJECT_ROOT}channels?part=snippet&id=#{path}&key=#{API_KEY}"
+      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{api_key}"
     end
 
     def call_yt_url(url)
