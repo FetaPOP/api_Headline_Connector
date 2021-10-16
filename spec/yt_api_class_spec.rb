@@ -3,53 +3,58 @@
 require 'minitest/autorun'
 require 'minitest/rg'
 require 'yaml'
-require_relative '../lib/github_api'
+require_relative '../lib/youtube_api'
+# need to change
 
-USERNAME = 'soumyaray'
-PROJECT_NAME = 'YPBT-app'
+VIDEO_ID = 'YPBT-app'
+#need to change to id
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-GITHUB_TOKEN = CONFIG['GITHUB_TOKEN']
-CORRECT = YAML.safe_load(File.read('spec/fixtures/github_results.yml'))
+YOUTUBE_TOKEN = CONFIG['YOUTUBE_TOKEN']
+CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
 
-describe 'Tests Github API library' do
-  describe 'Project information' do
-    it 'HAPPY: should provide correct project attributes' do
-      project = CodePraise::GithubApi.new(GITHUB_TOKEN)
-                                     .project(USERNAME, PROJECT_NAME)
-      _(project.size).must_equal CORRECT['size']
-      _(project.git_url).must_equal CORRECT['git_url']
+describe 'Tests Youtube API library' do
+  describe 'Video information' do
+    it 'HAPPY: should provide correct video information' do
+      video = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN)
+                                     .video(VIDEO_ID)
+      _(video.id).must_equal CORRECT['id']
+      _(video.title).must_equal CORRECT['title']
+      _(video.description).must_equal CORRECT['description']
+      _(video.tags).must_equal CORRECT['tags']
+      _(video.channel).must_equal CORRECT['channel']
     end
 
-    it 'SAD: should raise exception on incorrect project' do
+    it 'SAD: should raise exception on incorrect video' do
       _(proc do
-        CodePraise::GithubApi.new(GITHUB_TOKEN).project('soumyaray', 'foobar')
-      end).must_raise CodePraise::GithubApi::Errors::NotFound
+        HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).video('wrongid-haha')
+      end).must_raise HeadlineConnector::YoutubeApi::Errors::NotFound
     end
+    # For youtube, id has 11 char, while the incorrect video id above is with 12 char
 
     it 'SAD: should raise exception when unauthorized' do
       _(proc do
-        CodePraise::GithubApi.new('BAD_TOKEN').project('soumyaray', 'foobar')
-      end).must_raise CodePraise::GithubApi::Errors::Unauthorized
+        HeadlineConnector::YoutubeApi.new('BAD_TOKEN').video('wrongid-haha')
+      end).must_raise HeadlineConnector::YoutubeApi::Errors::Unauthorized
     end
   end
 
-  describe 'Contributor information' do
+  describe 'Channel information' do
     before do
-      @project = CodePraise::GithubApi.new(GITHUB_TOKEN)
-                                      .project(USERNAME, PROJECT_NAME)
+      @video = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN)
+                                      .video(VIDEO_ID, video_NAME)
     end
 
     it 'HAPPY: should recognize owner' do
-      _(@project.owner).must_be_kind_of CodePraise::Contributor
+      _(@video.owner).must_be_kind_of HeadlineConnector::Channel
     end
 
     it 'HAPPY: should identify owner' do
-      _(@project.owner.username).wont_be_nil
-      _(@project.owner.username).must_equal CORRECT['owner']['login']
+      _(@video.owner.username).wont_be_nil
+      _(@video.owner.username).must_equal CORRECT['owner']['login']
     end
 
     it 'HAPPY: should identify contributors' do
-      contributors = @project.contributors
+      contributors = @video.contributors
       _(contributors.count).must_equal CORRECT['contributors'].count
 
       usernames = contributors.map(&:username)

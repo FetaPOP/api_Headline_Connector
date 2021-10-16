@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'contributor'
-
-module CodePraise
-  # Model for Project
+module HeadlineConnector
+  # Model for Channel
   class Channel
     def initialize(channel_data)
       @channel = channel_data
@@ -16,7 +14,5 @@ module CodePraise
     def id
       @channel['items']['snippet']['channelId']
     end
-
   end
 end
-

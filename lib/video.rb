@@ -3,7 +3,7 @@
 require_relative 'channel'
 
 module HeadlineConnector
-  # Model for Project
+  # Model for Video
   class Video
     def initialize(video_data, data_source)
       @video = video_data
@@ -22,7 +22,7 @@ module HeadlineConnector
         @video['items']['snippet']['description']
     end
 
-    def tags #should change
+    def tags
         @video['items']['snippet']['tags'].each
     end
 
