@@ -8,9 +8,9 @@ require_relative '../lib/yt_api'
 
 VIDEO_ID = 'cmSbXsFE3l8'
 #need to change to id
-CONFIG = YAML.safe_load(File.read('../config/secrets.yml'))
+CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
 YOUTUBE_TOKEN = CONFIG['YOUTUBE_TOKEN']
-CORRECT = YAML.safe_load(File.read('fixtures/youtube_results.yml'))
+CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
 #Have to wait until know the strucutre of the .yaml file
 
 describe 'Tests Youtube API library' do
