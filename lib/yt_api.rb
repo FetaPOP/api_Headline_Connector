@@ -18,27 +18,27 @@ module HeadlineConnector
       404 => Errors::NotFound
     }.freeze
 
-    def initialize(key)
-      @api_key = key
+    def initialize(api_key)
+      @api_key = api_key
     end
 
     def data_collect(id)
-        req_url = yt_path(id)
-        data = call_yt_url(req_url).parse
+      req_url = yt_path(id)
+      data = call_yt_url(req_url).parse
     end
 
     def video(data)
-        Video.new(data, self)
+      Video.new(data, self)
     end
 
     def channel(data)
-        Channel.new(data, self)
+      Channel.new(data, self)
     end
 
     private
 
     def yt_path(path)
-      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{api_key}"
+      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{@api_key}"
     end
 
     def call_yt_url(url)
@@ -51,6 +51,5 @@ module HeadlineConnector
     def successful?(result)
       !HTTP_ERROR.keys.include?(result.code)
     end
-
   end
 end
