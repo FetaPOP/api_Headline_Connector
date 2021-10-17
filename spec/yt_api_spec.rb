@@ -32,14 +32,14 @@ describe 'Tests Youtube API library' do
 
     it 'SAD: should return an empty list of items due to non-existing video ID' do
       wrong_id = "ThisIdIsNotAValidId"
-      response = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).data_collect('wrong_id')
+      response = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).data_collect(wrong_id)
       _(response['items']).must_be_empty
     end  
 
     it 'SAD: should raise a BAD_TOKEN exception' do
       _(proc do
         wrong_token = "ThisToKenIsNotAValidToken"
-        HeadlineConnector::YoutubeApi.new(wrong_token).data_collect('wrongid_haha')
+        HeadlineConnector::YoutubeApi.new(wrong_token).data_collect(VIDEO_ID)
       end).must_raise HeadlineConnector::YoutubeApi::Errors::BAD_TOKEN
     end
   end
