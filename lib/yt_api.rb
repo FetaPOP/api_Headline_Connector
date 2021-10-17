@@ -9,11 +9,13 @@ module HeadlineConnector
   class YoutubeApi
     API_PROJECT_ROOT = 'https://youtube.googleapis.com/youtube/v3/'
     module Errors
+      class BAD_TOKEN < StandardError; end
       class NotFound < StandardError; end
       class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
     end
 
     HTTP_ERROR = {
+      400 => Errors::BAD_TOKEN,
       401 => Errors::Unauthorized,
       404 => Errors::NotFound
     }.freeze
@@ -42,9 +44,7 @@ module HeadlineConnector
     end
 
     def call_yt_url(url)
-      result =
-        HTTP.headers('Accept' => 'application/json')
-            .get(url)
+      result = HTTP.headers('Accept' => 'application/json').get(url)
       successful?(result) ? result : raise(HTTP_ERROR[result.code])
     end
 
