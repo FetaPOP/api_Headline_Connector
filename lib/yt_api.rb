@@ -53,3 +53,4 @@ module HeadlineConnector
     end
   end
 end
+
