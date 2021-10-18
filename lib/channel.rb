@@ -15,6 +15,5 @@ module HeadlineConnector
     def channelTitle
       @channel['items'][0]['snippet']['channelTitle']
     end
-
   end
 end
