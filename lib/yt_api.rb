@@ -9,13 +9,14 @@ module HeadlineConnector
   class YoutubeApi
     API_PROJECT_ROOT = 'https://youtube.googleapis.com/youtube/v3/'
     module Errors
-      class BAD_TOKEN < StandardError; end
+      class BadToken < StandardError; end
+
       class NotFound < StandardError; end
       class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
     end
 
     HTTP_ERROR = {
-      400 => Errors::BAD_TOKEN,
+      400 => Errors::BadToken,
       401 => Errors::Unauthorized,
       404 => Errors::NotFound
     }.freeze
@@ -26,7 +27,7 @@ module HeadlineConnector
 
     def data_collect(id)
       req_url = yt_path(id)
-      data = call_yt_url(req_url).parse
+      call_yt_url(req_url).parse
     end
 
     def video(data)
