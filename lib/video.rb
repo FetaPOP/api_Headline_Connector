@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'channel'
-
 module HeadlineConnector
   # Model for Video
   class Video
