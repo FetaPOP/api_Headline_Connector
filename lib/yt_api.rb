@@ -12,7 +12,8 @@ module HeadlineConnector
       class BadToken < StandardError; end
 
       class NotFound < StandardError; end
-      class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
+
+      class Unauthorized < StandardError; end
     end
 
     HTTP_ERROR = {
@@ -25,23 +26,15 @@ module HeadlineConnector
       @api_key = api_key
     end
 
-    def data_collect(id)
+    def collect_data(id)
       req_url = yt_path(id)
       call_yt_url(req_url).parse
     end
 
-    def video(data)
-      Video.new(data, self)
-    end
-
-    def channel(data)
-      Channel.new(data, self)
-    end
-
     private
 
-    def yt_path(path)
-      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{@api_key}"
+    def yt_path(id)
+      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{id}&key=#{@api_key}"
     end
 
     def call_yt_url(url)

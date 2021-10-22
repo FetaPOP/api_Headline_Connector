@@ -5,11 +5,9 @@ require_relative 'channel'
 module HeadlineConnector
   # Model for Video
   class Video
-    attr_accessor :video
 
-    def initialize(video_data, data_source)
+    def initialize(video_data)
       @video = video_data
-      @data_source = data_source
     end
 
     def id

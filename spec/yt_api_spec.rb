@@ -1,27 +1,30 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require_relative '../lib/yt_api'
-# need to change
-
-VIDEO_ID = 'cmSbXsFE3l8'
-# need to change to id
-CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-YOUTUBE_TOKEN = CONFIG['YOUTUBE_TOKEN']
-CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
-# Have to wait until know the strucutre of the .yaml file
+require_relative 'spec_helper'
 
 describe 'Tests Youtube API library' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+
+    c.filter_sensitive_data('<YOUTUBE_TOKEN>') { YOUTUBE_TOKEN }
+    c.filter_sensitive_data('<YOUTUBE_TOKEN_ESC>') { CGI.escape(YOUTUBE_TOKEN) }
+  end
+
   before do
-    @content = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN)
-    @data = @content.data_collect(VIDEO_ID)
+    VCR.insert_cassette CASSETTE_FILE,
+                        record: :new_episodes,
+                        match_requests_on: %i[method uri headers]
+  end
+
+  after do
+    VCR.eject_cassette
   end
 
   describe 'Video information' do
     it 'HAPPY: should provide correct video information' do
-      video = @content.video(@data)
+      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
+      video = HeadlineConnector::Video.new(data)
       _(video.id).must_equal CORRECT['id']
       _(video.title).must_equal CORRECT['title']
       _(video.description).must_equal CORRECT['description']
@@ -31,23 +34,25 @@ describe 'Tests Youtube API library' do
 
     it 'SAD: should return an empty list of items due to non-existing video ID' do
       wrong_id = 'ThisIdIsNotAValidId'
-      response = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).data_collect(wrong_id)
-      _(response['items']).must_be_empty
+      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(wrong_id)
+      _(data['items']).must_be_empty
     end
 
-    it 'SAD: should raise a BAD_TOKEN exception' do
+    it 'SAD: should raise a BadToken exception' do
       _(proc do
         wrong_token = 'ThisToKenIsNotAValidToken'
-        HeadlineConnector::YoutubeApi.new(wrong_token).data_collect(VIDEO_ID)
+        HeadlineConnector::YoutubeApi.new(wrong_token).collect_data(VIDEO_ID)
       end).must_raise HeadlineConnector::YoutubeApi::Errors::BadToken
     end
   end
 
   describe 'Channel information' do
     it 'HAPPY: should provide correct channel information' do
-      channel = @content.channel(@data)
-      _(channel.channelId).must_equal CORRECT['channelId']
-      _(channel.channelTitle).must_equal CORRECT['channelTitle']
+      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
+      channel = HeadlineConnector::Channel.new(data)
+      _(channel.id).must_equal CORRECT['channelId']
+      _(channel.title).must_equal CORRECT['channelTitle']
     end
   end
+
 end

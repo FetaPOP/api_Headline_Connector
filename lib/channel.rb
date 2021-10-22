@@ -3,16 +3,15 @@
 module HeadlineConnector
   # Model for Channel
   class Channel
-    def initialize(channel_data, data_source)
+    def initialize(channel_data)
       @channel = channel_data
-      @data_source = data_source
     end
 
-    def channelId
+    def id
       @channel['items'][0]['snippet']['channelId']
     end
 
-    def channelTitle
+    def title
       @channel['items'][0]['snippet']['channelTitle']
     end
   end

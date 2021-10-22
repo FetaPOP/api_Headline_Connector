@@ -1,0 +1,252 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=cmSbXsFE3l8&key=<YOUTUBE_TOKEN>&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 22 Oct 2021 09:00:31 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "z7APUhRtqOEe9wHNdD184hnIkII",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "rF7LpOO6s_t5nB256xwP-Tw0PoA",
+              "id": "cmSbXsFE3l8",
+              "snippet": {
+                "publishedAt": "2013-04-12T23:30:09Z",
+                "channelId": "UCgqabVNmn6dTr66Oy_LP_VA",
+                "title": "Anna Kendrick - Cups (Pitch Perfect’s “When I’m Gone”) [Official Video]",
+                "description": "iTunes: http://smarturl.it/morepitch\nAmazon: http://smarturl.it/PitchDeluxe\nGoogle play: http://smarturl.it/pitchplay\n\nMusic video by Anna Kendrick performing Cups (Pitch Perfect's \"When I'm Gone\") (Director's Cut). (C) 2013 Universal Music Enterprises, a Division of UMG Recordings, Inc.\n\n#AnnaKendrick #Cups #Vevo",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "AnnaKendrickVEVO",
+                "tags": [
+                  "Anna",
+                  "Kendrick",
+                  "Cups",
+                  "(Pitch",
+                  "Perfect's",
+                  "When",
+                  "I'm",
+                  "Gone)",
+                  "(Director's",
+                  "Cut)",
+                  "UME",
+                  "Direct",
+                  "Soundtrack",
+                  "anna kendrick cups",
+                  "pitch perfect cups"
+                ],
+                "categoryId": "10",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "Anna Kendrick - Cups (Pitch Perfect’s “When I’m Gone”) [Official Video]",
+                  "description": "iTunes: http://smarturl.it/morepitch\nAmazon: http://smarturl.it/PitchDeluxe\nGoogle play: http://smarturl.it/pitchplay\n\nMusic video by Anna Kendrick performing Cups (Pitch Perfect's \"When I'm Gone\") (Director's Cut). (C) 2013 Universal Music Enterprises, a Division of UMG Recordings, Inc.\n\n#AnnaKendrick #Cups #Vevo"
+                },
+                "defaultAudioLanguage": "en-US"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 22 Oct 2021 09:00:32 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=ThisIdIsNotAValidId&key=<YOUTUBE_TOKEN>&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 22 Oct 2021 09:00:31 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "YIUPVpqNjppyCWOZfL-19bLb7uk",
+          "items": [],
+          "pageInfo": {
+            "totalResults": 0,
+            "resultsPerPage": 0
+          }
+        }
+  recorded_at: Fri, 22 Oct 2021 09:00:33 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=cmSbXsFE3l8&key=ThisToKenIsNotAValidToken&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 22 Oct 2021 09:00:31 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "code": 400,
+            "message": "API key not valid. Please pass a valid API key.",
+            "errors": [
+              {
+                "message": "API key not valid. Please pass a valid API key.",
+                "domain": "global",
+                "reason": "badRequest"
+              }
+            ],
+            "status": "INVALID_ARGUMENT"
+          }
+        }
+  recorded_at: Fri, 22 Oct 2021 09:00:33 GMT
+recorded_with: VCR 6.0.0
