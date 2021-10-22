@@ -3,6 +3,11 @@
 AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
+  Exclude:
+    - '_snippets/*'
+  Include:
+  - 'Gemfile'
+  - 'Rakefile'
 
 # ignore block length in test code only
 Metrics/BlockLength: 

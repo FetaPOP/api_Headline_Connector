@@ -1,0 +1,73 @@
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "z7APUhRtqOEe9wHNdD184hnIkII",
+    "items": [
+      {
+        "kind": "youtube#video",
+        "etag": "rF7LpOO6s_t5nB256xwP-Tw0PoA",
+        "id": "cmSbXsFE3l8",
+        "snippet": {
+          "publishedAt": "2013-04-12T23:30:09Z",
+          "channelId": "UCgqabVNmn6dTr66Oy_LP_VA",
+          "title": "Anna Kendrick - Cups (Pitch Perfect’s “When I’m Gone”) [Official Video]",
+          "description": "iTunes: http://smarturl.it/morepitch\nAmazon: http://smarturl.it/PitchDeluxe\nGoogle play: http://smarturl.it/pitchplay\n\nMusic video by Anna Kendrick performing Cups (Pitch Perfect's \"When I'm Gone\") (Director's Cut). (C) 2013 Universal Music Enterprises, a Division of UMG Recordings, Inc.\n\n#AnnaKendrick #Cups #Vevo",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/cmSbXsFE3l8/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "AnnaKendrickVEVO",
+          "tags": [
+            "Anna",
+            "Kendrick",
+            "Cups",
+            "(Pitch",
+            "Perfect's",
+            "When",
+            "I'm",
+            "Gone)",
+            "(Director's",
+            "Cut)",
+            "UME",
+            "Direct",
+            "Soundtrack",
+            "anna kendrick cups",
+            "pitch perfect cups"
+          ],
+          "categoryId": "10",
+          "liveBroadcastContent": "none",
+          "localized": {
+            "title": "Anna Kendrick - Cups (Pitch Perfect’s “When I’m Gone”) [Official Video]",
+            "description": "iTunes: http://smarturl.it/morepitch\nAmazon: http://smarturl.it/PitchDeluxe\nGoogle play: http://smarturl.it/pitchplay\n\nMusic video by Anna Kendrick performing Cups (Pitch Perfect's \"When I'm Gone\") (Director's Cut). (C) 2013 Universal Music Enterprises, a Division of UMG Recordings, Inc.\n\n#AnnaKendrick #Cups #Vevo"
+          },
+          "defaultAudioLanguage": "en-US"
+        }
+      }
+    ],
+    "pageInfo": {
+      "totalResults": 1,
+      "resultsPerPage": 1
+    }
+  }
