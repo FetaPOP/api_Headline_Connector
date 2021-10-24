@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'http'
-require_relative 'video'
-require_relative 'channel'
+require_relative 'feed'
+require_relative 'provider'
 
 module HeadlineConnector
   # Library for Github Web API

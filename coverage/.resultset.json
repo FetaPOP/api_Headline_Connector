@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/coslove8866/Headline_Connector/lib/yt_api.rb": {
+      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/yt_api.rb": {
         "lines": [
           null,
           null,
@@ -54,7 +54,7 @@
           null
         ]
       },
-      "/home/coslove8866/Headline_Connector/lib/video.rb": {
+      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/feed.rb": {
         "lines": [
           null,
           null,
@@ -89,7 +89,7 @@
           null
         ]
       },
-      "/home/coslove8866/Headline_Connector/lib/channel.rb": {
+      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/provider.rb": {
         "lines": [
           null,
           null,
@@ -112,6 +112,6 @@
         ]
       }
     },
-    "timestamp": 1634894624
+    "timestamp": 1635068194
   }
 }

@@ -29,9 +29,9 @@ yt_results['id'] = video['items'][0]['id'] # should be "mSbXsFE3l8"
 yt_results['title'] = video['items'][0]['snippet']['title'] # Should be "Anna Kendrick - Cups ..."
 yt_results['description'] = video['items'][0]['snippet']['description'] # Should be the description of this song
 yt_results['tags'] = video['items'][0]['snippet']['tags'] # Should be an array of tags
-yt_results['channel'] = video['items'][0]['snippet']['channelTitle'] # should be "AnnaKendrickVEVO"
+yt_results['provider'] = video['items'][0]['snippet']['channelTitle'] # should be "AnnaKendrickVEVO"
 yt_results['channelId'] = video['items'][0]['snippet']['channelId'] # Should be "UCgqabVNmn6dTr66Oy_LP_VA"
-yt_results['channelTitle'] = yt_results['channel'] # "channelTitle" and "channel" belongs to two different class
+yt_results['channelTitle'] = yt_results['provider'] # "channelTitle" and "provider" belongs to two different class
 
 ## BAD project request
 yt_video_id = 'cmSbXsFE3l7' # There wasn't a video with this video ID
