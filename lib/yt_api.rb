@@ -1,56 +1,63 @@
 # frozen_string_literal: true
 
 require 'http'
-require_relative 'video'
-require_relative 'channel'
+require_relative 'feed'
+require_relative 'provider'
 
 module HeadlineConnector
-  # Library for Github Web API
+  # Client Library for Youtube API
   class YoutubeApi
-    API_PROJECT_ROOT = 'https://youtube.googleapis.com/youtube/v3/'
-    module Errors
-      class BadToken < StandardError; end
-
-      class NotFound < StandardError; end
-      class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
-    end
-
-    HTTP_ERROR = {
-      400 => Errors::BadToken,
-      401 => Errors::Unauthorized,
-      404 => Errors::NotFound
-    }.freeze
+    YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'
 
     def initialize(api_key)
       @api_key = api_key
     end
 
-    def data_collect(id)
-      req_url = yt_path(id)
-      call_yt_url(req_url).parse
+    def collect_data(id)
+      collect_data_response = Request.new(YOUTUBE_PATH, @api_key)
+                                     .link(id).parse
+      # Feed.new(collect_data_response)
     end
 
-    def video(data)
-      Video.new(data, self)
+    # Sends out HTTP requests to Youtube
+    class Request
+      def initialize(resource_root, api_key)
+        @resource_root = resource_root
+        @api_key = api_key
+      end
+
+      def link(id)
+        get(@resource_root + "videos?part=snippet&id=#{id}&key=" + @api_key)
+      end
+
+      def get(url)
+        http_response = HTTP.headers('Accept' => 'application/json').get(url)
+
+        Response.new(http_response).tap do |response|
+          raise(response.error) unless response.successful?
+        end
+      end
     end
 
-    def channel(data)
-      Channel.new(data, self)
-    end
+    # Decorates HTTP responses from Youtube with success/error reporting
+    class Response < SimpleDelegator
+      BadToken = Class.new(StandardError)
+      Unauthorized = Class.new(StandardError)
+      NotFound = Class.new(StandardError)
 
-    private
+      HTTP_ERROR = {
+        400 => BadToken,
+        401 => Unauthorized,
+        404 => NotFound
+      }.freeze
 
-    def yt_path(path)
-      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{path}&key=#{@api_key}"
-    end
+      def successful?
+        HTTP_ERROR.keys.include?(code) ? false : true
+      end
 
-    def call_yt_url(url)
-      result = HTTP.headers('Accept' => 'application/json').get(url)
-      successful?(result) ? result : raise(HTTP_ERROR[result.code])
-    end
-
-    def successful?(result)
-      !HTTP_ERROR.keys.include?(result.code)
+      def error
+        HTTP_ERROR[code]
+      end
     end
   end
 end
