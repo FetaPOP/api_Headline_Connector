@@ -21,18 +21,18 @@ describe 'Tests Youtube API library' do
     VCR.eject_cassette
   end
 
-  describe 'Video information' do
-    it 'HAPPY: should provide correct video information' do
+  describe 'Feed information' do
+    it 'HAPPY: should provide correct feed information' do
       data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
-      video = HeadlineConnector::Video.new(data)
-      _(video.id).must_equal CORRECT['id']
-      _(video.title).must_equal CORRECT['title']
-      _(video.description).must_equal CORRECT['description']
-      _(video.tags).must_equal CORRECT['tags']
-      _(video.channel).must_equal CORRECT['channel']
+      feed = HeadlineConnector::Feed.new(data)
+      _(feed.id).must_equal CORRECT['id']
+      _(feed.title).must_equal CORRECT['title']
+      _(feed.description).must_equal CORRECT['description']
+      _(feed.tags).must_equal CORRECT['tags']
+      _(feed.provider).must_equal CORRECT['provider']
     end
 
-    it 'SAD: should return an empty list of items due to non-existing video ID' do
+    it 'SAD: should return an empty list of items due to non-existing feed ID' do
       wrong_id = 'ThisIdIsNotAValidId'
       data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(wrong_id)
       _(data['items']).must_be_empty
@@ -46,12 +46,12 @@ describe 'Tests Youtube API library' do
     end
   end
 
-  describe 'Channel information' do
-    it 'HAPPY: should provide correct channel information' do
+  describe 'Provider information' do
+    it 'HAPPY: should provide correct provider information' do
       data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
-      channel = HeadlineConnector::Channel.new(data)
-      _(channel.id).must_equal CORRECT['channelId']
-      _(channel.title).must_equal CORRECT['channelTitle']
+      provider = HeadlineConnector::Provider.new(data)
+      _(provider.id).must_equal CORRECT['channelId']
+      _(provider.title).must_equal CORRECT['channelTitle']
     end
   end
 
