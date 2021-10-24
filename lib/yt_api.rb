@@ -16,7 +16,7 @@ module HeadlineConnector
     def collect_data(id)
       collect_data_response = Request.new(YOUTUBE_PATH, @api_key)
                                      .link(id).parse
-      Feed.new(collect_data_response)
+      # Feed.new(collect_data_response)
     end
 
     # Sends out HTTP requests to Youtube

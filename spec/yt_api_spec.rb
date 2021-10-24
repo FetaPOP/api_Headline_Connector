@@ -42,7 +42,7 @@ describe 'Tests Youtube API library' do
       _(proc do
         wrong_token = 'ThisToKenIsNotAValidToken'
         HeadlineConnector::YoutubeApi.new(wrong_token).collect_data(VIDEO_ID)
-      end).must_raise HeadlineConnector::YoutubeApi::Errors::BadToken
+      end).must_raise HeadlineConnector::YoutubeApi::Response::BadToken
     end
   end
 
