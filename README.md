@@ -23,4 +23,4 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 These are objects that are important to the project, following my own naming conventions:
 
 - Feeds: all related feeds (ex. videos or podcasts)
-- Providers: all related providers (ex. channel in Youtube)
+- Providers: all related providers (ex. channels in Youtube)
