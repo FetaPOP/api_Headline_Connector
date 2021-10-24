@@ -4,17 +4,17 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 
 ## Resources
 - search result
-- video
-- channel
+- video (renamed as feed in our app)
+- channel (renamed as provider in our app)
 
 ## Elements
 
-- video
+- feed
   - tags
   - id
   - title
   - description
-- channel
+- provider
   - title
   - id
 
@@ -22,5 +22,5 @@ Project to search and gather headline-related youtube videos from YouTube Data A
 
 These are objects that are important to the project, following my own naming conventions:
 
-- Videos: all related videos
-- Channels: all related channels
+- Feeds: all related feeds (ex. videos or podcasts)
+- Providers: all related providers (ex. channel in Youtube)
