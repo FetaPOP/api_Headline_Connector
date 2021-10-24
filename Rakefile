@@ -10,7 +10,7 @@ end
 
 desc 'run tests'
 task :spec do
-  sh 'ruby spec/github_api_spec.rb'
+  sh 'ruby spec/yt_api_spec.rb'
 end
 
 namespace :vcr do
@@ -24,7 +24,7 @@ end
 
 namespace :quality do
   desc 'run all static-analysis quality checks'
-  task all: %i[rubocop reek flog]
+  task all: %i[rubocop flog reek]
 
   desc 'code style linter'
   task :rubocop do
