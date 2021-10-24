@@ -5,45 +5,59 @@ require_relative 'feed'
 require_relative 'provider'
 
 module HeadlineConnector
-  # Library for Github Web API
+  # Client Library for Youtube API
   class YoutubeApi
-    API_PROJECT_ROOT = 'https://youtube.googleapis.com/youtube/v3/'
-    module Errors
-      class BadToken < StandardError; end
-
-      class NotFound < StandardError; end
-
-      class Unauthorized < StandardError; end
-    end
-
-    HTTP_ERROR = {
-      400 => Errors::BadToken,
-      401 => Errors::Unauthorized,
-      404 => Errors::NotFound
-    }.freeze
+    YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'
 
     def initialize(api_key)
       @api_key = api_key
     end
 
-    def collect_data(id)
-      req_url = yt_path(id)
-      call_yt_url(req_url).parse
+    def data_collect(id)
+      data_collect_response = Request.new(YOUTUBE_PATH, @api_key)
+                                     .link(id).parse
+      Video.new(data_collect_response, self)
     end
 
-    private
+    # Sends out HTTP requests to Youtube
+    class Request
+      def initialize(resource_root, api_key)
+        @resource_root = resource_root
+        @api_key = api_key
+      end
 
-    def yt_path(id)
-      "#{API_PROJECT_ROOT}videos?part=snippet&id=#{id}&key=#{@api_key}"
+      def link(id)
+        get(@resource_root + "videos?part=snippet&id=#{id}&key=" + @api_key)
+      end
+
+      def get(url)
+        http_response = HTTP.headers('Accept' => 'application/json').get(url)
+
+        Response.new(http_response).tap do |response|
+          raise(response.error) unless response.successful?
+        end
+      end
     end
 
-    def call_yt_url(url)
-      result = HTTP.headers('Accept' => 'application/json').get(url)
-      successful?(result) ? result : raise(HTTP_ERROR[result.code])
-    end
+    # Decorates HTTP responses from Youtube with success/error reporting
+    class Response < SimpleDelegator
+      BadToken = Class.new(StandardError)
+      Unauthorized = Class.new(StandardError)
+      NotFound = Class.new(StandardError)
 
-    def successful?(result)
-      !HTTP_ERROR.keys.include?(result.code)
+      HTTP_ERROR = {
+        400 => Errors::BadToken,
+        401 => Errors::Unauthorized,
+        404 => Errors::NotFound
+      }.freeze
+
+      def successful?
+        HTTP_ERROR.keys.include?(code) ? false : true
+      end
+
+      def error
+        HTTP_ERROR[code]
+      end
     end
   end
 end
