@@ -13,10 +13,10 @@ module HeadlineConnector
       @api_key = api_key
     end
 
-    def data_collect(id)
-      data_collect_response = Request.new(YOUTUBE_PATH, @api_key)
+    def collect_data(id)
+      collect_data_response = Request.new(YOUTUBE_PATH, @api_key)
                                      .link(id).parse
-      Video.new(data_collect_response, self)
+      Feed.new(collect_data_response)
     end
 
     # Sends out HTTP requests to Youtube
@@ -46,9 +46,9 @@ module HeadlineConnector
       NotFound = Class.new(StandardError)
 
       HTTP_ERROR = {
-        400 => Errors::BadToken,
-        401 => Errors::Unauthorized,
-        404 => Errors::NotFound
+        400 => BadToken,
+        401 => Unauthorized,
+        404 => NotFound
       }.freeze
 
       def successful?
