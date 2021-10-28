@@ -23,8 +23,7 @@ describe 'Tests Youtube API library' do
 
   describe 'Feed information' do
     it 'HAPPY: should provide correct feed information' do
-      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
-      feed = HeadlineConnector::Feed.new(data)
+      feed = HeadlineConnector::Youtube::FeedMapper.new(YOUTUBE_TOKEN).find(VIDEO_ID)
       _(feed.id).must_equal CORRECT['id']
       _(feed.title).must_equal CORRECT['title']
       _(feed.description).must_equal CORRECT['description']
@@ -34,25 +33,23 @@ describe 'Tests Youtube API library' do
 
     it 'SAD: should return an empty list of items due to non-existing feed ID' do
       wrong_id = 'ThisIdIsNotAValidId'
-      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(wrong_id)
+      data = HeadlineConnector::Youtube::FeedMapper.new(YOUTUBE_TOKEN).find(wrong_id)
       _(data['items']).must_be_empty
     end
 
     it 'SAD: should raise a BadToken exception' do
       _(proc do
         wrong_token = 'ThisToKenIsNotAValidToken'
-        HeadlineConnector::YoutubeApi.new(wrong_token).collect_data(VIDEO_ID)
-      end).must_raise HeadlineConnector::YoutubeApi::Response::BadToken
+        HeadlineConnector::Youtube::FeedMapper.new(wrong_token).find(VIDEO_ID)
+      end).must_raise HeadlineConnector::Youtube::Api::Response::BadToken
     end
   end
 
   describe 'Provider information' do
     it 'HAPPY: should provide correct provider information' do
-      data = HeadlineConnector::YoutubeApi.new(YOUTUBE_TOKEN).collect_data(VIDEO_ID)
-      provider = HeadlineConnector::Provider.new(data)
+      provider = HeadlineConnector::Youtube::ProviderMapper.new(YOUTUBE_TOKEN).find(VIDEO_ID)
       _(provider.id).must_equal CORRECT['channelId']
       _(provider.title).must_equal CORRECT['channelTitle']
     end
   end
-
 end

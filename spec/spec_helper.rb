@@ -10,7 +10,7 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/yt_api'
+require_relative '../lib/gateways/yt_api.rb'
 
 VIDEO_ID = 'cmSbXsFE3l8'
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
