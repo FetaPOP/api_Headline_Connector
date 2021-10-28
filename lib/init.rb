@@ -5,4 +5,4 @@
     Dir.glob("#{__dir__}/#{folder}/**/*.rb").each do |ruby_file|
       require_relative ruby_file
     end
-  end
+end

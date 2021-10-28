@@ -6,6 +6,7 @@ module HeadlineConnector
   module Youtube
   # Client Library for Youtube API
     class Api
+      YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'.freeze
       def initialize(api_key)
         @api_key = api_key
       end
@@ -16,14 +17,13 @@ module HeadlineConnector
 
       # Sends out HTTP requests to Youtube
       class Request
-        YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'.freeze
-
-        def initialize(api_key)
+        def initialize(resource_root, api_key)
+          @resource_root = resource_root
           @api_key = api_key
         end
 
         def video_link(id)
-          get(YOUTUBE_PATH + "videos?part=snippet&id=#{id}&key=" + @api_key)
+          get(@resource_root + "videos?part=snippet&id=#{id}&key=" + @api_key)
         end
 
         def get(url)
