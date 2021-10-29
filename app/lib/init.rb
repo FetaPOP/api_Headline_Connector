@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-%w[entities gateways mappers]
-  .each do |folder|
-    Dir.glob("#{__dir__}/#{folder}/**/*.rb").each do |ruby_file|
-      require_relative ruby_file
-    end
+%w[models controllers].each do |folder|
+  require_relative "#{folder}/init.rb"
 end
