@@ -13,6 +13,16 @@ task :spec do
   sh 'ruby spec/gateway_youtube_spec.rb'
 end
 
+desc 'Keep rerunning tests upon changes'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
+desc 'Rerunning rackup services'
+task :rerack do
+  sh "rerun -c rackup --ignore 'coverage/*'"
+end
+
 namespace :vcr do
   desc 'delete cassette fixtures'
   task :wipe do
@@ -23,6 +33,8 @@ namespace :vcr do
 end
 
 namespace :quality do
+  only_app = 'config/ app/'
+
   desc 'run all static-analysis quality checks'
   task all: %i[rubocop flog reek]
 
@@ -38,6 +50,6 @@ namespace :quality do
 
   desc 'complexiy analysis'
   task :flog do
-    sh "flog #{CODE}"
+    sh "flog -m #{only_app}"
   end
 end
