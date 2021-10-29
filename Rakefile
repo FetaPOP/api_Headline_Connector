@@ -9,18 +9,26 @@ task :default do
 end
 
 desc 'run tests'
-task :spec do
-  sh 'ruby spec/gateway_youtube_spec.rb'
-end
+  task :spec do
+    sh 'ruby spec/gateway_youtube_spec.rb'
+  end
 
 desc 'Keep rerunning tests upon changes'
 task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
 end
 
-desc 'Rerunning rackup services'
+desc 'Rerunning rackup services upon changes'
 task :rerack do
   sh "rerun -c rackup --ignore 'coverage/*'"
+end
+
+desc 'run tests with no VCR cassettes file'
+task :clean_spec do
+  sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+    puts(ok ? 'Cassettes deleted' : 'No cassettes found')
+  end
+  sh 'ruby spec/gateway_youtube_spec.rb'
 end
 
 namespace :vcr do
