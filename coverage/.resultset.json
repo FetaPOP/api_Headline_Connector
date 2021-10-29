@@ -1,16 +1,48 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/init.rb": {
+      "/home/coslove8866/Headline_Connector/init.rb": {
         "lines": [
           null,
           null,
           1,
+          2,
+          null
+        ]
+      },
+      "/home/coslove8866/Headline_Connector/config/init.rb": {
+        "lines": [
+          null,
           null,
           1
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/init.rb": {
+      "/home/coslove8866/Headline_Connector/config/environment.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/coslove8866/Headline_Connector/app/init.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          2,
+          null
+        ]
+      },
+      "/home/coslove8866/Headline_Connector/app/models/init.rb": {
         "lines": [
           null,
           null,
@@ -22,7 +54,7 @@
           null
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/entities/feed.rb": {
+      "/home/coslove8866/Headline_Connector/app/models/entities/feed.rb": {
         "lines": [
           null,
           null,
@@ -44,7 +76,7 @@
           null
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/entities/provider.rb": {
+      "/home/coslove8866/Headline_Connector/app/models/entities/provider.rb": {
         "lines": [
           null,
           null,
@@ -63,7 +95,7 @@
           null
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/gateways/yt_api.rb": {
+      "/home/coslove8866/Headline_Connector/app/models/gateways/yt_api.rb": {
         "lines": [
           null,
           null,
@@ -127,7 +159,7 @@
           null
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/mappers/feed_mapper.rb": {
+      "/home/coslove8866/Headline_Connector/app/models/mappers/feed_mapper.rb": {
         "lines": [
           null,
           null,
@@ -193,7 +225,7 @@
           null
         ]
       },
-      "/home/river1440-ce/110_SOA/assignment/final_project/Headline_Connector/lib/mappers/provider_mapper.rb": {
+      "/home/coslove8866/Headline_Connector/app/models/mappers/provider_mapper.rb": {
         "lines": [
           null,
           null,
@@ -242,9 +274,23 @@
           null,
           null,
           null
+        ]
+      },
+      "/home/coslove8866/Headline_Connector/app/controllers/init.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          2,
+          null
+        ]
+      },
+      "/home/coslove8866/Headline_Connector/app/controllers/app.rb": {
+        "lines": [
+
         ]
       }
     },
-    "timestamp": 1635476044
+    "timestamp": 1635499160
   }
 }
