@@ -19,6 +19,9 @@ gem 'webmock', '~> 3.0'
 # Utility Tools
 gem 'rake'
 
+# Debugging
+gem 'pry'
+
 # Code Quality
 gem 'flog'
 gem 'reek'
