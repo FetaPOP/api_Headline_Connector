@@ -23,12 +23,17 @@ task :rerack do
   sh "rerun -c rackup --ignore 'coverage/*'"
 end
 
-desc 'run tests with no VCR cassettes file'
+desc 'run tests after deleting all VCR cassettes files'
 task :clean_spec do
   sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
     puts(ok ? 'Cassettes deleted' : 'No cassettes found')
   end
   sh 'ruby spec/gateway_youtube_spec.rb'
+end
+
+desc 'Generate the correct answer for tests'
+task :correct_for_spec do
+  sh "ruby spec/fixtures/project_info.rb"
 end
 
 namespace :vcr do
