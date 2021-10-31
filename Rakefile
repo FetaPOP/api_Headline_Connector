@@ -9,8 +9,31 @@ task :default do
 end
 
 desc 'run tests'
-task :spec do
-  sh 'ruby spec/yt_api_spec.rb'
+  task :spec do
+    sh 'ruby spec/gateway_youtube_spec.rb'
+  end
+
+desc 'Keep rerunning tests upon changes'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
+desc 'Rerunning rackup services upon changes'
+task :rerack do
+  sh "rerun -c rackup --ignore 'coverage/*'"
+end
+
+desc 'run tests after deleting all VCR cassettes files'
+task :clean_spec do
+  sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+    puts(ok ? 'Cassettes deleted' : 'No cassettes found')
+  end
+  sh 'ruby spec/gateway_youtube_spec.rb'
+end
+
+desc 'Generate the correct answer for tests'
+task :correct_for_spec do
+  sh "ruby spec/fixtures/project_info.rb"
 end
 
 namespace :vcr do
@@ -23,6 +46,8 @@ namespace :vcr do
 end
 
 namespace :quality do
+  only_app = 'config/ app/'
+
   desc 'run all static-analysis quality checks'
   task all: %i[rubocop flog reek]
 
@@ -38,6 +63,6 @@ namespace :quality do
 
   desc 'complexiy analysis'
   task :flog do
-    sh "flog #{CODE}"
+    sh "flog -m #{only_app}"
   end
 end
