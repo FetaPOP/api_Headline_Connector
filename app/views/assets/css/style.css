@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-weight: bold;
 }
@@ -12,19 +16,19 @@ h1 {
   font-size: 1.2em;
 }
 
-.project.attribute {
+.feed.attribute {
   font-weight: bold;
 }
 
-.project.detail {
+.feed.detail {
   color: grey;
 }
 
-.project.owner {
+.feed.owner {
   font-weight: bold
 }
 
-.project.name {
+.feed.name {
   
 }
 
@@ -54,7 +58,6 @@ h1 {
 }
 
 .query-bar {
-  background-color: #EEEEEE;
   padding: 5px 5px 5px 5px;
 }
 
