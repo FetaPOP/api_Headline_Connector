@@ -8,7 +8,7 @@ module HeadlineConnector
     class ProviderOrm < Sequel::Model(:providers)
       one_to_many :feeds,
                   class: :'HeadlineConnector::Database::FeedOrm',
-                  key: :provider_id
+                  key: :owner_id
                   
       plugin :timestamps, update_on_create: true
 

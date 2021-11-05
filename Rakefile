@@ -8,6 +8,11 @@ task :default do
   puts `rake -T`
 end
 
+desc 'Run application console (irb)'
+  task :console do
+    sh 'pry -r ./init.rb'
+end
+
 desc 'run tests'
   task :spec do
     sh 'ruby spec/gateway_youtube_spec.rb'
