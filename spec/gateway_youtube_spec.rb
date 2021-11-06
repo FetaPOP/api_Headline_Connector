@@ -19,7 +19,7 @@ describe 'Tests Youtube API library' do
       _(feed.feed_title).must_equal CORRECT['title']
       _(feed.description).must_equal CORRECT['description']
       _(feed.tags).must_equal CORRECT['tags']
-      _(feed.provider).must_equal CORRECT['provider']
+      _(feed.provider.provider_title).must_equal CORRECT['provider']
     end
 
     it 'SAD: should return an empty list of items due to non-existing feed ID' do
@@ -31,7 +31,7 @@ describe 'Tests Youtube API library' do
       _(empty_feed.feed_title).must_be_empty
       _(empty_feed.description).must_be_empty
       _(empty_feed.tags).must_be_empty
-      _(empty_feed.provider).must_be_empty
+      _(empty_feed.provider.provider_id).must_be_empty
     end
 
     it 'SAD: should raise a BadToken exception' do

@@ -6,7 +6,7 @@ Sequel.migration do
   change do
     create_table(:feeds) do
       primary_key :id
-      foreign_key :owner_id, :providers
+      foreign_key :provider_id, :providers
 
       String      :feed_id, unique: true
       String      :feed_title

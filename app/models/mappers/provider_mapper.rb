@@ -19,21 +19,29 @@ module HeadlineConnector
         DataMapper.new(data).build_entity
       end
 
+      def self.build_entity(data)
+        DataMapper.new(data).build_entity
+      end
+
       # Extracts entity specific elements from data structure
       class DataMapper
         def initialize(data)
           @data = data
         end
 
+        def self.build_empty_entity()
+          HeadlineConnector::Entity::Provider.new(
+            id: nil,
+            provider_id: '',
+            provider_title: ''
+          )
+        end
+
         def build_entity
-          if @data['items'] == []
-            return HeadlineConnector::Entity::Feed.new(
-              provider_id: '',
-              provider_title: ''
-            )
-          end
+          return DataMapper.build_empty_entity() if @data['items'] == []
 
           HeadlineConnector::Entity::Provider.new(
+            id: nil,
             provider_id: provider_id,
             provider_title: provider_title
           )
