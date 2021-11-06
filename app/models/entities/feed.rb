@@ -12,7 +12,7 @@ module HeadlineConnector
       attribute :title,         Strict::String
       attribute :description,   Strict::String
       attribute :tags,          Strict::Array
-      attribute :provider,      Provider
+      attribute :provider,      Strict::String
     end
   end
 end

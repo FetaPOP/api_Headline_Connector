@@ -21,7 +21,7 @@ gem 'http', '~> 5.0'
 # Database
 gem 'hirb'
 gem 'hirb-unicode', '~> 0' 
-gem 'sequel'
+gem 'sequel' # Mapper from objects and relational database
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'

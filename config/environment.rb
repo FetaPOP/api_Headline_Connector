@@ -8,7 +8,7 @@ require 'yaml'
 module HeadlineConnector
   # Configuration for the App
   class App < Roda
-    plugin :environments
+    plugin :environments # This plugin comes from Roda
 
     configure do
       # Environment variables setup
@@ -19,7 +19,7 @@ module HeadlineConnector
       Figaro.load
       def self.config() = Figaro.env
 
-      configure :development, :test do
+      configure :development, :test do # This "configure" function comes from :environments plugin
         ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
       end
 
