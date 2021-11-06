@@ -28,8 +28,8 @@ module HeadlineConnector
         def build_entity
           if @data['items'] == []
             return HeadlineConnector::Entity::Feed.new(
-              id: '',
-              title: '',
+              feed_id: '',
+              feed_title: '',
               description: '',
               tags: [],
               provider: ''
@@ -37,19 +37,19 @@ module HeadlineConnector
           end
 
           HeadlineConnector::Entity::Feed.new(
-            id: id,
-            title: title,
+            feed_id: feed_id,
+            feed_title: feed_title,
             description: description,
             tags: tags,
             provider: provider
           )
         end
 
-        def id
+        def feed_id
           @data['items'][0]['id']
         end
 
-        def title
+        def feed_title
           @data['items'][0]['snippet']['title']
         end
 

@@ -26,19 +26,24 @@ module HeadlineConnector
         end
 
         def build_entity
-          return nil if @data['items'] == []
+          if @data['items'] == []
+            return HeadlineConnector::Entity::Feed.new(
+              provider_id: '',
+              provider_title: ''
+            )
+          end
 
           HeadlineConnector::Entity::Provider.new(
-            channel_id: id,
-            channel_title: title
+            provider_id: provider_id,
+            provider_title: provider_title
           )
         end
 
-        def id
+        def provider_id
           @data['items'][0]['snippet']['channelId']
         end
 
-        def title
+        def provider_title
           @data['items'][0]['snippet']['channelTitle']
         end
       end

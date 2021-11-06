@@ -8,8 +8,8 @@ module HeadlineConnector
     class Feed < Dry::Struct
       include Dry.Types
 
-      attribute :id,            Strict::String
-      attribute :title,         Strict::String
+      attribute :feed_id,       Strict::String
+      attribute :feed_title,    Strict::String
       attribute :description,   Strict::String
       attribute :tags,          Strict::Array
       attribute :provider,      Strict::String

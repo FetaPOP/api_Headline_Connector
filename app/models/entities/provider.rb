@@ -8,8 +8,8 @@ module HeadlineConnector
     class Provider < Dry::Struct
       include Dry.Types
 
-      attribute :channel_id,    Strict::String
-      attribute :channel_title, Strict::String
+      attribute :provider_id,    Strict::String
+      attribute :provider_title, Strict::String
     end
   end
 end
