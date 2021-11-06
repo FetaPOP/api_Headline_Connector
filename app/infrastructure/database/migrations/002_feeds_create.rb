@@ -9,7 +9,7 @@ Sequel.migration do
       foreign_key :owner_id, :providers
 
       String      :feed_id, unique: true
-      String      :title
+      String      :feed_title
       String      :description
       String      :tags   # Note that "tags" in our Feed Entities is Array. Be careful of the conversion of Array <-> String
 

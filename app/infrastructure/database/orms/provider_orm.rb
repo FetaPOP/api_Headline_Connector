@@ -13,7 +13,7 @@ module HeadlineConnector
       plugin :timestamps, update_on_create: true
 
       def self.find_or_create(provider_info) # provider_info should be a hash
-        first(channel_title: provider_info[:channel_title]) || create(provider_info)
+        first(provider_title: provider_info[:provider_title]) || create(provider_info)
       end
     end
   end
