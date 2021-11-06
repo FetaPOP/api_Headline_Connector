@@ -11,10 +11,10 @@ module HeadlineConnector
       attribute :id,             Integer.optional
       attribute :provider_id,    Strict::String
       attribute :provider_title, Strict::String
-    end
-
-    def to_attr_hash
-      to_hash.reject { |key, _| [:id].include? key }
+      
+      def to_attr_hash
+        to_hash.reject { |key, _| [:id].include? key }
+      end
     end
   end
 end
