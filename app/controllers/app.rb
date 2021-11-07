@@ -7,15 +7,19 @@ module HeadlineConnector
   # Web App
   class App < Roda
     plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    plugin :public, root: 'app/views/public'
+    plugin :assets, path: 'app/views/assets',
+                    css: 'style.css', js: 'table_row_click.js'
     plugin :halt
 
     route do |routing|
       routing.assets # load CSS
+      routing.public
 
       # GET /
-      routing.root do
-        view 'home'
+      routing.root do # rubocop:disable Metrics/BlockLength
+        feeds = Repository::For.klass(Entity::Feed).all
+        view 'home', locals: { feeds: feeds }
       end
 
       routing.on 'feed' do
@@ -29,17 +33,27 @@ module HeadlineConnector
             video_info = yt_url.split('/')[-1]
             video_id = extract_video_id(video_info)
 
-            routing.redirect "feed/#{video_id}"
+            # Get a video from Youtube
+            feed = Youtube::FeedtMapper
+              .new(App.config.YOUTUBE_TOKEN)
+              .find(video_id)
+
+            # Add feed to database
+            Repository::For.entity(feed).create(feed)
+
+            # Redirect viewer to the corresponding feed page
+            routing.redirect "feed/#{feed.feed_id}"
           end
         end
 
         routing.on String do |video_id|
-          # GET /feed/video_id
+          # GET /feed/#{video_id}
           routing.get do
-            youtube_video = Youtube::FeedMapper
-              .new(YT_TOKEN)
-              .find(video_id)
+            # Get project from database (not from Youtube API anymore)
+            youtube_video = Repository::For.klass(Entity::Feed)
+              .find_feed_id(video_id)
 
+            # Show viewer the project
             view 'feed', locals: { feed: youtube_video }
           end
         end
