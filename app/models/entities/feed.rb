@@ -7,7 +7,9 @@ require_relative 'provider'
 
 module HeadlineConnector
   module Entity
+    # Entity class
     class Feed < Dry::Struct
+      # Entity class of Feed
       include Dry.Types
 
       attribute :id,            Integer.optional

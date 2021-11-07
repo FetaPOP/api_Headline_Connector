@@ -5,9 +5,8 @@ require 'webmock'
 
 # Setting up VCR
 module VcrHelper
-    
-  CASSETTES_FOLDER = 'spec/fixtures/cassettes'.freeze
-  YOUTUBE_CASSETTE = 'youtube_api'.freeze
+  CASSETTES_FOLDER = 'spec/fixtures/cassettes'
+  YOUTUBE_CASSETTE = 'youtube_api'
 
   def self.setup_vcr
     VCR.configure do |c|
@@ -18,8 +17,8 @@ module VcrHelper
 
   def self.configure_vcr_for_youtube
     VCR.configure do |c|
-        c.filter_sensitive_data('<YOUTUBE_TOKEN>') { YOUTUBE_TOKEN }
-        c.filter_sensitive_data('<YOUTUBE_TOKEN_ESC>') { CGI.escape(YOUTUBE_TOKEN) }
+      c.filter_sensitive_data('<YOUTUBE_TOKEN>') { YOUTUBE_TOKEN }
+      c.filter_sensitive_data('<YOUTUBE_TOKEN_ESC>') { CGI.escape(YOUTUBE_TOKEN) }
     end
 
     VCR.insert_cassette(

@@ -29,7 +29,7 @@ module HeadlineConnector
           @data = data
         end
 
-        def self.build_empty_entity()
+        def self.build_empty_entity
           HeadlineConnector::Entity::Provider.new(
             id: nil,
             provider_id: '',
@@ -38,7 +38,7 @@ module HeadlineConnector
         end
 
         def build_entity
-          return DataMapper.build_empty_entity() if @data['items'] == []
+          return DataMapper.build_empty_entity if @data['items'] == []
 
           HeadlineConnector::Entity::Provider.new(
             id: nil,

@@ -9,14 +9,14 @@ task :default do
 end
 
 desc 'Run application console (irb)'
-  task :console do
-    sh 'pry -r ./init.rb'
+task :console do
+  sh 'pry -r ./init.rb'
 end
 
 desc 'run tests'
-  task :spec do
-    sh 'ruby spec/gateway_youtube_spec.rb'
-  end
+task :spec do
+  sh 'ruby spec/gateway_youtube_spec.rb'
+end
 
 desc 'Keep rerunning tests upon changes'
 task :respec do
@@ -82,7 +82,7 @@ namespace :test do
 
   desc 'Generate the correct answer for gateway-youtubeapi tests'
   task :youtubeapi_testcase do
-    sh "ruby spec/fixtures/generate_youtubeapi_testcase.rb"
+    sh 'ruby spec/fixtures/generate_youtubeapi_testcase.rb'
   end
 end
 

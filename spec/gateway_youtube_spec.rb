@@ -27,8 +27,8 @@ describe 'Tests Youtube API library' do
     it 'SAD: should return an empty list of items due to non-existing feed ID' do
       wrong_id = 'ThisIdIsNotAValidId'
       empty_feed = HeadlineConnector::Youtube::FeedMapper
-                    .new(YOUTUBE_TOKEN)
-                    .find(wrong_id)
+        .new(YOUTUBE_TOKEN)
+        .find(wrong_id)
       _(empty_feed.feed_id).must_be_empty
       _(empty_feed.feed_title).must_be_empty
       _(empty_feed.description).must_be_empty

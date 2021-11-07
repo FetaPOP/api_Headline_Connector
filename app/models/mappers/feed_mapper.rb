@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "provider_mapper"
+require_relative 'provider_mapper'
 
 module HeadlineConnector
   module Youtube
@@ -31,7 +31,7 @@ module HeadlineConnector
           @data = data
         end
 
-        def self.build_empty_entity()
+        def self.build_empty_entity
           HeadlineConnector::Entity::Feed.new(
             id: nil,
             feed_id: '',
@@ -43,7 +43,7 @@ module HeadlineConnector
         end
 
         def build_entity
-          return DataMapper.build_empty_entity() if @data['items'] == []
+          return DataMapper.build_empty_entity if @data['items'] == []
 
           HeadlineConnector::Entity::Feed.new(
             id: nil,
@@ -70,7 +70,7 @@ module HeadlineConnector
         def tags
           @data['items'][0]['snippet']['tags']
         end
-    
+
         def provider
           Youtube::ProviderMapper.build_entity(@data)
         end

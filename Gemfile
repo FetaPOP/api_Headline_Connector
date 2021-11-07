@@ -20,7 +20,7 @@ gem 'http', '~> 5.0'
 
 # Database
 gem 'hirb'
-gem 'hirb-unicode', '~> 0' 
+gem 'hirb-unicode', '~> 0'
 gem 'sequel' # Mapper from objects and relational database
 
 group :development, :test do

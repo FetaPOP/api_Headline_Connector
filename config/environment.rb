@@ -27,6 +27,5 @@ module HeadlineConnector
       DB = Sequel.connect(ENV['DATABASE_URL'])
       def self.DB() = DB # rubocop:disable Naming/MethodName
     end
-    # rubocop:enable Lint/ConstantDefinitionInBlock
   end
 end

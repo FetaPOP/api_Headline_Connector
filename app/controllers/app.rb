@@ -49,9 +49,7 @@ module HeadlineConnector
     def extract_video_id(video_info)
       video_info.split('?').each do |parsed_video_info|
         parsed_video_info.split('&').each do |attribute|
-          if attribute.include? 'v=' 
-            return attribute.split('=')[1]
-          end
+          return attribute.split('=')[1] if attribute.include? 'v='
         end
       end
     end
