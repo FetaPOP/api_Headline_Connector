@@ -35,12 +35,12 @@ module HeadlineConnector
           return nil unless db_feed_record
   
           Entity::Feed.new(
-            id: db_feed_record.id || nil,
+            id: db_feed_record.id,
             feed_id: db_feed_record.feed_id,
             feed_title: db_feed_record.feed_title,
             description: db_feed_record.description,
             tags: db_feed_record.tags.split(','),
-            provider: Providers.rebuild_entity(db_feed_record.provider)
+            provider: Providers.rebuild_entity(db_feed_record.owner) # db_feed_record.owner is a Database::ProviderOrm object
           )
         end
   
@@ -52,20 +52,12 @@ module HeadlineConnector
   
           def create_feed_orm
             Database::FeedOrm.create(
-              owner_id: @feed_entity.feed_id,
+              feed_id: @feed_entity.feed_id,
               feed_title: @feed_entity.feed_title,
               description: @feed_entity.description,
               tags: @feed_entity.tags.join(','),
-              provider: Providers.db_find_or_create(@feed_entity.provider) # @feed_entity.provider is an entity of Provider
+              owner: Providers.db_find_or_create(@feed_entity.provider) # @feed_entity.provider is an Entity::Provider object
             )
-          end
-  
-          def call
-            provider = Providers.db_find_or_create(@feed_entity.provider) # @feed_entity.provider is an entity of Provider
-            
-            create_feed.tap do |db_feed|
-              db_feed.update(owner: provider)
-            end
           end
         end
       end

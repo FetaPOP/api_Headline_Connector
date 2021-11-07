@@ -27,13 +27,12 @@ describe 'Integration Tests of Youtube API and Database' do
 
       rebuilt = HeadlineConnector::Repository::For.entity(feed).create(feed)
 
-      _(rebuilt.feed_id).must_equal(project.feed_id)
-      _(rebuilt.feed_title).must_equal(project.feed_id)
-      _(rebuilt.description).must_equal(project.description)
-      _(rebuilt.ssh_url).must_equal(project.ssh_url)
-      _(rebuilt.tags).must_equal(project.tags)
-      _(rebuilt.provider.provider_id).must_equal(project.provider.provider_id)
-      _(rebuilt.provider.provider_title).must_equal(project.provider.provider_title)
+      _(rebuilt.feed_id).must_equal(feed.feed_id)
+      _(rebuilt.feed_title).must_equal(feed.feed_title)
+      _(rebuilt.description).must_equal(feed.description)
+      _(rebuilt.tags).must_equal(feed.tags)
+      _(rebuilt.provider.provider_id).must_equal(feed.provider.provider_id)
+      _(rebuilt.provider.provider_title).must_equal(feed.provider.provider_title)
     end
   end
 end
