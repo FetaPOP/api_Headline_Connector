@@ -39,4 +39,4 @@ These are objects that are important to the project, following my own naming con
 - Providers: all related providers (ex. channels in Youtube)
 
 ## Database Diagram
-![](https://i.imgur.com/tZuxiIJ.png)
+![](https://i.imgur.com/0Zh7bZD.png)
