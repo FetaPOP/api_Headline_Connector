@@ -29,16 +29,8 @@ module HeadlineConnector
           @data = data
         end
 
-        def self.build_empty_entity
-          HeadlineConnector::Entity::Provider.new(
-            id: nil,
-            provider_id: '',
-            provider_title: ''
-          )
-        end
-
         def build_entity
-          return DataMapper.build_empty_entity if @data['items'] == []
+          return HeadlineConnector::Entity::Provider.build_empty_entity if @data['items'] == []
 
           HeadlineConnector::Entity::Provider.new(
             id: nil,

@@ -17,6 +17,14 @@ module HeadlineConnector
       def to_attr_hash
         to_hash.reject { |key, _| [:id].include? key }
       end
+
+      def self.build_empty_entity
+        HeadlineConnector::Entity::Provider.new(
+          id: nil,
+          provider_id: '',
+          provider_title: ''
+        )
+      end
     end
   end
 end

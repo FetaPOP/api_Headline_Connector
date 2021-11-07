@@ -18,10 +18,21 @@ module HeadlineConnector
       attribute :description,   Strict::String
       attribute :tags,          Strict::Array
       attribute :provider,      Provider
-    end
+    
+      def to_attr_hash
+        to_hash.reject { |key, _| %i[id provider].include? key }
+      end
 
-    def to_attr_hash
-      to_hash.reject { |key, _| %i[id provider].include? key }
+      def self.build_empty_entity
+        HeadlineConnector::Entity::Feed.new(
+          id: nil,
+          feed_id: '',
+          feed_title: '',
+          description: '',
+          tags: [],
+          provider: HeadlineConnector::Entity::Provider.build_empty_entity
+        )
+      end
     end
   end
 end

@@ -31,19 +31,8 @@ module HeadlineConnector
           @data = data
         end
 
-        def self.build_empty_entity
-          HeadlineConnector::Entity::Feed.new(
-            id: nil,
-            feed_id: '',
-            feed_title: '',
-            description: '',
-            tags: [],
-            provider: Youtube::ProviderMapper::DataMapper.build_empty_entity
-          )
-        end
-
         def build_entity
-          return DataMapper.build_empty_entity if @data['items'] == []
+          return HeadlineConnector::Entity::Feed.build_empty_entity if @data['items'] == []
 
           HeadlineConnector::Entity::Feed.new(
             id: nil,
