@@ -8,9 +8,11 @@ Sequel.migration do
       primary_key :id
       foreign_key :owner_id, :providers
 
-      String      :title, null: false
+      String      :feed_id, unique: true
+      String      :feed_title
       String      :description
-      Array       :tags
+      String      :tags
+      # Note that "tags" in our Feed Entities is Array. Be careful of the conversion of Array <-> String
 
       DateTime :created_at
       DateTime :updated_at

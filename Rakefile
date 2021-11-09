@@ -9,14 +9,14 @@ task :default do
 end
 
 desc 'Run application console (irb)'
-  task :console do
-    sh 'pry -r ./init.rb'
+task :console do
+  sh 'pry -r ./init.rb'
 end
 
 desc 'run tests'
-  task :spec do
-    sh 'ruby spec/gateway_youtube_spec.rb'
-  end
+task :spec do
+  sh 'ruby spec/gateway_youtube_spec.rb'
+end
 
 desc 'Keep rerunning tests upon changes'
 task :respec do
@@ -66,17 +66,24 @@ namespace :db do
   end
 end
 
-desc 'run tests after deleting all VCR cassettes files'
-task :clean_spec do
-  sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
-    puts(ok ? 'Cassettes deleted' : 'No cassettes found')
+namespace :test do
+  desc 'run tests (alias to: "rake spec")'
+  task :spec do
+    sh 'ruby spec/gateway_youtube_spec.rb'
   end
-  sh 'ruby spec/gateway_youtube_spec.rb'
-end
 
-desc 'Generate the correct answer for tests'
-task :correct_for_spec do
-  sh "ruby spec/fixtures/project_info.rb"
+  desc 'run youtube api tests after deleting all VCR cassettes files'
+  task :noVCR do
+    sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+      puts(ok ? 'Cassettes deleted' : 'No cassettes found')
+    end
+    sh 'ruby spec/gateway_youtube_spec.rb'
+  end
+
+  desc 'Generate the correct answer for gateway-youtubeapi tests'
+  task :youtubeapi_testcase do
+    sh 'ruby spec/fixtures/generate_youtubeapi_testcase.rb'
+  end
 end
 
 namespace :vcr do

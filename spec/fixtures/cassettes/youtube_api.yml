@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Oct 2021 15:37:41 GMT
+      - Sun, 07 Nov 2021 09:34:33 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -123,7 +123,7 @@ http_interactions:
             "resultsPerPage": 1
           }
         }
-  recorded_at: Fri, 29 Oct 2021 15:37:43 GMT
+  recorded_at: Sun, 07 Nov 2021 09:34:33 GMT
 - request:
     method: get
     uri: https://youtube.googleapis.com/youtube/v3/videos?id=cmSbXsFE3l8&key=ThisToKenIsNotAValidToken&part=snippet
@@ -151,7 +151,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 29 Oct 2021 15:37:41 GMT
+      - Sun, 07 Nov 2021 09:34:33 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -198,7 +198,7 @@ http_interactions:
             ]
           }
         }
-  recorded_at: Fri, 29 Oct 2021 15:37:43 GMT
+  recorded_at: Sun, 07 Nov 2021 09:34:33 GMT
 - request:
     method: get
     uri: https://youtube.googleapis.com/youtube/v3/videos?id=ThisIdIsNotAValidId&key=<YOUTUBE_TOKEN>&part=snippet
@@ -226,7 +226,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Oct 2021 15:37:42 GMT
+      - Sun, 07 Nov 2021 09:34:33 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -258,5 +258,5 @@ http_interactions:
             "resultsPerPage": 0
           }
         }
-  recorded_at: Fri, 29 Oct 2021 15:37:43 GMT
+  recorded_at: Sun, 07 Nov 2021 09:34:33 GMT
 recorded_with: VCR 6.0.0

@@ -12,12 +12,8 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../init'
+require_relative '../../init'
 
 VIDEO_ID = 'cmSbXsFE3l8'
-CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-YOUTUBE_TOKEN = CONFIG['YOUTUBE_TOKEN']
+YOUTUBE_TOKEN = HeadlineConnector::App.config.YOUTUBE_TOKEN # From config/environment.rb
 CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
-
-CASSETTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETTE_FILE = 'youtube_api'
