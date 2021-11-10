@@ -30,8 +30,8 @@ module HeadlineConnector
             routing.halt 400 unless (yt_url.include? 'youtube.com') &&
                                     (yt_url.include? 'v=') &&
                                     (yt_url.split('/').count >= 3)
-            video_info = yt_url.split('/')[-1]
-            video_id = extract_video_id(video_info)
+            query = Rack::Utils.parse_query URI(yt_url).query
+            video_id = query["v"]
 
             # Get a video from Youtube
             feed = Youtube::FeedtMapper
@@ -56,14 +56,6 @@ module HeadlineConnector
             # Show viewer the project
             view 'feed', locals: { feed: youtube_video }
           end
-        end
-      end
-    end
-
-    def extract_video_id(video_info)
-      video_info.split('?').each do |parsed_video_info|
-        parsed_video_info.split('&').each do |attribute|
-          return attribute.split('=')[1] if attribute.include? 'v='
         end
       end
     end
