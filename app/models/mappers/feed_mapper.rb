@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'provider_mapper'
+
 module HeadlineConnector
   module Youtube
     # Youtube Mapper: YoutubeApi -> Video entity
@@ -19,6 +21,10 @@ module HeadlineConnector
         DataMapper.new(data).build_entity
       end
 
+      def self.build_entity(data)
+        DataMapper.new(data).build_entity
+      end
+
       # Extracts entity specific elements from data structure
       class DataMapper
         def initialize(data)
@@ -26,30 +32,23 @@ module HeadlineConnector
         end
 
         def build_entity
-          if @data['items'] == []
-            return HeadlineConnector::Entity::Feed.new(
-              id: '',
-              title: '',
-              description: '',
-              tags: [],
-              provider: ''
-            )
-          end
+          return HeadlineConnector::Entity::Feed.build_empty_entity if @data['items'] == []
 
           HeadlineConnector::Entity::Feed.new(
-            id: id,
-            title: title,
+            id: nil,
+            feed_id: feed_id,
+            feed_title: feed_title,
             description: description,
             tags: tags,
             provider: provider
           )
         end
 
-        def id
+        def feed_id
           @data['items'][0]['id']
         end
 
-        def title
+        def feed_title
           @data['items'][0]['snippet']['title']
         end
 
@@ -60,9 +59,9 @@ module HeadlineConnector
         def tags
           @data['items'][0]['snippet']['tags']
         end
-    
+
         def provider
-          @data['items'][0]['snippet']['channelTitle']
+          Youtube::ProviderMapper.build_entity(@data)
         end
       end
     end

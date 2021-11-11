@@ -4,15 +4,15 @@ require 'http'
 
 module HeadlineConnector
   module Youtube
-  # Client Library for Youtube API
+    # Client Library for Youtube API
     class Api
-      YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'.freeze
+      YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'
       def initialize(api_key)
         @api_key = api_key
       end
 
       def collect_data(id)
-        collect_data_response = Request.new(YOUTUBE_PATH, @api_key).video_link(id).parse
+        Request.new(YOUTUBE_PATH, @api_key).video_link(id).parse
       end
 
       # Sends out HTTP requests to Youtube
@@ -48,7 +48,7 @@ module HeadlineConnector
         }.freeze
 
         def successful?
-          HTTP_ERROR.keys.include?(code) ? false : true
+          !HTTP_ERROR.keys.include?(code)
         end
 
         def error
