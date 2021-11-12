@@ -35,7 +35,7 @@ module HeadlineConnector
 
             # Get a video from Youtube
             feed = Youtube::FeedtMapper
-              .new(App.config.YOUTUBE_TOKEN)
+              .new(App.config.YT_TOKEN)
               .find(video_id)
 
             # Add feed to database

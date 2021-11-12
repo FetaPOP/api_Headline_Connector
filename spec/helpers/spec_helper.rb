@@ -15,5 +15,5 @@ require 'webmock'
 require_relative '../../init'
 
 VIDEO_ID = 'cmSbXsFE3l8'
-YOUTUBE_TOKEN = HeadlineConnector::App.config.YOUTUBE_TOKEN # From config/environment.rb
+YT_TOKEN = HeadlineConnector::App.config.YT_TOKEN # From config/environment.rb
 CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))

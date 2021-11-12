@@ -5,7 +5,6 @@ require 'yaml'
 require 'pry'
 
 config = YAML.safe_load(File.read('config/secrets.yml'))
-
 def yt_api_path(path)
   "https://www.googleapis.com/youtube/v3/#{path}"
 end
@@ -32,7 +31,7 @@ end
 
 ## Use video function to get tags and other information
 def request_video_info_by_id(yt_video_id, config)
-  yt_video_url = yt_api_path("videos?part=snippet&id=#{yt_video_id}&key=AIzaSyDpHqB0b8vcHIkXA95Q0DeFM65tL4R-Zbw")
+  yt_video_url = yt_api_path("videos?part=snippet&id=#{yt_video_id}&key=#{config['test']['YT_TOKEN']}")
   call_yt_url(config, yt_video_url).parse
 end
 
@@ -46,12 +45,9 @@ q_hash = {
 }
 yt_results.push(q_hash)
 
-## youtube videoID for testing
-yt_video_id = 'cmSbXsFE3l8' # https://www.youtube.com/watch?v=cmSbXsFE3l8
-
 ## HAPPY video request
 ## Search_result request
-yt_video_url = yt_api_path("search?part=snippet&maxResults=#{max_results}&q=#{q}&key=AIzaSyDpHqB0b8vcHIkXA95Q0DeFM65tL4R-Zbw")
+yt_video_url = yt_api_path("search?part=snippet&maxResults=#{max_results}&q=#{q}&key=#{config['test']['YT_TOKEN']}")
 yt_response[yt_video_url] = call_yt_url(config, yt_video_url)
 search_result = yt_response[yt_video_url].parse # happy_video should be a hash
 
