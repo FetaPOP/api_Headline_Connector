@@ -20,7 +20,7 @@ yt_results = {}
 yt_video_id = 'cmSbXsFE3l8' # https://www.youtube.com/watch?v=cmSbXsFE3l8
 
 ## HAPPY video request
-yt_video_url = yt_api_path("videos?part=snippet&id=#{yt_video_id}&key=#{config['YOUTUBE_TOKEN']}")
+yt_video_url = yt_api_path("videos?part=snippet&id=#{yt_video_id}&key=#{config['YT_TOKEN']}")
 yt_response[yt_video_url] = call_yt_url(config, yt_video_url)
 video = yt_response[yt_video_url].parse # happy_video should be a hash
 
