@@ -47,7 +47,7 @@ yt_results.push(q_hash)
 
 ## HAPPY video request
 ## Search_result request
-yt_video_url = yt_api_path("search?part=snippet&maxResults=#{max_results}&q=#{q}&key=#{config['test']['YT_TOKEN']}")
+yt_video_url = yt_api_path("search?part=snippet&maxResults=#{max_results}&q=#{q}&key=#{config['test']['YOUTUBE_TOKEN']}")
 yt_response[yt_video_url] = call_yt_url(config, yt_video_url)
 search_result = yt_response[yt_video_url].parse # happy_video should be a hash
 

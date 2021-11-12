@@ -52,3 +52,8 @@ describe 'Tests Youtube API library' do
     end
   end
 end
+
+
+usernames = members.map(&:username)
+correct_usernames = CORRECT['contributors'].map { |c| c['login'] }
+_(usernames).must_equal correct_usernames
