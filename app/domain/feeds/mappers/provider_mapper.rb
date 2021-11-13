@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'provider_mapper'
-
 module HeadlineConnector
   module Youtube
-    # Youtube Mapper: YoutubeApi -> Video entity
-    class FeedMapper
+    # Youtube Mapper: YoutubeApi -> provider entity
+    class ProviderMapper
       def initialize(api_key, gateway_class = Youtube::Api)
         @api_key = api_key
         @gateway_class = gateway_class
@@ -32,36 +30,21 @@ module HeadlineConnector
         end
 
         def build_entity
-          return HeadlineConnector::Entity::Feed.build_empty_entity if @data['items'] == []
+          return nil if @data['items'].empty?
 
-          HeadlineConnector::Entity::Feed.new(
+          HeadlineConnector::Entity::Provider.new(
             id: nil,
-            feed_id: feed_id,
-            feed_title: feed_title,
-            description: description,
-            tags: tags,
-            provider: provider
+            provider_id: provider_id,
+            provider_title: provider_title
           )
         end
 
-        def feed_id
-          @data['items'][0]['id']
+        def provider_id
+          @data['items'][0]['snippet']['channelId']
         end
 
-        def feed_title
-          @data['items'][0]['snippet']['title']
-        end
-
-        def description
-          @data['items'][0]['snippet']['description']
-        end
-
-        def tags
-          @data['items'][0]['snippet']['tags']
-        end
-
-        def provider
-          Youtube::ProviderMapper.build_entity(@data)
+        def provider_title
+          @data['items'][0]['snippet']['channelTitle']
         end
       end
     end
