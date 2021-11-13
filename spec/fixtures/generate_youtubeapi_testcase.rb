@@ -15,12 +15,11 @@ def call_yt_api(url)
 end
 
 yt_response = {}
-yt_results = Array.new
+yt_results = Hash.new
 
 ## Save information be index
-def save_info_from_video(video, index)
-  yt_attr = {
-  "index" => index,
+def save_info_from_video(video)
+  {
   "id" => video['items'][0]['id'], # should be "mSbXsFE3l8"
   "title" => video['items'][0]['snippet']['title'], # Should be "Anna Kendrick - Cups ..."
   "description" => video['items'][0]['snippet']['description'], # Should be the description of this song
@@ -41,10 +40,7 @@ max_results = 5
 
 ## the search query
 q = "surfing"
-q_hash = {
-  "keyword" => q
-}
-yt_results.push(q_hash)
+yt_results['keyword'] = q
 
 ## HAPPY video request
 ## Search_result request
@@ -56,9 +52,19 @@ items = search_result['items']
 items.each_with_index do |var, index|
   video_id = var["id"]["videoId"]
   video_content = request_video_info_by_id(video_id, yt_api_key)
-  yt_results_hash = save_info_from_video(video_content, index)
-  yt_results.push(yt_results_hash)
+  yt_results[index] = save_info_from_video(video_content)
 end
+
+yt_results_hash = {}
+yt_results.each do |key, value|
+  next if key == 'keyword' || yt_results[key]["tags"] == nil
+  yt_results[key]["tags"].each do |tag|
+    yt_results_hash[tag].nil? ? yt_results_hash[tag] = 1 : yt_results_hash[tag] += 1
+  end
+end
+
+puts yt_results_hash.to_a
 
 File.write('spec/fixtures/youtube_results.yml', yt_results.to_yaml)
 # File.open("youtube_results_5_video.yml", "w") {|f| f.write(yt_results.to_yaml) }
+
