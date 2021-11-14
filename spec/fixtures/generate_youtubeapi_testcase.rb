@@ -30,7 +30,7 @@ def save_info_from_video(video)
 end
 
 ## Use video function to get tags and other information
-def request_video_info_by_id(yt_video_id, yt_api_key)
+def request_videos(yt_video_id, yt_api_key)
   yt_video_url = yt_api_path("videos?part=snippet&id=#{yt_video_id}&key=#{yt_api_key}")
   call_yt_api(yt_video_url).parse
 end
@@ -51,7 +51,7 @@ search_result = call_yt_api(yt_video_url).parse # search_result should be a hash
 items = search_result['items']
 items.each_with_index do |var, index|
   video_id = var["id"]["videoId"]
-  video_content = request_video_info_by_id(video_id, yt_api_key)
+  video_content = request_videos(video_id, yt_api_key)
   yt_results[index] = save_info_from_video(video_content)
 end
 
