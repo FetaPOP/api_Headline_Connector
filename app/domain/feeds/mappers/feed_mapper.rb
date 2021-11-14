@@ -12,7 +12,7 @@ module HeadlineConnector
         @gateway = @gateway_class.new(@api_key)
       end
 
-      def find(id)
+      def request_video(id)
         data = @gateway.collect_data(id)
         build_entity(data)
       end
