@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'feed_mapper'
+#require_relative 'feed_mapper'
 
 module HeadlineConnector
   module Youtube
@@ -12,7 +12,7 @@ module HeadlineConnector
                 @gateway = @gateway_class.new(@api_key)
             end
             
-            def search_keyword(keyword, max_results)
+            def search_keyword(keyword, max_results = 30)
                 data = @gateway.search_keyword(keyword, max_results)
                 build_entity(data)
             end

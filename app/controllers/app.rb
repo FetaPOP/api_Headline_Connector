@@ -2,6 +2,7 @@
 
 require 'roda'
 require 'slim'
+require 'pry'
 
 module HeadlineConnector
   # Web App
@@ -18,8 +19,10 @@ module HeadlineConnector
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
-        feeds = Repository::For.klass(Entity::Topic).all
-        view 'home', locals: { feeds: feeds }
+        # Since we have no model for topic in database, this two line is skipped
+        # feeds = Repository::For.klass(Entity::Topic).all
+        # view 'home', locals: { feeds: feeds }
+        view 'home'
       end
 
       routing.on 'topic' do
@@ -28,36 +31,33 @@ module HeadlineConnector
           routing.post do
             keyword = routing.params['keyword']
             routing.halt 400 unless (!keyword.empty?)
-
             # Fetch related videos ids from Youtube Api
-            topic = Youtube::TopicMapper
-              .new(App.config.YOUTUBE_TOKEN)
-              .search_keyword(keyword)
-
+            routing.redirect "topic/#{keyword}"
+          end
+        end
+        routing.on String do |keyword|
+          # GET /topic/{keyword}
+          routing.get do
+            topic = Youtube::TopicMapper.new(App.config.YOUTUBE_TOKEN).search_keyword(keyword)
             # Request related videos info from database or from Youtube Api(if not found in database)
             related_feeds = topic.related_videos_ids.map do |id|
               database_feed = Repository::For.klass(Entity::Feed).find_feed_id(id)
               if database_feed # Found in database, build a feed entity
                 return database_feed                
               else # not found in database, request from Youtube Api and build a feed entity
-                youtube_feed = Youtube::FeedMapper
-                  .new(App.config.YOUTUBE_TOKEN)
-                  .request_video(id)
+                youtube_feed = Youtube::FeedMapper.new(App.config.YOUTUBE_TOKEN).request_video(id)
 
                 # Save to database
-                Repository::For.klass(Entity::Feed).create(youtube_feed)
-
-                return youtube_feed
+                # Repository::For.klass(Entity::Feed).create(youtube_feed)
+                # return youtube_feed
               end
             end
-            
-            textcloud = Mapper::TextCloudMapper
-              .new(related_feeds)
-              .generate_textcloud
-
+            textcloud = Mapper::TextCloudMapper.new(related_feeds).generate_textcloud
             # Show viewer the project
-            view 'textcloud', locals: { textcloud: textcloud}
-          end
+            # view 'textcloud', locals: { textcloud: textcloud }
+
+            view 'topic', locals: { keyword: keyword, text_cloud_stats: textcloud.text_cloud_stats }  
+          end        
         end
       end
     end
