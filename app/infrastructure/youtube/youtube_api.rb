@@ -6,13 +6,17 @@ module HeadlineConnector
   module Youtube
     # Client Library for Youtube API
     class Api
-      YOUTUBE_PATH = 'https://youtube.googleapis.com/youtube/v3/'
+      YOUTUBE_API_ROOT = 'https://youtube.googleapis.com/youtube/v3'
       def initialize(api_key)
         @api_key = api_key
       end
 
-      def collect_data(id)
-        Request.new(YOUTUBE_PATH, @api_key).video_link(id).parse
+      def request_video(id)
+        Request.new(YOUTUBE_API_ROOT, @api_key).request_video(id).parse
+      end
+
+      def search_keyword(keyword, max_results)
+        Request.new(YOUTUBE_API_ROOT, @api_key).search_keyword(keyword, max_results).parse
       end
 
       # Sends out HTTP requests to Youtube
@@ -22,16 +26,20 @@ module HeadlineConnector
           @api_key = api_key
         end
 
-        def video_link(id)
-          get(@resource_root + "videos?part=snippet&id=#{id}&key=" + @api_key)
-        end
-
         def get(url)
           http_response = HTTP.headers('Accept' => 'application/json').get(url)
 
           Response.new(http_response).tap do |response|
             raise(response.error) unless response.successful?
           end
+        end
+
+        def request_video(id)
+          get("#{@resource_root}/videos?part=snippet&id=#{id}&key=#{@api_key}")
+        end
+
+        def search_keyword(keyword, max_results)
+          get("#{@resource_root}/search?part=snippet&maxResults=#{max_results}&q=#{keyword}&key=#{@api_key}")
         end
       end
 

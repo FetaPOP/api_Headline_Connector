@@ -22,17 +22,6 @@ module HeadlineConnector
       def to_attr_hash
         to_hash.reject { |key, _| %i[id provider].include? key }
       end
-
-      def self.build_empty_entity
-        HeadlineConnector::Entity::Feed.new(
-          id: nil,
-          feed_id: '',
-          feed_title: '',
-          description: '',
-          tags: [],
-          provider: HeadlineConnector::Entity::Provider.build_empty_entity
-        )
-      end
     end
   end
 end

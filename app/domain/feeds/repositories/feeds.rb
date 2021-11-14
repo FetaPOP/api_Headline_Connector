@@ -1,0 +1,52 @@
+# frozen_string_literal: true
+
+require_relative 'providers'
+
+module HeadlineConnector
+  module Repository
+    # Repository for Feed Entities
+    class Feeds
+      def self.all
+        Database::FeedOrm.all.map { |a_feed_from_db| rebuild_entity(a_feed_from_db) }
+      end
+
+      def self.find(feed_entity)
+        find_feed_id(feed_entity.feed_id)
+      end
+
+      def self.find_feed_id(id)
+        rebuild_entity Database::FeedOrm.first(feed_id: id)
+      end
+
+      def self.find_feed_title(feed_title)
+        rebuild_entity Database::FeedOrm.first(feed_title: feed_title)
+      end
+ 
+      def self.rebuild_entity(db_feed_record)
+        return nil unless db_feed_record
+
+        Entity::Feed.new(
+          id: db_feed_record.id,
+          feed_id: db_feed_record.feed_id,
+          feed_title: db_feed_record.feed_title,
+          description: db_feed_record.description,
+          tags: db_feed_record.tags.split(','),
+          provider: Providers.rebuild_entity(db_feed_record.owner)
+          # db_feed_record.owner is a Database::ProviderOrm object
+        )
+      end
+
+      def self.create(feed_entity)
+        raise 'Feed already exists' if find(feed_entity)
+
+        Database::FeedOrm.create(
+          feed_id: feed_entity.feed_id,
+          feed_title: feed_entity.feed_title,
+          description: feed_entity.description,
+          tags: feed_entity.tags.join(','),
+          owner: Providers.db_find_or_create(feed_entity.provider)
+        )
+      end
+    end
+  end
+end

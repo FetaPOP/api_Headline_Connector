@@ -30,7 +30,7 @@ module HeadlineConnector
         end
 
         def build_entity
-          return HeadlineConnector::Entity::Provider.build_empty_entity if @data['items'] == []
+          return nil if @data['items'].empty?
 
           HeadlineConnector::Entity::Provider.new(
             id: nil,

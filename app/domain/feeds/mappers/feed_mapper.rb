@@ -12,8 +12,8 @@ module HeadlineConnector
         @gateway = @gateway_class.new(@api_key)
       end
 
-      def find(id)
-        data = @gateway.collect_data(id)
+      def request_video(id)
+        data = @gateway.request_video(id)
         build_entity(data)
       end
 
@@ -32,7 +32,7 @@ module HeadlineConnector
         end
 
         def build_entity
-          return HeadlineConnector::Entity::Feed.build_empty_entity if @data['items'] == []
+          return nil if @data['items'].empty?
 
           HeadlineConnector::Entity::Feed.new(
             id: nil,
@@ -57,7 +57,7 @@ module HeadlineConnector
         end
 
         def tags
-          @data['items'][0]['snippet']['tags']
+          @data['items'][0]['snippet']['tags'] || Array.new
         end
 
         def provider
