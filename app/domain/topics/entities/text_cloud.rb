@@ -3,7 +3,7 @@
 require 'dry-types'
 require 'dry-struct'
 
-require_relative 'feed'
+#require_relative 'feed'
 
 module HeadlineConnector
   module Entity

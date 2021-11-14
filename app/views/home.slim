@@ -1,11 +1,11 @@
 .container
-  form role="form" action="/feed" method='POST' id='show-feed-form'
+  form role="form" action="/topic" method='POST' id='show-feed-form'
     .row.vertical-align.query-bar
       .col-md-2.col-sm-3
         .text-right Youtube URL:
       .col-md-8.col-sm-6
         input { 
-          type='text' name='youtube_url'
+          type='text' name='keyword'
           id='youtube_url_input' class="form-control"
           placeholder="e.g. https://www.youtube.com/watch?v=cmSbXsFE3l8"
         }
@@ -13,6 +13,6 @@
         button { 
           type='submit' id='repo-form-submit' class='submit' 
           value='submit' class="btn btn-success" 
-        } Show Feed
+        } Let's Do Analyze
     .row
       .col-md-12.blank-row

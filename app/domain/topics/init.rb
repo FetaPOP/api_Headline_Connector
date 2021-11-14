@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-folders = %w[lib entities repositories mappers values]
+folders = %w[entities mappers values]
   folders.each do |folder|
     Dir.glob("#{__dir__}/#{folder}/**/*.rb").each do |file|
       require_relative file

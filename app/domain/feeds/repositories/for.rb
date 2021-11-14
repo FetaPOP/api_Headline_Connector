@@ -9,7 +9,7 @@ module HeadlineConnector
     module For
       ENTITY_REPOSITORY = {
         Entity::Provider => Providers,
-        Entity::Feed => Feeds
+        Entity::Feed => Feeds,
       }.freeze
 
       def self.klass(entity_klass)

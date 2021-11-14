@@ -16,7 +16,7 @@ module HeadlineConnector
       attribute :feed_id,       Strict::String
       attribute :feed_title,    Strict::String
       attribute :description,   Strict::String
-      attribute :tags,          Strict::Array
+      attribute :tags,          Strict::Array.optional
       attribute :provider,      Provider
     
       def to_attr_hash

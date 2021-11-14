@@ -15,7 +15,7 @@ module HeadlineConnector
         Request.new(YOUTUBE_API_ROOT, @api_key).request_video_data(id).parse
       end
 
-      def search_keyword(key_word, max_results)
+      def search_keyword(keyword, max_results)
         Request.new(YOUTUBE_API_ROOT, @api_key).search_keyword(keyword, max_results).parse
       end
 

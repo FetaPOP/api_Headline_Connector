@@ -1,7 +1,7 @@
 module HeadlineConnector
   module Value
     class TextCloud < SimpleDelegator
-      def calculate(tags_list)
+      def self.calculate(tags_list)
         # tags_hash is the array requires for the text_cloud gem
         tags_hash = {}  
         
