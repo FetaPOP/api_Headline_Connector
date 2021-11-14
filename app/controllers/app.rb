@@ -18,43 +18,45 @@ module HeadlineConnector
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
-        feeds = Repository::For.klass(Entity::Feed).all
+        feeds = Repository::For.klass(Entity::Topic).all
         view 'home', locals: { feeds: feeds }
       end
 
-      routing.on 'feed' do
+      routing.on 'topic' do
         routing.is do
-          # POST /feed/
+          # POST /topic/
           routing.post do
-            yt_url = routing.params['youtube_url']
-            routing.halt 400 unless (yt_url.include? 'youtube.com') &&
-                                    (yt_url.include? 'v=') &&
-                                    (yt_url.split('/').count >= 3)
-            query = Rack::Utils.parse_query URI(yt_url).query
-            video_id = query["v"]
+            keyword = routing.params['keyword']
+            routing.halt 400 unless (!keyword.empty?)
 
-            # Get a video from Youtube
-            feed = Youtube::FeedtMapper
-              .new(App.config.YT_TOKEN)
-              .find(video_id)
+            # Fetch related videos ids from Youtube Api
+            topic = Youtube::TopicMapper
+              .new(App.config.YOUTUBE_TOKEN)
+              .search_keyword(keyword)
 
-            # Add feed to database
-            Repository::For.entity(feed).create(feed)
+            # Request related videos info from database or from Youtube Api(if not found in database)
+            related_feeds = topic.related_videos_ids.map do |id|
+              database_feed = Repository::For.klass(Entity::Feed).find_feed_id(id)
+              if database_feed # Found in database, build a feed entity
+                return database_feed                
+              else # not found in database, request from Youtube Api and build a feed entity
+                youtube_feed = Youtube::FeedMapper
+                  .new(App.config.YOUTUBE_TOKEN)
+                  .request_video(id)
 
-            # Redirect viewer to the corresponding feed page
-            routing.redirect "feed/#{feed.feed_id}"
-          end
-        end
+                # Save to database
+                Repository::For.klass(Entity::Feed).create(youtube_feed)
 
-        routing.on String do |video_id|
-          # GET /feed/#{video_id}
-          routing.get do
-            # Get project from database (not from Youtube API anymore)
-            youtube_video = Repository::For.klass(Entity::Feed)
-              .find_feed_id(video_id)
+                return youtube_feed
+              end
+            end
+            
+            textcloud = Mapper::TextCloudMapper
+              .new(related_feeds)
+              .generate_textcloud
 
             # Show viewer the project
-            view 'feed', locals: { feed: youtube_video }
+            view 'textcloud', locals: { textcloud: textcloud}
           end
         end
       end
