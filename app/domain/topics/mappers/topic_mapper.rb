@@ -12,7 +12,7 @@ module HeadlineConnector
                 @gateway = @gateway_class.new(@api_key)
             end
             
-            def search_keyword(keyword, max_results = 30)
+            def search_keyword(keyword, max_results = 50)
                 data = @gateway.search_keyword(keyword, max_results)
                 build_entity(data)
             end
@@ -33,6 +33,10 @@ module HeadlineConnector
             end
 
             def extract_video_ids
+                @data['items'].keep_if do |items|
+                    !items['id']['videoId'].nil?
+                end
+
                 @data['items'].map do |items|
                     items['id']['videoId']
                 end

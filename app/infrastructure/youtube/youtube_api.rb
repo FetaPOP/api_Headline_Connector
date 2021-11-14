@@ -11,8 +11,8 @@ module HeadlineConnector
         @api_key = api_key
       end
 
-      def request_video_data(id)
-        Request.new(YOUTUBE_API_ROOT, @api_key).request_video_data(id).parse
+      def request_video(id)
+        Request.new(YOUTUBE_API_ROOT, @api_key).request_video(id).parse
       end
 
       def search_keyword(keyword, max_results)
@@ -34,7 +34,7 @@ module HeadlineConnector
           end
         end
 
-        def request_video_data(id)
+        def request_video(id)
           get("#{@resource_root}/videos?part=snippet&id=#{id}&key=#{@api_key}")
         end
 

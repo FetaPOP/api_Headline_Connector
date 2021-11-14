@@ -15,22 +15,13 @@ module HeadlineConnector
       end
 
       def self.find_feed_id(id)
-        db_feed_record = Database::FeedOrm.first(id: id)
-        rebuild_entity(db_feed_record)
+        rebuild_entity Database::FeedOrm.first(feed_id: id)
       end
 
       def self.find_feed_title(feed_title)
-        db_feed_record = Database::FeedOrm.first(feed_title: feed_title)
-        rebuild_entity(db_feed_record)
+        rebuild_entity Database::FeedOrm.first(feed_title: feed_title)
       end
-
-      def self.create(feed_entity)
-        raise 'Project already exists' if find(feed_entity)
-
-        db_feed_record = PersistProject.new(feed_entity).create_feed_orm
-        rebuild_entity(db_feed_record)
-      end
-
+ 
       def self.rebuild_entity(db_feed_record)
         return nil unless db_feed_record
 
@@ -45,22 +36,16 @@ module HeadlineConnector
         )
       end
 
-      # Helper class to persist project and its members to database
-      class PersistProject
-        def initialize(feed_entity)
-          @feed_entity = feed_entity
-        end
+      def self.create(feed_entity)
+        raise 'Feed already exists' if find(feed_entity)
 
-        def create_feed_orm
-          Database::FeedOrm.create(
-            feed_id: @feed_entity.feed_id,
-            feed_title: @feed_entity.feed_title,
-            description: @feed_entity.description,
-            tags: @feed_entity.tags.join(','),
-            owner: Providers.db_find_or_create(@feed_entity.provider)
-            # @feed_entity.provider is an Entity::Provider object
-          )
-        end
+        Database::FeedOrm.create(
+          feed_id: feed_entity.feed_id,
+          feed_title: feed_entity.feed_title,
+          description: feed_entity.description,
+          tags: feed_entity.tags.join(','),
+          owner: Providers.db_find_or_create(feed_entity.provider)
+        )
       end
     end
   end

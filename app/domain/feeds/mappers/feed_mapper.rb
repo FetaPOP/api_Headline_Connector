@@ -13,7 +13,7 @@ module HeadlineConnector
       end
 
       def request_video(id)
-        data = @gateway.request_video_data(id)
+        data = @gateway.request_video(id)
         build_entity(data)
       end
 
@@ -57,7 +57,7 @@ module HeadlineConnector
         end
 
         def tags
-          @data['items'][0]['snippet']['tags']
+          @data['items'][0]['snippet']['tags'] || Array.new
         end
 
         def provider
