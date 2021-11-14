@@ -51,8 +51,8 @@ module HeadlineConnector
               end
             end
             
-            textcloud = Youtube::TextCloudMapper
-              .new(App.config.YOUTUBE_TOKEN, related_feeds)
+            textcloud = Mapper::TextCloudMapper
+              .new(related_feeds)
               .generate_textcloud
 
             # Show viewer the project
