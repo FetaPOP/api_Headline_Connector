@@ -10,7 +10,7 @@
       th.tags Tags
       th.tags.amount Count
     tr
-      - text_cloud_stats.each do |arr|
+      - text_cloud.stats.each do |tag|
         tr.tags.amount
-          td.tags #{arr[0]}
-          td.tags.amount #{arr[1]}
+          td.tags #{tag[0]}
+          td.tags.amount #{tag[1]}
