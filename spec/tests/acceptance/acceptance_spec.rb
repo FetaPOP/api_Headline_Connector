@@ -36,6 +36,20 @@ describe 'Acceptance Tests' do
         @browser.url.include? "topic"
         @browser.url.include? TOPIC_NAME
       end
+
+      it '(BAD) should not be able to generate a text cloud' do
+        # GIVEN: user is on the home page
+        @browser.goto homepage
+
+        # WHEN: they type in an invalid topic and submit
+        bad_topic = 'ewjq7asai'
+        @browser.text_field(id: 'topic_input').set(bad_topic)
+        @browser.button(id: 'repo-form-submit').click
+
+        # THEN: they should find themselves on the topic's page
+        _(@browser.div(id: 'flash_bar_danger').present?).must_equal true
+        _(@browser.div(id: 'flash_bar_danger').text.downcase).must_include 'invalid keyword'
+      end
     end
   end
 end
