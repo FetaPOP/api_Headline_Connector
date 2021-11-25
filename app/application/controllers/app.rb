@@ -3,16 +3,17 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
+require_relative 'helpers.rb'
 
 module HeadlineConnector
   # Web App
   class App < Roda
-    
+    include RouteHelpers
+
     plugin :halt
     plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
     plugin :render, engine: 'slim', views: 'app/presentation/views_html'
-    plugin :public, root: 'app/presentation/public'
     plugin :assets, path: 'app/presentation/assets',
                     css: 'style.css', js: 'table_row_click.js'
                     
@@ -20,7 +21,6 @@ module HeadlineConnector
 
     route do |routing|
       routing.assets # load CSS
-      routing.public
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
