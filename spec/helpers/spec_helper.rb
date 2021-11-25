@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ENV['RACK_ENV'] = 'test'
+ENV['RACK_ENV'] ||= 'test'
 
 require 'simplecov'
 SimpleCov.start
@@ -18,3 +18,9 @@ VIDEO_ID = 'cmSbXsFE3l8'
 YOUTUBE_TOKEN = HeadlineConnector::App.config.YOUTUBE_TOKEN # From config/environment.rb
 CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
 TOPIC_NAME = 'surfing'
+
+# Helper method for acceptance tests
+def homepage
+    HeadlineConnector::App.config.APP_HOST
+  end
+  

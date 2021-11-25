@@ -8,7 +8,7 @@ describe 'Integration Tests of Youtube API and Database' do
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vcr_for_youtube
+    VcrHelper.configure_vcr_for_youtube(recording: :none)
   end
 
   after do
