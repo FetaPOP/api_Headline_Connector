@@ -41,7 +41,8 @@ group :test do
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.0'
 
-  gem 'headless', '~> 2.3'
+  gem 'headless', '~> 2.3'  
+  gem 'page-object', '~> 2.3'
   gem 'watir', '~> 7.0'
   gem 'webdrivers', '~> 5.0'
 end
