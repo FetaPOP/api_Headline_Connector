@@ -8,7 +8,7 @@ gem 'figaro', '~> 1.2'
 gem 'rake', '~> 13.0'
 
 # APPLICATION LAYER
-# Web Application
+# Web application related
 gem 'puma', '~> 5.5'
 gem 'rack', '~> 2' # 2.3 will fix delegateclass bug
 gem 'roda', '~> 3.49'
@@ -24,6 +24,7 @@ gem 'dry-validation', '~> 1.7'
 gem 'dry-struct', '~> 1.4'
 gem 'dry-types', '~> 1.5'
 
+# INFRASTRUCTURE LAYER
 # Networking
 gem 'http', '~> 5.0'
 
@@ -40,7 +41,7 @@ group :production do
   gem 'pg', '~> 1.2'
 end
 
-# Testing
+# TESTING
 group :test do
   gem 'minitest', '~> 5.0'
   gem 'minitest-rg', '~> 5.0'
@@ -58,10 +59,10 @@ group :development do
   gem 'rerun', '~> 0'
 end
 
-# Debugging
+# DEBUGGING
 gem 'pry'
 
-# Code Quality
+# QUALITY
 group :development do
   gem 'flog'
   gem 'reek'
