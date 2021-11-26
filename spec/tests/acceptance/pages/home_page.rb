@@ -13,8 +13,8 @@ class HomePage
     text_field(:topic_input, id: 'topic_input')
     button(:add_button, id: 'repo-form-submit')
 
-    def add_new_topic(remote_url)
-      self.topic_input = remote_url
+    def add_new_topic(keyword)
+      self.topic_input = keyword
       self.add_button
     end
 

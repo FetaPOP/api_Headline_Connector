@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 # Page object for home page
-class ProjectPage
+class TopicPage
   include PageObject
 
   page_url HeadlineConnector::App.config.APP_HOST +
-           '/project/<%=params[:owner_name]%>/<%=params[:project_name]%>' \
-           '<%=params[:folder] ? "/#{params[:folder]}" : ""%>'
+           '/topic/<%=params[:keyword]%>'
 
   div(:warning_message, id: 'flash_bar_danger')
   div(:success_message, id: 'flash_bar_success')

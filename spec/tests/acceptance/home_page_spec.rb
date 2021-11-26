@@ -22,7 +22,7 @@ describe 'Homepage Acceptance Tests' do
       # WHEN: they visit the home page
       visit HomePage do |page|
         _(page.title_heading).must_equal 'HeadlineConnector'
-        _(page.url_input_element.present?).must_equal true
+        _(page.topic_input_element.present?).must_equal true
         _(page.add_button_element.present?).must_equal true
 
         _(page.success_message_element.present?).must_equal true
