@@ -21,6 +21,7 @@ module HeadlineConnector
 
     route do |routing|
       routing.assets # load CSS
+      routing.public
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
@@ -56,9 +57,6 @@ module HeadlineConnector
               routing.redirect '/'
             end
             
-            # here is the confusing part (wip)
-            keyword = .split('/')[-1].split('=')[2]
-
             # Add topic to database
             topic = Repository::For.klass(Entity::Topic)
               .find_topic_name(keyword)
