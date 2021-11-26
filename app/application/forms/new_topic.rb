@@ -8,12 +8,12 @@ module HeadlineConnector
       URL_REGEX = %r{(http[s]?)\:\/\/(www.)?youtube\.com\/.*\/.*(?<!git)$}.freeze
 
       params do
-        required(:remote_url).filled(:string)
+        required(:keyword).filled(:string)
       end
 
-      rule(:remote_url) do
+      rule(:keyword) do
         unless URL_REGEX.match?(value)
-          key.failure('is an invalid address for a Youtube search')
+          key.failure('is an invalid search for a Youtube')
         end
       end
     end
