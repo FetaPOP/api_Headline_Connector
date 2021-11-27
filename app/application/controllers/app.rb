@@ -28,7 +28,7 @@ module HeadlineConnector
         # feeds = Repository::For.klass(Entity::Topic).all
         # view 'home', locals: { feeds: feeds }
 
-        # Get cookie viewer's previously seen projects
+        # Get cookie viewer's previously viewed topics
         session[:watching] ||= []
 
         # Load previously viewed topics
@@ -50,42 +50,21 @@ module HeadlineConnector
         routing.is do
           # POST /topic/
           routing.post do
-            keyword = routing.params['keyword']
-            unless(!keyword.empty?)
-              flash[:error] = 'Invalid keyword for Youtube search'
-              response.status = 400
+            keyword = Forms::NewTopic.new.call(routing.params)
+            topic_made = Service::AddTopic.new.call(keyword)
+            
+            if topic_made.failure?
+              flash[:error] = topic_made.failure
               routing.redirect '/'
             end
-            
-            # Add topic to database
-            topic = Repository::For.klass(Entity::Topic)
-              .find_topic_name(keyword)
 
-            unless topic
-              # Get related videos from Youtube.Api
-              begin
-                topic = Youtube::TopicMapper
-                  .new(App.config.YOUTUBE_TOKEN)
-                  .search_keyword(keyword)
-              rescue StandardError
-                flash[:error] = 'Could not find that Youtube video'
-                routing.redirect '/'
-              end
-
-              # Add topic to database
-              begin
-                Repository::For.entity(topic).create(topic)
-              rescue StandardError => err
-                puts err.backtrace.join("\n")
-                flash[:error] = 'Having trouble accessing the database'
-              end
-            end
-              
+            topic = topic_made.value!
             # Add new topic to watched set in cookies (wip)
             session[:watching].insert(0, topic).uniq!
-
             # Redirect viewer to search page
+            flash[:notice] = 'Topic added to your list'
             routing.redirect "topic/#{keyword}"
+
           end
         end
         
