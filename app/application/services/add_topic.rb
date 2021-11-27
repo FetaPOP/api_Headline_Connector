@@ -8,8 +8,8 @@ module HeadlineConnector
     class AddTopic
       include Dry::Transaction
 
-      step :find_videos
-      step :store_videos
+      step :find_topic
+      step :store_topic
 
       private
 

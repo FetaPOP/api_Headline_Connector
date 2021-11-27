@@ -32,16 +32,20 @@ module HeadlineConnector
         session[:watching] ||= []
 
         # Load previously viewed topics
-        topics = Repository::For.klass(Entity::Topic)
-          .find_topic_names(session[:watching])
+        result = Service::ListTopics.new.call(session[:watching])
 
-        session[:watching] = topics.map(&:keyword)
+        if result.failure?
+          flash[:error] = result.failure
+          viewable_topics = []
+        else
+          topics = result.value!
+          if topics.none?
+            flash.now[:notice] = 'Insert a keyword to get started'
+          end
 
-        if topics.none?
-          flash.now[:notice] = 'Insert a keyword to get started'
+          session[:watching] = topics.map(&:keyword)
+          viewable_topics = Views::TopicsList.new(topics)
         end
-
-        viewable_topics = Views::TopicsList.new(topics)
 
         view 'home', locals: { topics: viewable_topics }
       end
@@ -72,43 +76,24 @@ module HeadlineConnector
           # GET /topic/{keyword}
           routing.get do
             # Request related videos info from database or from Youtube Api(if not found in database)
-            topic = Youtube::TopicMapper
-              .new(App.config.YOUTUBE_TOKEN)
-              .search_keyword(keyword)
-            related_feeds = topic.related_videos_ids.map do |video_id|
-              # Found in database, build a feed entity and go into next
-              begin 
-                database_feed = Repository::For.klass(Entity::Feed)
-                  .find_feed_id(video_id)
-                next database_feed if database_feed
-              rescue StandardError
-                flash[:error] = 'Video not found'
-                routing.redirect '/'
-              end
+            session[:watching] ||= []
 
-              # not found in database, request from Youtube Api and build a feed entity
-              begin 
-                youtube_feed = Youtube::FeedMapper
-                  .new(App.config.YOUTUBE_TOKEN)
-                  .request_video(video_id)
-              rescue StandardError
-                flash[:error] = 'Having trouble accessing Youtube'
-                routing.redirect '/'
-              end
+            result = Service::GenerateTextCloud.new.call(
+              watched_list: session[:watching],
+              keyword: keyword
+            )
 
-              # Save new feeds to database
-              begin
-                Repository::For.klass(Entity::Feed).create(youtube_feed) if youtube_feed.feed_id
-                youtube_feed
-              rescue StandardError => err
-                flash[:error] = 'Having trouble accessing the database'
-              end
+            if result.failure?
+              flash[:error] = result.failure
+              routing.redirect '/'
             end
 
-            textcloud = Mapper::TextCloudMapper.new(related_feeds).generate_textcloud
+            request_feeds = result.value!
 
             # Show viewer the topic
-            view 'topic', locals: { keyword: keyword, text_cloud_stats: textcloud.text_cloud_stats }  
+            # Need to change to view object
+            view 'topic', locals: { keyword: request_feeds[:keyword], text_cloud_stats: request_feeds[:textcloud].text_cloud_stats }  
+
           end        
         end
       end
