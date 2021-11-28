@@ -2,6 +2,7 @@
 
 require_relative 'feeds'
 require_relative 'providers'
+require_relative 'topics'
 
 module HeadlineConnector
   module Repository
@@ -10,6 +11,7 @@ module HeadlineConnector
       ENTITY_REPOSITORY = {
         Entity::Provider => Providers,
         Entity::Feed => Feeds,
+        Entity::Topic => Topics
       }.freeze
 
       def self.klass(entity_klass)

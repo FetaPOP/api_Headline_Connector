@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-#require_relative 'feed_mapper'
-
 module HeadlineConnector
   module Youtube
         # Youtube Mapper: YoutubeApi -> Topic entity
@@ -14,22 +12,23 @@ module HeadlineConnector
             
             def search_keyword(keyword, max_results = 50)
                 data = @gateway.search_keyword(keyword, max_results)
-                build_entity(data)
+                build_entity(data, keyword)
             end
 
-            def build_entity(data)
-                DataMapper.new(data).build_entity
+            def build_entity(data, keyword)
+                DataMapper.new(data, keyword).build_entity
             end
 
-            def self.build_entity(data)
-                DataMapper.new(data).build_entity
+            def self.build_entity(data, keyword)
+                DataMapper.new(data, keyword).build_entity
             end
         end
 
         # Extracts entity specific elements from youtube-returned data structures
         class DataMapper
-            def initialize(data)
+            def initialize(data, keyword)
                 @data = data
+                @keyword = keyword
             end
 
             def extract_video_ids
@@ -46,12 +45,14 @@ module HeadlineConnector
                 if @data['items'].empty?
                     return HeadlineConnector::Entity::Topic.new(
                         id: nil,
+                        keyword: '',
                         related_videos_ids: []
                     )
                 end
                 
                 HeadlineConnector::Entity::Topic.new(
                     id: nil,
+                    keyword: @keyword,
                     related_videos_ids: related_videos_ids
                 )
             end
