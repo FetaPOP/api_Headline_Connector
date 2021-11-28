@@ -45,14 +45,14 @@ module HeadlineConnector
                 if @data['items'].empty?
                     return HeadlineConnector::Entity::Topic.new(
                         id: nil,
-                        keyword: ''
+                        keyword: '',
                         related_videos_ids: []
                     )
                 end
                 
                 HeadlineConnector::Entity::Topic.new(
                     id: nil,
-                    keyword: @keyword
+                    keyword: @keyword,
                     related_videos_ids: related_videos_ids
                 )
             end
