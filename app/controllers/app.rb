@@ -57,7 +57,7 @@ module HeadlineConnector
             end
             
             # here is the confusing part (wip)
-            keyword = .split('/')[-1].split('=')[2]
+            keyword = split('/')[-1].split('=')[2]
 
             # Add topic to database
             topic = Repository::For.klass(Entity::Topic)

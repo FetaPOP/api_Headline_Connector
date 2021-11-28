@@ -31,8 +31,8 @@ module HeadlineConnector
           feed_title: db_feed_record.feed_title,
           description: db_feed_record.description,
           tags: db_feed_record.tags.split(','),
-          provider: Providers.rebuild_entity(db_feed_record.owner)
-          # db_feed_record.owner is a Database::ProviderOrm object
+          provider: Providers.rebuild_entity(db_feed_record.provider)
+          # db_feed_record.provider is a Database::ProviderOrm object
         )
       end
 
@@ -44,7 +44,7 @@ module HeadlineConnector
           feed_title: feed_entity.feed_title,
           description: feed_entity.description,
           tags: feed_entity.tags.join(','),
-          owner: Providers.db_find_or_create(feed_entity.provider)
+          provider: Providers.db_find_or_create(feed_entity.provider)
         )
       end
     end

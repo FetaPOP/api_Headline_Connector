@@ -22,26 +22,41 @@ module HeadlineConnector
         return nil unless db_topic_record
 
         Entity::Topic.new(
-          id: db_feed_record.id,
-          feed_id: db_feed_record.feed_id,
-          feed_title: db_feed_record.feed_title,
-          description: db_feed_record.description,
-          tags: db_feed_record.tags.split(','),
-          provider: Providers.rebuild_entity(db_feed_record.owner)
-          # db_feed_record.owner is a Database::ProviderOrm object
+          id: db_topic_record.id,
+          keyword: db_topic_record.keyword
+          related_feeds: db_topic_record.related_feeds
+          provider: Providers.rebuild_entity(db_feed_record.provider)
+          # db_feed_record.provider is a Database::ProviderOrm object
         )
       end
 
-      def self.create(feed_entity)
-        raise 'Feed already exists' if find(feed_entity)
+      def self.create(topic_entity)
+        raise 'Topic already exists' if find(topic_entity)
 
-        Database::FeedOrm.create(
-          feed_id: feed_entity.feed_id,
-          feed_title: feed_entity.feed_title,
-          description: feed_entity.description,
-          tags: feed_entity.tags.join(','),
-          owner: Providers.db_find_or_create(feed_entity.provider)
-        )
+        db_topic_record = PersistProject.new(topic_entity).call
+        rebuild_entity(db_topic_record)
+      end
+
+      class PersistProject
+        def initialize(entity)
+          @entity = entity
+        end
+
+        def create_topic
+          Database::TopicOrm.create(@entity.to_attr_hash)
+        end
+
+        def call
+          provider = Members.db_find_or_create(@entity.provider)
+
+          create_project.tap do |db_project|
+            db_project.update(provider: provider)
+
+            @entity.contributors.each do |contributor|
+              db_project.add_contributor(Members.db_find_or_create(contributor))
+            end
+          end
+        end
       end
     end
   end
