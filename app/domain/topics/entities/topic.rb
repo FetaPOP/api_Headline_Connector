@@ -14,13 +14,13 @@ module HeadlineConnector
 
       attribute :id,                    Integer.optional
       attribute :keyword,               Strict::String
-      attribute :related_feeds,         Strict::Array.of(Feed)
+      attribute :related_videos_ids,    Strict::Array.of(Strubg)
 
       def self.build_empty_entity
         HeadlineConnector::Entity::Topic.new(
           id: nil,
           keyword: '',
-          related_feeds: []
+          related_videos_ids: []
         )
       end
     end

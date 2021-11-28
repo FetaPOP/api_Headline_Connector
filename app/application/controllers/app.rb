@@ -25,9 +25,6 @@ module HeadlineConnector
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
-        # feeds = Repository::For.klass(Entity::Topic).all
-        # view 'home', locals: { feeds: feeds }
-
         # Get cookie viewer's previously viewed topics
         session[:watching] ||= []
 

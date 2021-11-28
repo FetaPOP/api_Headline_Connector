@@ -42,6 +42,12 @@ module HeadlineConnector
         end
       end
 
+      def self.extract_many_feed_ids(db_feed_records)
+        db_feed_records.map do |a_feed_from_db|
+          a_feed_from_db.feed_id
+        end
+      end
+
       def self.create(feed_entity)
         raise 'Feed already exists' if find(feed_entity)
 

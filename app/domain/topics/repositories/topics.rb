@@ -23,7 +23,7 @@ module HeadlineConnector
         Entity::Topic.new(
           id: db_topic_record.id,
           keyword: db_topic_record.keyword
-          related_feeds: Feeds.rebuild_many(db_topic_record.related_feeds)
+          related_videos_ids: Feeds.extract_many_feed_ids(db_topic_record.related_feeds)
         )
       end
 
