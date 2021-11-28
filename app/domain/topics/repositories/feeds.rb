@@ -36,6 +36,12 @@ module HeadlineConnector
         )
       end
 
+      def self.rebuild_many(db_feed_records)
+        db_feed_records.map do |a_feed_from_db|
+          Feeds.rebuild_entity(a_feed_from_db)
+        end
+      end
+
       def self.create(feed_entity)
         raise 'Feed already exists' if find(feed_entity)
 
@@ -46,6 +52,10 @@ module HeadlineConnector
           tags: feed_entity.tags.join(','),
           provider: Providers.db_find_or_create(feed_entity.provider)
         )
+      end
+
+      def self.db_find_or_create(feed_entity)
+        Database::FeedOrm.first(feed_id: feed_entity.feed_id) || create(feed_entity)
       end
     end
   end

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require_relative 'providers'
 
 module HeadlineConnector
@@ -24,9 +23,7 @@ module HeadlineConnector
         Entity::Topic.new(
           id: db_topic_record.id,
           keyword: db_topic_record.keyword
-          related_feeds: db_topic_record.related_feeds
-          provider: Providers.rebuild_entity(db_feed_record.provider)
-          # db_feed_record.provider is a Database::ProviderOrm object
+          related_feeds: Feeds.rebuild_many(db_topic_record.related_feeds)
         )
       end
 
@@ -43,17 +40,13 @@ module HeadlineConnector
         end
 
         def create_topic
-          Database::TopicOrm.create(@entity.to_attr_hash)
+          Database::TopicOrm.create(keyword: @entity.keyword)
         end
 
         def call
-          provider = Members.db_find_or_create(@entity.provider)
-
-          create_project.tap do |db_project|
-            db_project.update(provider: provider)
-
-            @entity.contributors.each do |contributor|
-              db_project.add_contributor(Members.db_find_or_create(contributor))
+          create_topic.tap do |a_topic_from_db|
+            @entity.related_feeds.each do |feed_entity|
+              a_topic_from_db.add_related_feed(Feeds.db_find_or_create(feed_entity))
             end
           end
         end

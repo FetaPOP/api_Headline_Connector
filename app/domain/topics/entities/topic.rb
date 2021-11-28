@@ -16,10 +16,6 @@ module HeadlineConnector
       attribute :keyword,               Strict::String
       attribute :related_feeds,         Strict::Array.of(Feed)
 
-      def to_attr_hash
-        to_hash.reject { |key, _| [:id].include? key }
-      end
-
       def self.build_empty_entity
         HeadlineConnector::Entity::Topic.new(
           id: nil,
