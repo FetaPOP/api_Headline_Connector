@@ -6,10 +6,6 @@ module HeadlineConnector
   module Repository
     # Repository for Provider Entities
     class Providers
-      def self.find_id(id)
-        rebuild_entity Database::ProviderOrm.first(provider_id: id)
-      end
-
       def self.find_provider_id(provider_id)
         rebuild_entity Database::ProviderOrm.first(provider_id: provider_id)
       end

@@ -3,29 +3,30 @@
 require 'roda'
 require 'figaro'
 require 'sequel'
-require 'yaml'
+require 'delegate' # needed until Rack 2.3 fixes delegateclass bug
 
 module HeadlineConnector
-  # Configuration for the App
+  # Environment-specific configuration
   class App < Roda
     plugin :environments # This plugin comes from Roda
 
-    configure do
-      # Environment variables setup
-      Figaro.application = Figaro::Application.new(
-        environment: environment,
-        path: File.expand_path('config/secrets.yml')
-      )
-      Figaro.load
-      def self.config() = Figaro.env
+    # Environment variables setup
+    Figaro.application = Figaro::Application.new(
+      environment: environment,
+      path: File.expand_path('config/secrets.yml')
+    )
+    Figaro.load
+    def self.config() = Figaro.env
 
-      configure :development, :test do # This "configure" function comes from :environments plugin
-        ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
-      end
+    use Rack::Session::Cookie, secret: config.SESSION_SECRET
 
-      # Database Setup
-      DB = Sequel.connect(ENV['DATABASE_URL'])
-      def self.DB() = DB # rubocop:disable Naming/MethodName
+    configure :development, :test do # This "configure" function comes from :environments plugin
+      require 'pry'; # for breakpoints
+      ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
     end
+
+    # Database Setup
+    DB = Sequel.connect(ENV['DATABASE_URL'])
+    def self.DB() = DB # rubocop:disable Naming/MethodName
   end
 end
