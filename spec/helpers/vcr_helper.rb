@@ -15,7 +15,7 @@ module VcrHelper
     end
   end
 
-  def self.configure_vcr_for_youtube
+  def self.configure_vcr_for_youtube(recording: :none)
     VCR.configure do |c|
       c.filter_sensitive_data('<YOUTUBE_TOKEN>') { YOUTUBE_TOKEN }
       c.filter_sensitive_data('<YOUTUBE_TOKEN_ESC>') { CGI.escape(YOUTUBE_TOKEN) }
