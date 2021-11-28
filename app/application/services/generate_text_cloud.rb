@@ -27,6 +27,7 @@ module HeadlineConnector
         input[:topic] = Repository::For.klass(Entity::Topic).find_topic_name(input[:keyword])
 
         input[:topic] ? Success(input) : Failure('Topic not found')
+
       rescue StandardError
         Failure('Having trouble accessing the database')
       end
@@ -40,18 +41,19 @@ module HeadlineConnector
             store_feed(youtube_feed)
           end
         end
+
         Success(input)
-        rescue StandardError => error
+        
+      rescue StandardError => error
           Failure(error.to_s)
-        end
       end
 
       def generate_text_cloud(input)
           input[:textcloud] = Mapper::TextCloudMapper.new(input[:related_feeds]).generate_textcloud
     
           input[:textcloud] ? Success(input) : Failure('No textcloud')
-          rescue StandardError
-            Failure('Having trouble generateing textcloud')
+      rescue StandardError
+        Failure('Having trouble generateing textcloud')
       end
 
       # following are support methods that other services could use
@@ -59,7 +61,7 @@ module HeadlineConnector
       def feed_in_database(video_id)
         # Found in database, build a feed entity and go into next
         database_feed = Repository::For.klass(Entity::Feed).find_feed_id(video_id)
-        next database_feed if database_feed
+        return database_feed if database_feed
       end
 
       def feed_from_youtube(video_id)

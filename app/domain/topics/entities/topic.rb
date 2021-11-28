@@ -14,7 +14,7 @@ module HeadlineConnector
 
       attribute :id,                    Integer.optional
       attribute :keyword,               Strict::String
-      attribute :related_videos_ids,    Strict::Array.of(Strubg)
+      attribute :related_videos_ids,    Strict::Array.of(String)
 
       def self.build_empty_entity
         HeadlineConnector::Entity::Topic.new(
