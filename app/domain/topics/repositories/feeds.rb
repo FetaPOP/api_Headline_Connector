@@ -14,8 +14,8 @@ module HeadlineConnector
         find_feed_id(feed_entity.feed_id)
       end
 
-      def self.find_feed_id(id)
-        rebuild_entity Database::FeedOrm.first(feed_id: id)
+      def self.find_feed_id(feed_id)
+        rebuild_entity Database::FeedOrm.first(feed_id: feed_id)
       end
 
       def self.find_feed_title(feed_title)
