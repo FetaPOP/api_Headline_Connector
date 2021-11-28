@@ -31,7 +31,7 @@ module HeadlineConnector
           else
             input[:local_topic]
           end
-        Success(project)
+        Success(topic)
       rescue StandardError => error
         puts error.backtrace.join("\n")
         Failure('Having trouble accessing the database')
