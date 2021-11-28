@@ -4,7 +4,7 @@ require 'dry/transaction'
 
 module HeadlineConnector
   module Service
-    # Transaction to store project from Github API to database
+    # Transaction to store topic from Youtube API to database
     class AddTopic
       include Dry::Transaction
 

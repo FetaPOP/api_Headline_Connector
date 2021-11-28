@@ -4,7 +4,7 @@ require_relative '../../../helpers/spec_helper.rb'
 require_relative '../../../helpers/vcr_helper.rb'
 require_relative '../../../helpers/database_helper.rb'
 
-describe 'AddTopic Service Integration Test' do
+describe 'GenerateTextCloud Service Integration Test' do
   VcrHelper.setup_vcr
 
   before do
