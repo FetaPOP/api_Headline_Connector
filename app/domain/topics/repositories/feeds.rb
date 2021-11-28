@@ -14,8 +14,8 @@ module HeadlineConnector
         find_feed_id(feed_entity.feed_id)
       end
 
-      def self.find_feed_id(id)
-        rebuild_entity Database::FeedOrm.first(feed_id: id)
+      def self.find_feed_id(feed_id)
+        rebuild_entity Database::FeedOrm.first(feed_id: feed_id)
       end
 
       def self.find_feed_title(feed_title)
@@ -31,9 +31,15 @@ module HeadlineConnector
           feed_title: db_feed_record.feed_title,
           description: db_feed_record.description,
           tags: db_feed_record.tags.split(','),
-          provider: Providers.rebuild_entity(db_feed_record.owner)
-          # db_feed_record.owner is a Database::ProviderOrm object
+          provider: Providers.rebuild_entity(db_feed_record.provider)
+          # db_feed_record.provider is a Database::ProviderOrm object
         )
+      end
+
+      def self.rebuild_many(db_feed_records)
+        db_feed_records.map do |a_feed_from_db|
+          Feeds.rebuild_entity(a_feed_from_db)
+        end
       end
 
       def self.create(feed_entity)
@@ -44,8 +50,12 @@ module HeadlineConnector
           feed_title: feed_entity.feed_title,
           description: feed_entity.description,
           tags: feed_entity.tags.join(','),
-          owner: Providers.db_find_or_create(feed_entity.provider)
+          provider: Providers.db_find_or_create(feed_entity.provider)
         )
+      end
+
+      def self.db_find_or_create(feed_entity)
+        Database::FeedOrm.first(feed_id: feed_entity.feed_id) || create(feed_entity)
       end
     end
   end

@@ -6,9 +6,9 @@ module HeadlineConnector
   module Database
     # Object Relational Mapper for Feed Entities
     class ProviderOrm < Sequel::Model(:providers)
-      one_to_many :feeds,
+      one_to_many :provided_feeds,
                   class: :'HeadlineConnector::Database::FeedOrm',
-                  key: :owner_id
+                  key: :provider_id
 
       plugin :timestamps, update_on_create: true
 
