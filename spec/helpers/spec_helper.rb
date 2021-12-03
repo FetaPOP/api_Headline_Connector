@@ -22,5 +22,5 @@ TOPIC_NAME = 'surfing'
 # Helper method for acceptance tests
 def homepage
     HeadlineConnector::App.config.APP_HOST
-  end
+end
   

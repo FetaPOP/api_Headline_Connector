@@ -18,10 +18,8 @@ module HeadlineConnector
                 build_entity(Value::TextCloud.calculate(tags_list.flatten))
             end
 
-            def build_entity(text_cloud_stats)
-                HeadlineConnector::Entity::TextCloud.new(
-                    text_cloud_stats: text_cloud_stats
-                )
+            def build_entity(stats)
+                Entity::TextCloud.new(stats: stats)
             end
         end
     end
