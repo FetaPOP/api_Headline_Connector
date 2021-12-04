@@ -70,7 +70,7 @@ module HeadlineConnector
       end
 
       def search_and_store_missing_feeds(topic_entity)
-        topic_entity.related_videos_ids.map do |video_id|
+        topic_entity.related_videos_ids.each do |video_id|
           if (feed_entity = find_feed_id_in_database(video_id))
             feed_entity
           else

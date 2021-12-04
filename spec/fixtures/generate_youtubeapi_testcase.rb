@@ -3,7 +3,7 @@
 require 'http'
 require 'yaml'
 
-YOUTUBE_TOKEN = 'AIzaSyCNXTbHQ-Mj4t_d26d7U5J605TsIBhZOpc'
+YOUTUBE_TOKEN = YAML.safe_load(File.read('config/secrets.yml'))["test"]["YOUTUBE_TOKEN"]
 
 def yt_api_path(path)
   "https://www.googleapis.com/youtube/v3/#{path}"
