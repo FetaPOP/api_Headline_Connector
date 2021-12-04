@@ -14,8 +14,7 @@ module HeadlineConnector
     plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
     plugin :render, engine: 'slim', views: 'app/presentation/views_html'
-    plugin :assets, path: 'app/presentation/assets',
-                    css: 'style.css', js: 'table_row_click.js'
+    plugin :assets, path: 'app/presentation/assets', css: 'style.css'
                     
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
@@ -60,12 +59,12 @@ module HeadlineConnector
             session[:watching] ||= []
 
             result = Service::GenerateTextCloud.new.call(keyword: keyword)
-=begin
+
             if result.failure?
               flash[:error] = result.failure
               routing.redirect '/'
             end         
-=end
+
             request_feeds = result.value!
 
             # Show viewer the topic

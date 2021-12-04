@@ -75,11 +75,11 @@ module HeadlineConnector
             feed_entity
           else
             youtube_feed_entity = request_video_from_youtube(video_id)
-            store_feed_to_database(youtube_feed_entity) if youtube_feed_entity.feed_id
+            store_feed_to_database(youtube_feed_entity)
           end
         end
       rescue StandardError => error
-        puts error.backtrace.join("\n") 
+        puts error.backtrace.join("\n")
         raise 'Having some troubles about search_and_store_missing_feeds()'
       end
 

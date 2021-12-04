@@ -14,7 +14,7 @@ require 'webmock'
 
 require_relative '../../init'
 
-VIDEO_ID = 'cmSbXsFE3l8'
+VIDEO_ID = 'Sa3KXgwkiO0'
 YOUTUBE_TOKEN = HeadlineConnector::App.config.YOUTUBE_TOKEN # From config/environment.rb
 CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
 TOPIC_NAME = 'surfing'

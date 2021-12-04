@@ -36,8 +36,21 @@ describe 'GenerateTextCloud Service Integration Test' do
       
       _(rebuilt_topic_entity.related_videos_ids.length()).must_equal topic_entity.related_videos_ids.length()
 
+      puts topic_entity.related_videos_ids.length()
+      puts topic_entity.related_videos_ids.sort!
+
+      puts rebuilt_topic_entity.related_videos_ids.length()
+      puts rebuilt_topic_entity.related_videos_ids.sort!
+      
+      puts "\n\n"
+      count = 0
       topic_entity.related_videos_ids.each do |video_id|
-        _(rebuilt_topic_entity.related_videos_ids.include? video_id).must_equal true
+        puts "---------------------------the " + count.to_s + " video_id:    " + video_id
+        #_(rebuilt_topic_entity.related_videos_ids.include? video_id).must_equal true
+        puts rebuilt_topic_entity.related_videos_ids[count]
+        puts rebuilt_topic_entity.related_videos_ids[count]==video_id ? 'ok' : 'NOOO'
+        puts rebuilt_topic_entity.related_videos_ids.include? video_id if rebuilt_topic_entity.related_videos_ids[count]!=video_id
+        count += 1
       end
     end
 
@@ -57,6 +70,8 @@ describe 'GenerateTextCloud Service Integration Test' do
       _(second_rebuilt_topic_entity.id).must_equal(first_rebuilt_topic_entity.id)
 
       # ..and provide a project entity with the right details
+      _(first_rebuilt_topic_entity.related_videos_ids.length()).must_equal second_rebuilt_topic_entity.related_videos_ids.length()
+      
       first_rebuilt_topic_entity.related_videos_ids.each do |video_id|
         _(second_rebuilt_topic_entity.related_videos_ids.include? video_id).must_equal true
       end

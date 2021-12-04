@@ -46,9 +46,17 @@ describe 'Integration Tests of Youtube API and Database' do
           .new(YOUTUBE_TOKEN)
           .search_keyword(TOPIC_NAME)
 
+      topic.related_videos_ids.each do |video_id|
+        feed = HeadlineConnector::Youtube::FeedMapper
+          .new(YOUTUBE_TOKEN)
+          .request_video(video_id)
+
+        HeadlineConnector::Repository::For.entity(feed).create(feed)
+      end
+
       rebuilt = HeadlineConnector::Repository::For.entity(topic).create(topic)
 
-      _(rebuilt.related_videos_ids).must_equal(topic.related_videos_ids)
+      _(rebuilt.related_videos_ids.sort!).must_equal(topic.related_videos_ids.sort!)
     end
   end
 end
