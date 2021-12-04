@@ -3,16 +3,20 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
-# Configuration and Utilities
+# Configuration
 gem 'figaro', '~> 1.2'
+gem 'rack-test' # for testing and can also be used to diagnose in production
 gem 'rake', '~> 13.0'
+
+# PRESENTATION LAYER
+gem 'multi_json', '~> 1.15'
+gem 'roar', '~> 1.1'
 
 # APPLICATION LAYER
 # Web application related
 gem 'puma', '~> 5.5'
 gem 'rack', '~> 2' # 2.3 will fix delegateclass bug
 gem 'roda', '~> 3.49'
-gem 'slim', '~> 4.1'
 
 # Controllers and services
 gem 'dry-monads', '~> 1.4'
