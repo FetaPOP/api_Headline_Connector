@@ -1,79 +1,75 @@
 # frozen_string_literal: true
 
 require 'roda'
-require 'slim'
-require 'slim/include'
-require_relative 'helpers.rb'
 
 module HeadlineConnector
   # Web App
   class App < Roda
-    include RouteHelpers
-
     plugin :halt
     plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
-    plugin :render, engine: 'slim', views: 'app/presentation/views_html'
-    plugin :assets, path: 'app/presentation/assets', css: 'style.css'
-                    
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
+    # rubocop:disable Metrics/BlockLength
     route do |routing|
-      routing.assets # load CSS
+      response['Content-Type'] = 'application/json'
 
       # GET /
       routing.root do # rubocop:disable Metrics/BlockLength
-        # Get cookie viewer's previously viewed topics
-        session[:watching] ||= []
+        message = "HeadlineConnector API v1 at /api/v1/ in #{App.environment} mode"
 
-        view 'home'
+        result_response = Representer::HttpResponse.new(
+          Response::ApiResult.new(status: :ok, message: message)
+        )
+
+        response.status = result_response.http_status_code
+        result_response.to_json
       end
 
-      routing.on 'topic' do
-        routing.is do
-          # POST /topic/
-          routing.post do
-            input = Forms::NewTopic.new.call(routing.params)
-            topic_entity_result = Service::AddTopic.new.call(input)
-          
-            if topic_entity_result.failure?
-              flash[:error] = topic_entity_result.failure
-              routing.redirect '/'
+      routing.on 'api/v1' do
+        routing.on 'topics' do
+          routing.on String do |keyword|
+            # GET /topic/{keyword}
+            routing.get do
+              # Request related videos info from database or from Youtube Api(if not found in database)
+              result = Service::GenerateTextCloud.new.call(requested: keyword)
+
+              if result.failure?
+                failed = Representer::HttpResponse.new(result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end         
+
+              http_response = Representer::HttpResponse.new(result.value!)
+              response.status = http_response.http_status_code
+
+              request_feeds = result.value!
+
+              # Show viewer the topic
+              # Need to change to topic view object
+              # view 'topic', locals: { keyword: request_feeds[:keyword], text_cloud: request_feeds[:textcloud] }  
+
+              Representer::TopicFeedTextcloud.new(
+                result.value!.message
+              ).to_json
             end
 
-            topic_entity = topic_entity_result.value!
+            # POST /topic/
+            routing.post do
+              topic_entity_result = Service::AddTopic.new.call(keyword: keyword)
+              
+              if topic_entity_result.failure?
+                failed = Representer::HttpResponse.new(topic_entity_result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end 
 
-            # Add new topic to watched set in cookies (wip)
-            session[:watching].insert(0, topic_entity).uniq!
-
-            # Redirect viewer to their requested page
-            flash[:notice] = 'Topic added to your list'
-            routing.redirect "topic/#{topic_entity.keyword}"
+              http_response = Representer::HttpResponse.new(topic_entity_result.value!)
+              response.status = http_response.http_status_code
+              Representer::Topic.new(topic_entity_result.value!.message).to_json
+            end
           end
-        end
-        
-        routing.on String do |keyword|
-          # GET /topic/{keyword}
-          routing.get do
-            # Request related videos info from database or from Youtube Api(if not found in database)
-            session[:watching] ||= []
-
-            result = Service::GenerateTextCloud.new.call(keyword: keyword)
-
-            if result.failure?
-              flash[:error] = result.failure
-              routing.redirect '/'
-            end         
-
-            request_feeds = result.value!
-
-            # Show viewer the topic
-            # Need to change to topic view object
-            view 'topic', locals: { keyword: request_feeds[:keyword], text_cloud: request_feeds[:textcloud] }  
-
-          end        
         end
       end
     end
+    # rubocop:enable Metrics/BlockLength
   end
 end
