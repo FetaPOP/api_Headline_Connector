@@ -14,6 +14,14 @@ module HeadlineConnector
 
       private
 
+      DB_ERR_MSG = 'Having some troubles conducting find_topic_keyword() on the database'
+      YT_NOT_FOUND_MSG = 'Having some troubles conducting search_keyword() on the Youtube Api'
+      STORE_ERR_MSG = 'Having some troubles in store_topic() service'
+      SEARCH_STORE_ERR_MSG = 'Having some troubles about search_and_store_missing_feeds()'
+      FIND_FEEDID_DB_ERR_MSG = 'Having some troubles about find_feed_id_in_database()'
+      YT_REQ_ERR_MSG = 'Having some troubles about request_video_from_youtube()'
+      STORE_FEED_TO_DB_ERR_MSG = 'Having some troubles about store_feed_to_database()'
+
       def check_user_input(input)
         if input.success?
           Success(keyword: input[:keyword])
@@ -29,9 +37,8 @@ module HeadlineConnector
           input[:remote_topic] = topic_entity_from_youtube(input)
         end
         Success(input)
-      rescue StandardError => error
-        puts error.backtrace.join("\n")
-        Failure('Having some troubles in find_topic() service')
+      rescue StandardError => e
+        Failure(Response::ApiResult.new(status: :not_found, message: e.to_s))
       end
 
       def store_topic(input)
@@ -45,28 +52,28 @@ module HeadlineConnector
           else
             input[:local_topic]
           end
-        Success(topic_entity)
-      rescue StandardError => error
+        Success(Response::ApiResult.new(status: :created, message: topic_entity))
+      rescue StandardError => e
         puts error.backtrace.join("\n")
-        Failure('Having some troubles in store_topic() service')
+        Failure(Response::ApiResult.new(status: :internal_error, message: STORE_ERR_MSG))
       end
 
-      # following are support methods that other services could use
+      # Support methods for steps
 
       def topic_entity_from_youtube(input)
         Youtube::TopicMapper
         .new(App.config.YOUTUBE_TOKEN)
         .search_keyword(input[:keyword])
-      rescue StandardError => error
+      rescue StandardError
         puts error.backtrace.join("\n")
-        raise 'Having some troubles conducting search_keyword() on the Youtube Api.'
+        raise YT_NOT_FOUND_MSG
       end
 
       def topic_entity_in_database(input)
         Repository::For.klass(Entity::Topic).find_topic_keyword(input[:keyword])
       rescue StandardError
         puts error.backtrace.join("\n")
-        raise 'Having some troubles conducting find_topic_keyword() on the database.'
+        raise DB_ERR_MSG
       end
 
       def search_and_store_missing_feeds(topic_entity)
@@ -78,27 +85,27 @@ module HeadlineConnector
             store_feed_to_database(youtube_feed_entity)
           end
         end
-      rescue StandardError => error
+      rescue StandardError
         puts error.backtrace.join("\n")
-        raise 'Having some troubles about search_and_store_missing_feeds()'
+        raise SEARCH_STORE_ERR_MSG
       end
 
       def find_feed_id_in_database(video_id)
         Repository::For.klass(Entity::Feed).find_feed_id(video_id)
       rescue StandardError
-        raise 'Having some troubles about find_feed_id_in_database()'
+        raise FIND_FEEDID_DB_ERR_MSG 
       end
 
       def request_video_from_youtube(video_id)
         Youtube::FeedMapper.new(App.config.YOUTUBE_TOKEN).request_video(video_id)
       rescue StandardError
-        raise 'Having some troubles about request_video_from_youtube()'
+        raise YT_REQ_ERR_MSG
       end
 
       def store_feed_to_database(youtube_feed_entity)
         Repository::For.klass(Entity::Feed).create(youtube_feed_entity)
       rescue StandardError
-        raise 'Having some troubles about store_feed_to_database()'
+        raise STORE_FEED_TO_DB_ERR_MSG
       end
     end
   end
