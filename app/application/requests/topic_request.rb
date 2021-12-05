@@ -3,7 +3,7 @@
 module HeadlineConnector
   module Request
     # Application value for the path of a requested topic
-    class TopicRequestSearch
+    class TopicRequest
       def initialize(keyword, request)
         @keyword = keyword
         @request = request
