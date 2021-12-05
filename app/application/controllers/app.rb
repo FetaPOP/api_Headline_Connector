@@ -32,7 +32,10 @@ module HeadlineConnector
             # GET /topic/{keyword}
             routing.get do
               # Request related videos info from database or from Youtube Api(if not found in database)
-              result = Service::GenerateTextCloud.new.call(requested: keyword)
+              keyword_request = Request::TopicRequest.new(
+                keyword, request
+              )
+              result = Service::GenerateTextCloud.new.call(requested: keyword_request)
 
               if result.failure?
                 failed = Representer::HttpResponse.new(result.failure)

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module HeadlineConnector
-  module RouteHelpers
+  module Request
     # Application value for the path of a requested topic
-    class TopictRequestPath
+    class TopicRequestSearch
       def initialize(keyword, request)
         @keyword = keyword
         @request = request
