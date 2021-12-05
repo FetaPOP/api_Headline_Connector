@@ -10,6 +10,10 @@ module HeadlineConnector
         Database::FeedOrm.all.map { |a_feed_from_db| rebuild_entity(a_feed_from_db) }
       end
 
+      def self.first(feed_id)
+        Database::FeedOrm.first(feed_id: feed_id)
+      end
+
       def self.find(feed_entity)
         find_feed_id(feed_entity.feed_id)
       end
@@ -36,14 +40,8 @@ module HeadlineConnector
         )
       end
 
-      def self.rebuild_many(db_feed_records)
-        db_feed_records.map do |a_feed_from_db|
-          Feeds.rebuild_entity(a_feed_from_db)
-        end
-      end
-
-      def self.extract_many_feed_ids(db_feed_records)
-        db_feed_records.map do |a_feed_from_db|
+      def self.extract_many_feed_ids(array_of_feed_records_from_db)
+        array_of_feed_records_from_db.map do |a_feed_from_db|
           a_feed_from_db.feed_id
         end
       end
@@ -58,10 +56,6 @@ module HeadlineConnector
           tags: feed_entity.tags.join(','),
           provider: Providers.db_find_or_create(feed_entity.provider)
         )
-      end
-
-      def self.db_find_or_create(feed_entity)
-        Database::FeedOrm.first(feed_id: feed_entity.feed_id) || create(feed_entity)
       end
     end
   end
