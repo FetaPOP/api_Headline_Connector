@@ -13,42 +13,91 @@ module HeadlineConnector
 
       private
 
+      DB_ERR_MSG = 'Having some troubles conducting find_topic_keyword() on the database'
+      YT_NOT_FOUND_MSG = 'Having some troubles conducting search_keyword() on the Youtube Api'
+      STORE_ERR_MSG = 'Having some troubles in store_topic() service'
+      SEARCH_STORE_ERR_MSG = 'Having some troubles about search_and_store_missing_feeds()'
+      FIND_FEEDID_DB_ERR_MSG = 'Having some troubles about find_feed_id_in_database()'
+      YT_REQ_ERR_MSG = 'Having some troubles about request_video_from_youtube()'
+      STORE_FEED_TO_DB_ERR_MSG = 'Having some troubles about store_feed_to_database()'
+
+      # Expects input[:keyword]
       def find_topic(input)
-        if (topic = topic_in_database(input))
+        if (topic = topic_entity_in_database(input))
           input[:local_topic] = topic
         else
-          input[:remote_topic] = topic_from_youtube(input)
+          input[:remote_topic] = topic_entity_from_youtube(input)
         end
         Success(input)
-      rescue StandardError => error
-        Failure(error.to_s)
+      rescue StandardError => e
+        Failure(Response::ApiResult.new(status: :not_found, message: e.to_s))
       end
 
       def store_topic(input)
-        topic =
-          if (new_topic = input[:remote_topic])
-            Repository::For.entity(topic).create(topic)
+        topic_entity =
+          if (input[:remote_topic])
+            # Search on Youtube and store those related videos/feeds that are not found in the database
+            # This step is necessary for building the many-to-many feed-topic table in the database
+            search_and_store_missing_feeds(input[:remote_topic])
+            
+            Repository::For.klass(Entity::Topic).create(input[:remote_topic])
           else
             input[:local_topic]
           end
-        Success(topic)
-      rescue StandardError => error
+        Success(Response::ApiResult.new(status: :created, message: topic_entity))
+      rescue StandardError => e
         puts error.backtrace.join("\n")
-        Failure('Having trouble accessing the database')
+        Failure(Response::ApiResult.new(status: :internal_error, message: STORE_ERR_MSG))
       end
 
-      # following are support methods that other services could use
+      # Support methods for steps
 
-      def topic_from_youtube(input)
+      def topic_entity_from_youtube(input)
         Youtube::TopicMapper
         .new(App.config.YOUTUBE_TOKEN)
-        .search_keyword(input)
+        .search_keyword(input[:keyword])
       rescue StandardError
-        raise 'Could not find Youtube videos by this keyword'
+        puts error.backtrace.join("\n")
+        raise YT_NOT_FOUND_MSG
       end
 
-      def topic_in_database(input)
-        Repository::For.klass(Entity::Topic).find_topic_name(input)
+      def topic_entity_in_database(input)
+        Repository::For.klass(Entity::Topic).find_topic_keyword(input[:keyword])
+      rescue StandardError
+        puts error.backtrace.join("\n")
+        raise DB_ERR_MSG
+      end
+
+      def search_and_store_missing_feeds(topic_entity)
+        topic_entity.related_videos_ids.each do |video_id|
+          if (feed_entity = find_feed_id_in_database(video_id))
+            feed_entity
+          else
+            youtube_feed_entity = request_video_from_youtube(video_id)
+            store_feed_to_database(youtube_feed_entity)
+          end
+        end
+      rescue StandardError
+        puts error.backtrace.join("\n")
+        raise SEARCH_STORE_ERR_MSG
+      end
+
+      def find_feed_id_in_database(video_id)
+        Repository::For.klass(Entity::Feed).find_feed_id(video_id)
+      rescue StandardError
+        raise FIND_FEEDID_DB_ERR_MSG 
+      end
+
+      def request_video_from_youtube(video_id)
+        Youtube::FeedMapper.new(App.config.YOUTUBE_TOKEN).request_video(video_id)
+      rescue StandardError
+        raise YT_REQ_ERR_MSG
+      end
+
+      def store_feed_to_database(youtube_feed_entity)
+        Repository::For.klass(Entity::Feed).create(youtube_feed_entity)
+      rescue StandardError
+        raise STORE_FEED_TO_DB_ERR_MSG
       end
     end
   end
