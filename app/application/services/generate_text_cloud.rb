@@ -14,14 +14,22 @@ module HeadlineConnector
 
       private
 
+      DB_ERR = 'Having some troubles conducting retrieve_topic() on the database'
+      NO_PROJ_ERR = 'Topic Not Found'
+      YT_REQ_ERR = 'Having some troubles conducting request_videos() to the Youtube Api'
+      TEXT_CLOUD_ERR = 'Fail to generate textcloud'
+      TEXT_CLOUD_CALC_ERR = 'Having some troubles conducting generate_text_cloud() calculations'
+
       def retrieve_topic(input)
         input[:topic] = Repository::For.klass(Entity::Topic).find_topic_keyword(input[:keyword])
 
-        input[:topic] ? Success(input) : Failure('Topic not found')
-
-      rescue StandardError => error
-        puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting retrieve_topic() on the database')
+        if input[:topic] 
+          Success(input)
+        else
+          Failure(Response::ApiResult.new(status: :not_found, message: NO_PROJ_ERR))
+        end
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: DB_ERR))
       end
 
       def request_videos(input)
@@ -35,19 +43,22 @@ module HeadlineConnector
         end
         
         Success(input)
-        
-      rescue StandardError => error
+      rescue StandardError
         puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting request_videos() to the Youtube Api')
+        raise YT_REQ_ERR
       end
 
       def generate_text_cloud(input)
-          input[:textcloud] = Mapper::TextCloudMapper.new(input[:related_feeds_entities]).generate_textcloud
-    
-          input[:textcloud] ? Success(input) : Failure('No textcloud')
-      rescue StandardError => error
+        input[:textcloud] = Mapper::TextCloudMapper.new(input[:related_feeds_entities]).generate_textcloud
+  
+        if input[:textcloud]
+          Success(input)
+        else
+          Failure(Response::ApiResult.new(status: :not_found, message: TEXT_CLOUD_ERR))
+        end
+      rescue StandardError
         puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting generate_text_cloud() calculations')
+        Failure(Response::ApiResult.new(status: :not_found, message: TEXT_CLOUD_CALC_ERR))
       end
     end
   end

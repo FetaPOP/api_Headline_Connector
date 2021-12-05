@@ -8,7 +8,6 @@ module HeadlineConnector
     class AddTopic
       include Dry::Transaction
 
-      step :check_user_input
       step :find_topic
       step :store_topic
 
@@ -22,14 +21,7 @@ module HeadlineConnector
       YT_REQ_ERR_MSG = 'Having some troubles about request_video_from_youtube()'
       STORE_FEED_TO_DB_ERR_MSG = 'Having some troubles about store_feed_to_database()'
 
-      def check_user_input(input)
-        if input.success?
-          Success(keyword: input[:keyword])
-        else
-          Failure('User inputs to the homepage are invalid.')
-        end
-      end
-
+      # Expects input[:keyword]
       def find_topic(input)
         if (topic = topic_entity_in_database(input))
           input[:local_topic] = topic
