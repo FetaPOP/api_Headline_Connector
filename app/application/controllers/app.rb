@@ -29,7 +29,7 @@ module HeadlineConnector
       routing.on 'api/v1' do
         routing.on 'topics' do
           routing.on String do |keyword|
-            # GET /topic/{keyword}
+            # GET /topics/{keyword}
             routing.get do
               # Request related videos info from database or from Youtube Api(if not found in database)
               keyword_request = Request::TopicRequest.new(
@@ -56,7 +56,7 @@ module HeadlineConnector
               ).to_json
             end
 
-            # POST /topic/
+            # POST /topics/
             routing.post do
               topic_entity_result = Service::AddTopic.new.call(keyword: keyword)
               
