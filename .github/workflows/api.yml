@@ -42,7 +42,7 @@ jobs:
 
       - name: Run all specs
         env: # define secrets in Github project -> settings -> secrets
-          YOUTUBE_TOKEN: ${{ secrets.GH_TOKEN }}
+          YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
           DB_FILENAME: ${{ secrets.DB_FILENAME }}
           API_HOST: ${{ secrets.API_HOST }}
         run: bundle exec rake spec
