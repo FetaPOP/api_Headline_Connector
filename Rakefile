@@ -40,6 +40,18 @@ task :rerack do
   sh "rerun -c rackup --ignore 'coverage/*'"
 end
 
+namespace :run do
+  desc 'Run API in dev mode'
+  task :dev do
+    sh 'rerun -c "rackup -p 9090"'
+  end
+
+  desc 'Run API in test mode'
+  task :test do
+    sh 'RACK_ENV=test rackup -p 9090'
+  end
+end
+
 namespace :db do
   task :config do
     require 'sequel'

@@ -25,12 +25,15 @@ describe 'GenerateTextCloud Service Integration Test' do
     it 'HAPPY: should generate a textcloud for an topic existing in the database' do
       # GIVEN: a valid topic that exists locally
 
-      HeadlineConnector::Service::AddTopic.new.call(
-        HeadlineConnector::Forms::NewTopic.new.call(keyword: TOPIC_NAME)
-      )
+      topic = HeadlineConnector::Youtube::TopicMapper.new(YOUTUBE_TOKEN).search_keyword(TOPIC_NAME)
+      HeadlineConnector::Repository::For.entity(topic).create(topic)
 
       # WHEN: we request to generate a text cloud
-      result = HeadlineConnector::Service::GenerateTextCloud.new.call(keyword: TOPIC_NAME).value!
+      request = OpenStruct.new(
+        keyword: TOPIC_NAME
+      )
+      
+      result = HeadlineConnector::Service::GenerateTextCloud.new.call(requested: request).value!.message
 
       # THEN: we should get a text cloud
       text_cloud = result[:textcloud]
@@ -42,7 +45,11 @@ describe 'GenerateTextCloud Service Integration Test' do
       # GIVEN: no topic exists locally
 
       # WHEN: we request to generate a text cloud
-      result = HeadlineConnector::Service::GenerateTextCloud.new.call(keyword: TOPIC_NAME)
+      request = OpenStruct.new(
+        keyword: TOPIC_NAME
+      )
+      
+      result = HeadlineConnector::Service::GenerateTextCloud.new.call(requested: request)
 
       # THEN: we should get failure
       _(result.failure?).must_equal true

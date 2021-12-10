@@ -15,7 +15,7 @@ module HeadlineConnector
       private
 
       def retrieve_topic(input)
-        input[:topic] = Repository::For.klass(Entity::Topic).find_topic_keyword(input[:keyword])
+        input[:topic] = Repository::For.klass(Entity::Topic).find_topic_keyword(input[:requested].keyword)
 
         input[:topic] ? Success(input) : Failure('Topic not found')
 
