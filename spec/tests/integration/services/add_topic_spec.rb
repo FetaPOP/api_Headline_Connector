@@ -35,14 +35,11 @@ describe 'AddTopic Service Integration Test' do
       
       _(rebuilt_topic_entity.related_videos_ids.length()).must_equal topic_entity.related_videos_ids.length()
       
-      topic_entity.related_videos_ids.each do |video_id|
-        _(rebuilt_topic_entity.related_videos_ids.include? video_id).must_equal true
-      end
     end
 
     it 'HAPPY: should find and return existing project in database' do
       # GIVEN: a valid keyword request for a topic already in the database:
-      first_rebuilt_topic_entity = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME).value!
+      first_rebuilt_topic_entity = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME).value!.message
 
       # WHEN: the service is called with the request form object
       topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME)
