@@ -4,7 +4,7 @@ require_relative '../../../helpers/spec_helper.rb'
 require_relative '../../../helpers/vcr_helper.rb'
 require_relative '../../../helpers/database_helper.rb'
 
-describe 'GenerateTextCloud Service Integration Test' do
+describe 'AddTopic Service Integration Test' do
   VcrHelper.setup_vcr
 
   before do
@@ -22,65 +22,42 @@ describe 'GenerateTextCloud Service Integration Test' do
 
     it 'HAPPY: should be able to find and save topic to database' do
       # GIVEN: a valid keyword request for a search result list of youtube videos:
-      topic = HeadlineConnector::Youtube::TopicMapper.new(App.config.YOUTUBE_TOKEN).search_keyword(TOPIC_NAME)
-      keyword = HeadlineConnector::Forms::NewTopic.new.call(keyword: TOPIC_NAME)
+      topic_entity = HeadlineConnector::Youtube::TopicMapper.new(YOUTUBE_TOKEN).search_keyword(TOPIC_NAME)
 
       # WHEN: the service is called with the request form object
-      topic_made = HeadlineConnector::Service::AddTopic.new.call(keyword)
+      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME)
 
-      # THEN: the result should report success..
-      _(topic_made.success?).must_equal true
+      # THEN: the result should report success.
+      _(topic_entity_result.success?).must_equal true
 
       # ..and provide a topic entity with the right details
-      rebuilt = topic_made.value!
-
-      topic.related_videos_ids.each do |vid|
-        found = rebuilt.related_videos_ids.find do |potential|
-          potential == vid
-        end
-
-        _(found).must_equal vid
-        # this statement seems to be redundant
-      end
+      rebuilt_topic_entity = topic_entity_result.value!.message
+      
+      _(rebuilt_topic_entity.related_videos_ids.length()).must_equal topic_entity.related_videos_ids.length()
+      
     end
 
     it 'HAPPY: should find and return existing project in database' do
       # GIVEN: a valid keyword request for a topic already in the database:
-      keyword = HeadlineConnector::Forms::NewTopic.new.call(keyword: TOPIC_NAME)
-      db_topic = HeadlineConnector::Service::AddTopic.new.call(keyword).value!
+      first_rebuilt_topic_entity = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME).value!.message
 
       # WHEN: the service is called with the request form object
-      topic_made = HeadlineConnector::Service::AddTopic.new.call(keyword)
+      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME)
 
       # THEN: the result should report success..
-      _(topic_made.success?).must_equal true
+      _(topic_entity_result.success?).must_equal true
 
       # ..and find the same project that was already in the database
-      rebuilt = topic_made.value!
-      _(rebuilt.id).must_equal(db_topic.id)
+      second_rebuilt_topic_entity = topic_entity_result.value!.message
+      _(second_rebuilt_topic_entity.id).must_equal(first_rebuilt_topic_entity.id)
 
       # ..and provide a project entity with the right details
-      db_topic.related_videos_ids.each do |vid|
-        found = rebuilt.related_videos_ids.find do |potential|
-          potential == vid
-        end
-
-        _(found).must_equal vid
-        # this statement seems to be redundant
+      _(first_rebuilt_topic_entity.related_videos_ids.length()).must_equal second_rebuilt_topic_entity.related_videos_ids.length()
+      
+      first_rebuilt_topic_entity.related_videos_ids.each do |video_id|
+        _(second_rebuilt_topic_entity.related_videos_ids.include? video_id).must_equal true
       end
     end
 
-    it 'BAD: should gracefully fail for invalid keyword' do
-      # GIVEN: an invalid keyword request is formed
-      BAD_TOPIC_NAME = '\n'
-      keyword = HeadlineConnector::Forms::NewTopic.new.call(keyword: BAD_TOPIC_NAME)
-
-      # WHEN: the service is called with the request form object
-      topic_made = HeadlineConnector::Service::AddTopic.new.call(keyword)
-
-      # THEN: the service should report failure with an error message
-      _(topic_made.success?).must_equal false
-      _(topic_made.failure.downcase).must_include 'invalid'
-    end
   end
 end
