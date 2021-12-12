@@ -18,17 +18,17 @@ module HeadlineConnector
     Figaro.load
     def self.config() = Figaro.env
 
-    use Rack::Session::Cookie, secret: config.SESSION_SECRET
-
-    configure :development, :test, :app_test do # This "configure" function comes from :environments plugin
+    configure :development, :test , :app_test do
+      require 'pry'; # for breakpoints
+      puts "db file should be at: #{ENV['DB_FILENAME']}"
       ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
+      puts "connecting to: #{ENV['DATABASE_URL']}"
     end
 
     configure :app_test do
       require_relative '../spec/helpers/vcr_helper.rb'
       VcrHelper.setup_vcr
       VcrHelper.configure_vcr_for_youtube(recording: :none)
-
     end
 
     # Database Setup
