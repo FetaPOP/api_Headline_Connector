@@ -6,7 +6,7 @@ module HeadlineConnector
   # Web App
   class App < Roda
     plugin :halt
-    plugin :flash
+    plugin :caching
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
@@ -31,6 +31,8 @@ module HeadlineConnector
           routing.on String do |keyword|
             # GET /topics/{keyword}
             routing.get do
+              response.cache_control public: true, max_age: 10
+
               # Request related videos info from database or from Youtube Api(if not found in database)
               keyword_request = Request::TopicRequest.new(
                 keyword, request

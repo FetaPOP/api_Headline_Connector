@@ -4,6 +4,8 @@ require 'roda'
 require 'figaro'
 require 'sequel'
 require 'delegate' # needed until Rack 2.3 fixes delegateclass bug
+require 'rack/cache'
+require 'redis-rack-cache'
 
 module HeadlineConnector
   # Environment-specific configuration
@@ -18,17 +20,31 @@ module HeadlineConnector
     Figaro.load
     def self.config() = Figaro.env
 
-    use Rack::Session::Cookie, secret: config.SESSION_SECRET
-
-    configure :development, :test, :app_test do # This "configure" function comes from :environments plugin
+    configure :development, :test , :app_test do
+      require 'pry'; # for breakpoints
       ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
     end
 
+    configure :development do
+      use Rack::Cache,
+          verbose: true,
+          metastore: 'file:_cache/rack/meta',
+          entitystore: 'file:_cache/rack/body'
+    end
+
+    configure :production do
+      # Set DATABASE_URL environment variable on production platform
+
+      use Rack::Cache,
+          verbose: true,
+          metastore: config.REDISCLOUD_URL + '/0/metastore',
+          entitystore: config.REDISCLOUD_URL + '/0/entitystore'
+    end
+
     configure :app_test do
-      require_relative '../spec/helpers/vcr_helper.rb'
+      require_relative '../spec/helpers/vcr_helper'
       VcrHelper.setup_vcr
       VcrHelper.configure_vcr_for_youtube(recording: :none)
-
     end
 
     # Database Setup
