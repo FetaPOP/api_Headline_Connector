@@ -37,6 +37,10 @@ gem 'hirb'
 gem 'hirb-unicode', '~> 0'
 gem 'sequel' # Mapper from objects and relational database
 
+# Asynchronicity
+gem 'aws-sdk-sqs', '~> 1.48'
+gem 'shoryuken', '~> 5.3'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
 end

@@ -38,7 +38,7 @@ module HeadlineConnector
           if (input[:remote_topic])
             # Search on Youtube and store those related videos/feeds that are not found in the database
             # This step is necessary for building the many-to-many feed-topic table in the database
-            search_and_store_missing_feeds(input[:remote_topic])
+            request_storing_feeds_worker(input[:remote_topic])
             
             Repository::For.klass(Entity::Topic).create(input[:remote_topic])
           else
@@ -68,36 +68,15 @@ module HeadlineConnector
         raise DB_ERR_MSG
       end
 
-      def search_and_store_missing_feeds(topic_entity)
-        topic_entity.related_videos_ids.each do |video_id|
-          if (feed_entity = find_feed_id_in_database(video_id))
-            feed_entity
-          else
-            youtube_feed_entity = request_video_from_youtube(video_id)
-            store_feed_to_database(youtube_feed_entity)
-          end
-        end
-      rescue StandardError
-        puts error.backtrace.join("\n")
-        raise SEARCH_STORE_ERR_MSG
-      end
+      def request_storing_feeds_worker(topic_entity)
+        Messaging::Queue
+          .new(App.config.CLONE_QUEUE_URL, App.config)
+          .send(Representer::Topic.new(topic_entity).to_json)
 
-      def find_feed_id_in_database(video_id)
-        Repository::For.klass(Entity::Feed).find_feed_id(video_id)
-      rescue StandardError
-        raise FIND_FEEDID_DB_ERR_MSG 
-      end
-
-      def request_video_from_youtube(video_id)
-        Youtube::FeedMapper.new(App.config.YOUTUBE_TOKEN).request_video(video_id)
-      rescue StandardError
-        raise YT_REQ_ERR_MSG
-      end
-
-      def store_feed_to_database(youtube_feed_entity)
-        Repository::For.klass(Entity::Feed).create(youtube_feed_entity)
-      rescue StandardError
-        raise STORE_FEED_TO_DB_ERR_MSG
+        Failure(Response::ApiResult.new(status: :processing, message: PROCESSING_MSG))
+      rescue StandardError => e
+        print_error(e)
+        Failure(Response::ApiResult.new(status: :internal_error, message: CLONE_ERR))
       end
     end
   end
