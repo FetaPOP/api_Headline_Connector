@@ -3,7 +3,7 @@
 require 'roda'
 
 module HeadlineConnector
-  # Web App
+  # Web Api
   class App < Roda
     plugin :halt
     plugin :caching
