@@ -15515,4 +15515,560 @@ http_interactions:
           }
         }
   recorded_at: Fri, 10 Dec 2021 02:55:45 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/search?key=<YOUTUBE_TOKEN>&maxResults=50&part=snippet&q=NonExistedTopic
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 19 Dec 2021 11:10:39 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#searchListResponse",
+          "etag": "qF3fDPK62sQlrMigxkTugK6QQdU",
+          "regionCode": "TW",
+          "pageInfo": {
+            "totalResults": 3,
+            "resultsPerPage": 3
+          },
+          "items": [
+            {
+              "kind": "youtube#searchResult",
+              "etag": "6-7z5n1fw3jEwSCnuCNua1bJm_8",
+              "id": {
+                "kind": "youtube#video",
+                "videoId": "IIx279Us6iQ"
+              },
+              "snippet": {
+                "publishedAt": "2021-12-16T20:47:36Z",
+                "channelId": "UC6M0q4P3ssCkA9M4CWZDAaQ",
+                "title": "None Forgets But Pretends",
+                "description": "Provided to YouTube by DistroKid None Forgets But Pretends · PurryCat Silence Among The Stars ℗ Kretiv Studio Released on: ...",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "Various Artists - Topic",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-12-16T20:47:36Z"
+              }
+            },
+            {
+              "kind": "youtube#searchResult",
+              "etag": "NSoGG_q5JSZaBmg3Zlorvi1EbJI",
+              "id": {
+                "kind": "youtube#video",
+                "videoId": "GIfiOGUaljk"
+              },
+              "snippet": {
+                "publishedAt": "2021-12-17T08:46:15Z",
+                "channelId": "UCXY3PPIhHPu1Zwj-TUoU2qA",
+                "title": "RESPECT ALL, FEAR NONE | Ready or Not",
+                "description": "Небольшая подборка кооперативных похождений в Ready or Not, внебрачном сыне SWAT 4 от Void Interactive.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "neCollins",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-12-17T08:46:15Z"
+              }
+            },
+            {
+              "kind": "youtube#searchResult",
+              "etag": "5zJ9Ot9v0sgNxw-x2dR0b1JUkGM",
+              "id": {
+                "kind": "youtube#video",
+                "videoId": "SfuYWKJSsPg"
+              },
+              "snippet": {
+                "publishedAt": "2021-12-17T22:58:19Z",
+                "channelId": "UCxRpZqMElssTdPYDK3x7wyg",
+                "title": "SPENDING ALL IVE GOT | Can I get Concept 1b?",
+                "description": "Donations: https://streamlabs.com/noobeater9000 other payment options: https://www.tipeeestream.com/noobeater9000/donation ...",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "N9ooo [noobeater9000]",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-12-17T22:58:19Z"
+              }
+            }
+          ]
+        }
+  recorded_at: Sun, 19 Dec 2021 11:10:39 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=IIx279Us6iQ&key=<YOUTUBE_TOKEN>&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 19 Dec 2021 11:10:39 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "vpAJX1OF8T-DSCp-egY5OWX_Kpw",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "wIp0bfTJkRZl5v2F_EYv-l4RNTA",
+              "id": "IIx279Us6iQ",
+              "snippet": {
+                "publishedAt": "2021-12-16T20:47:36Z",
+                "channelId": "UC6M0q4P3ssCkA9M4CWZDAaQ",
+                "title": "None Forgets But Pretends",
+                "description": "Provided to YouTube by DistroKid\n\nNone Forgets But Pretends · PurryCat\n\nSilence Among The Stars\n\n℗ Kretiv Studio\n\nReleased on: 2021-12-16\n\nAuto-generated by YouTube.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/IIx279Us6iQ/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Various Artists - Topic",
+                "tags": [
+                  "PurryCat",
+                  "Silence Among The Stars",
+                  "None Forgets But Pretends"
+                ],
+                "categoryId": "10",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "None Forgets But Pretends",
+                  "description": "Provided to YouTube by DistroKid\n\nNone Forgets But Pretends · PurryCat\n\nSilence Among The Stars\n\n℗ Kretiv Studio\n\nReleased on: 2021-12-16\n\nAuto-generated by YouTube."
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Sun, 19 Dec 2021 11:10:39 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=GIfiOGUaljk&key=<YOUTUBE_TOKEN>&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 19 Dec 2021 11:10:39 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "MHNLbSZQqMwB9QyjS97K2FAvtQo",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "Pubg7Qwv1zUFnUh2XTLnBEV7ji8",
+              "id": "GIfiOGUaljk",
+              "snippet": {
+                "publishedAt": "2021-12-17T08:46:15Z",
+                "channelId": "UCXY3PPIhHPu1Zwj-TUoU2qA",
+                "title": "RESPECT ALL, FEAR NONE | Ready or Not",
+                "description": "Небольшая подборка кооперативных похождений в Ready or Not, внебрачном сыне SWAT 4 от Void Interactive.\n\nОфициальный сайт издателя:\nhttps://voidinteractive.net\n\nСтраница игры в Steam:\nhttps://store.steampowered.com/app/1144200/Ready_or_Not/\n\n#readyornot #readyornotgame #cqb #tactical #114 #lapdswat\nImmersive gameplay",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/GIfiOGUaljk/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "neCollins",
+                "tags": [
+                  "арма",
+                  "арма 3",
+                  "arma",
+                  "arma 3",
+                  "arma iii",
+                  "тушино",
+                  "серьёзные игры",
+                  "солид геймс",
+                  "solid games",
+                  "геймплей",
+                  "аналитика",
+                  "аналитика боя",
+                  "cqb",
+                  "milsim",
+                  "милсим",
+                  "страйкбол",
+                  "ролеплей",
+                  "rp",
+                  "roleplay",
+                  "swat",
+                  "marsoc",
+                  "usmc",
+                  "socom",
+                  "us marines",
+                  "usa",
+                  "usa soldiers",
+                  "coming home",
+                  "mk18",
+                  "ar15",
+                  "afganistan",
+                  "war",
+                  "war pov",
+                  "soldier helmet",
+                  "soldier camera",
+                  "gopro",
+                  "soldier gopro",
+                  "war gopro",
+                  "arma 3 cinematic",
+                  "squad",
+                  "ready or not",
+                  "реди ор нот",
+                  "zero hour",
+                  "swat 4",
+                  "swat 5",
+                  "realistic",
+                  "ground branch",
+                  "swat gopro",
+                  "swat pov",
+                  "hk416",
+                  "lapd",
+                  "114"
+                ],
+                "categoryId": "20",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "ru",
+                "localized": {
+                  "title": "RESPECT ALL, FEAR NONE | Ready or Not",
+                  "description": "Небольшая подборка кооперативных похождений в Ready or Not, внебрачном сыне SWAT 4 от Void Interactive.\n\nОфициальный сайт издателя:\nhttps://voidinteractive.net\n\nСтраница игры в Steam:\nhttps://store.steampowered.com/app/1144200/Ready_or_Not/\n\n#readyornot #readyornotgame #cqb #tactical #114 #lapdswat\nImmersive gameplay"
+                },
+                "defaultAudioLanguage": "zxx"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Sun, 19 Dec 2021 11:10:39 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=SfuYWKJSsPg&key=<YOUTUBE_TOKEN>&part=snippet
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - youtube.googleapis.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 19 Dec 2021 11:10:39 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "uR0XcOMYtUMp7EA4FIwuOvOwk4w",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "1d1l_oh_SAD_vzzz8_7x4jsNHyU",
+              "id": "SfuYWKJSsPg",
+              "snippet": {
+                "publishedAt": "2021-12-17T22:58:19Z",
+                "channelId": "UCxRpZqMElssTdPYDK3x7wyg",
+                "title": "SPENDING ALL IVE GOT | Can I get Concept 1b?",
+                "description": "Donations: https://streamlabs.com/noobeater9000\nother payment options: https://www.tipeeestream.com/noobeater9000/donation\nMy Setup is constantly getting upgraded, your donations will help a lot to level up the quality of my streams :) \n\nFor Stream notifications and all highlights join the discord server, see great masteries and get help with analysis of defeats. Share your replays with us and get a chance to be featured on the next video! https://discord.gg/jnUnwRS\n\nMusic: epidemicsounds (mostly Trap Beats playlist - to be found on spotify) &\n@Lofi Girl",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/SfuYWKJSsPg/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "N9ooo [noobeater9000]",
+                "tags": [
+                  "Wot blitz",
+                  "world of tanks blitz",
+                  "livestream",
+                  "super unicum",
+                  "fv",
+                  "mastery",
+                  "wotb",
+                  "wot",
+                  "replay analysis",
+                  "tutorial",
+                  "reroll"
+                ],
+                "categoryId": "20",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "SPENDING ALL IVE GOT | Can I get Concept 1b?",
+                  "description": "Donations: https://streamlabs.com/noobeater9000\nother payment options: https://www.tipeeestream.com/noobeater9000/donation\nMy Setup is constantly getting upgraded, your donations will help a lot to level up the quality of my streams :) \n\nFor Stream notifications and all highlights join the discord server, see great masteries and get help with analysis of defeats. Share your replays with us and get a chance to be featured on the next video! https://discord.gg/jnUnwRS\n\nMusic: epidemicsounds (mostly Trap Beats playlist - to be found on spotify) &\n@Lofi Girl"
+                },
+                "defaultAudioLanguage": "en"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Sun, 19 Dec 2021 11:10:39 GMT
 recorded_with: VCR 6.0.0

@@ -8,7 +8,7 @@ module HeadlineConnector
     # Presents a text_cloud of a topic keyword
     class TextCloud < Roar::Decorator
       include Roar::JSON
-
+      
       collection :stats
     end
   end

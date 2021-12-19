@@ -19,11 +19,6 @@ task :console do
   sh 'pry -r ./init.rb'
 end
 
-desc 'run tests'
-task :spec do
-  sh 'ruby spec/gateway_youtube_spec.rb'
-end
-
 desc 'Keep rerunning unit/integration tests upon changes'
 task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
@@ -32,7 +27,7 @@ end
 desc 'Run acceptance tests'
 task :spec_accept do
   puts 'NOTE: run app in test environment in another process'
-  sh 'ruby spec/tests/acceptance/acceptance_spec.rb'
+  sh 'ruby spec/tests/acceptance/api_spec.rb'
 end
 
 desc 'Keep restarting web app upon changes'

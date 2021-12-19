@@ -25,18 +25,23 @@ describe 'GenerateTextCloud Service Integration Test' do
     it 'HAPPY: should generate a textcloud for an topic existing in the database' do
       # GIVEN: a valid topic that exists locally
 
-      topic = HeadlineConnector::Youtube::TopicMapper.new(YOUTUBE_TOKEN).search_keyword(TOPIC_NAME)
-      HeadlineConnector::Repository::For.entity(topic).create(topic)
+      # Only the AddTopic service can add topics AND all related videos to the database
+      # Before any generate textcloud call, we should run AddTopic service first
+      HeadlineConnector::Service::AddTopic.new.call(
+        requested: HeadlineConnector::Request::TopicRequest.new(TOPIC_NAME, nil)
+      )
 
       # WHEN: we request to generate a text cloud
-      request = OpenStruct.new(
-        keyword: TOPIC_NAME
-      )
       
-      result = HeadlineConnector::Service::GenerateTextCloud.new.call(requested: request).value!.message
+      result = HeadlineConnector::Service::GenerateTextCloud.new.call(
+        requested: HeadlineConnector::Request::TextCloudRequest.new(TOPIC_NAME, nil)
+      )
 
-      # THEN: we should get a text cloud
-      text_cloud = result[:textcloud]
+      # THEN: the result should report success.
+      _(result.success?).must_equal true
+
+      # ..and we should get a text cloud
+      text_cloud = result.value!.message
       _(text_cloud).must_be_kind_of HeadlineConnector::Entity::TextCloud
       _(text_cloud.stats).wont_be_empty
     end
