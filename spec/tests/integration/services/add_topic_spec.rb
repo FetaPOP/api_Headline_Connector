@@ -25,7 +25,9 @@ describe 'AddTopic Service Integration Test' do
       topic_entity = HeadlineConnector::Youtube::TopicMapper.new(YOUTUBE_TOKEN).search_keyword(TOPIC_NAME)
 
       # WHEN: the service is called with the request form object
-      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME)
+      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(
+        requested: HeadlineConnector::Request::TopicRequest.new(TOPIC_NAME, nil)
+      )
 
       # THEN: the result should report success.
       _(topic_entity_result.success?).must_equal true
@@ -39,19 +41,20 @@ describe 'AddTopic Service Integration Test' do
 
     it 'HAPPY: should find and return existing project in database' do
       # GIVEN: a valid keyword request for a topic already in the database:
-      first_rebuilt_topic_entity = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME).value!.message
+      first_rebuilt_topic_entity = HeadlineConnector::Service::AddTopic.new.call(
+        requested: HeadlineConnector::Request::TopicRequest.new(TOPIC_NAME, nil)
+      ).value!.message
 
       # WHEN: the service is called with the request form object
-      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(keyword: TOPIC_NAME)
+      topic_entity_result = HeadlineConnector::Service::AddTopic.new.call(
+        requested: HeadlineConnector::Request::TopicRequest.new(TOPIC_NAME, nil)
+      )
 
       # THEN: the result should report success..
       _(topic_entity_result.success?).must_equal true
 
-      # ..and find the same project that was already in the database
-      second_rebuilt_topic_entity = topic_entity_result.value!.message
-      _(second_rebuilt_topic_entity.id).must_equal(first_rebuilt_topic_entity.id)
-
       # ..and provide a project entity with the right details
+      second_rebuilt_topic_entity = topic_entity_result.value!.message
       _(first_rebuilt_topic_entity.related_videos_ids.length()).must_equal second_rebuilt_topic_entity.related_videos_ids.length()
       
       first_rebuilt_topic_entity.related_videos_ids.each do |video_id|

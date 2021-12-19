@@ -21,7 +21,6 @@ module HeadlineConnector
     def self.config() = Figaro.env
 
     configure :development, :test , :app_test do
-      require 'pry'; # for breakpoints
       ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
     end
 
