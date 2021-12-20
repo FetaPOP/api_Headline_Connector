@@ -32,7 +32,7 @@ end
 
 desc 'Keep restarting web app upon changes'
 task :rerack do
-  sh "rerun -c rackup --ignore 'coverage/*'"
+  sh "rerun -c 'rackup -p 9090' --ignore 'coverage/*'"
 end
 
 namespace :run do
