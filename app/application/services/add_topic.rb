@@ -23,14 +23,15 @@ module HeadlineConnector
 
       # Expects input[:keyword]
       def find_topic(input)
-        if (topic = topic_entity_in_database(input))
+        if (topic = topic_entity_in_database(input[:requested].keyword))
           input[:local_topic] = topic
         else
-          input[:remote_topic] = topic_entity_from_youtube(input)
+          input[:remote_topic] = topic_entity_from_youtube(input[:requested].keyword)
         end
         Success(input)
-      rescue StandardError => e
-        Failure(Response::ApiResult.new(status: :not_found, message: e.to_s))
+      rescue StandardError => error
+        puts error.backtrace.join("\n")
+        Failure(Response::ApiResult.new(status: :not_found, message: error.to_s))
       end
 
       def store_topic(input)
@@ -44,25 +45,30 @@ module HeadlineConnector
           else
             input[:local_topic]
           end
-        Success(Response::ApiResult.new(status: :created, message: topic_entity))
-      rescue StandardError => e
+
+        Response::TopicResponse.new(topic_entity.keyword, topic_entity.related_videos_ids)
+          .then do |topic_response|
+            Success(Response::ApiResult.new(status: :created, message: topic_response))
+          end
+        
+      rescue StandardError => error
         puts error.backtrace.join("\n")
         Failure(Response::ApiResult.new(status: :internal_error, message: STORE_ERR_MSG))
       end
 
       # Support methods for steps
 
-      def topic_entity_from_youtube(input)
+      def topic_entity_from_youtube(keyword)
         Youtube::TopicMapper
         .new(App.config.YOUTUBE_TOKEN)
-        .search_keyword(input[:keyword])
+        .search_keyword(keyword)
       rescue StandardError
         puts error.backtrace.join("\n")
         raise YT_NOT_FOUND_MSG
       end
 
-      def topic_entity_in_database(input)
-        Repository::For.klass(Entity::Topic).find_topic_keyword(input[:keyword])
+      def topic_entity_in_database(keyword)
+        Repository::For.klass(Entity::Topic).find_topic_keyword(keyword)
       rescue StandardError
         puts error.backtrace.join("\n")
         raise DB_ERR_MSG

@@ -15,7 +15,7 @@ describe 'Test API routes' do
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vcr_for_github
+    VcrHelper.configure_vcr_for_youtube
     DatabaseHelper.wipe_database
   end
 
@@ -35,41 +35,28 @@ describe 'Test API routes' do
   end
 
   describe 'Generate Text Cloud' do
-    it 'should be able to add a topic' do
-      Service::AddTopic.new.call(keyword: TOPIC_NAME)
-
-      get "/api/v1/projects/topics/#{TOPIC_NAME}"
+    it 'should be able to return a text cloud' do
+      HeadlineConnector::Service::AddTopic.new.call(
+        requested: HeadlineConnector::Request::TextCloudRequest.new(TOPIC_NAME, nil)
+      )
+      
+      # get /api/v1/textcloud/#{TOPIC_NAME} will do generate_text_cloud service
+      get "/api/v1/textcloud/#{TOPIC_NAME}"
       _(last_response.status).must_equal 200
-      topic = JSON.parse last_response.body
-      _(topic['keyword']).must_equal TOPIC_NAME
-
+      topic = JSON.parse(last_response.body)
+      _(topic['stats']).wont_be_nil
     end
   end
 
   describe 'Add Topic' do
     it 'should be able to add a topic' do
-      post "/api/v1/projects/topics/#{TOPIC_NAME}"
+      post "/api/v1/topics/#{TOPIC_NAME}"
 
       _(last_response.status).must_equal 201
 
       topic = JSON.parse last_response.body
       _(topic['keyword']).must_equal TOPIC_NAME
-      _(topic['related_videos_ids']).must_be_kind_of Strict::Array.of(String)
-
-      topi = HeadlineConnector::Representer::Topic.new(
-        HeadlineConnector::Representer::OpenStructWithLinks.new
-      ).from_json last_response.body
-      _(topi.links['self'].href).must_include 'http'
-    end
-
-    it 'should report error for invalid projects' do
-      post "/api/v1/projects/topics/NonExistedTopic"
-
-      _(last_response.status).must_equal 404
-
-      response = JSON.parse(last_response.body)
-      _(response['message']).must_include 'not'
+      _(topic['related_videos_ids']).must_be_kind_of Array
     end
   end
-
 end

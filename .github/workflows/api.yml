@@ -22,7 +22,7 @@ jobs:
       # don't cancel other jobs if one fails
       fail-fast: false
       matrix:
-        os: [ubuntu, macos, windows]
+        os: [ubuntu, macos]
     runs-on: ${{ matrix.os }}-latest  # Runs on latest builds of matrix OSes
 
     # Steps represent a sequence of tasks that will be executed as part of the job
