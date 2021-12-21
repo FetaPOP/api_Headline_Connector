@@ -14,14 +14,23 @@ module HeadlineConnector
 
       private
 
+      TOPIC_DB_FIND_ERR_MSG = 'Topic not found'
+      TOPIC_DB_RELATED_FEEDS_ERR_MSG = 'Having some troubles abount finding related feeds of a topic in the database'
+      TEXT_CLOUD_CALCULATION_ERR_MSG = 'Having some troubles conducting generate_text_cloud() calculations'
+      TEXT_CLOUD_NO_RESULT_ERR_MSG = 'The generated text cloud contains nothing'
+
       def retrieve_topic(input)
         input[:topic] = Repository::For.klass(Entity::Topic).find_topic_keyword(input[:requested].keyword)
 
-        input[:topic] ? Success(input) : Failure('Topic not found')
+        if input[:topic]
+          Success(input)
+        else
+          Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_ERR_MSG))
+        end
 
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting retrieve_topic() on the database')
+        Failure()
       end
 
       def request_videos(input)
@@ -34,16 +43,21 @@ module HeadlineConnector
         
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting request_videos() to the Youtube Api')
+        Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_DB_RELATED_FEEDS_ERR_MSG))
       end
 
       def generate_text_cloud(input)
           input[:textcloud] = Mapper::TextCloudMapper.new(input[:related_feeds_entities]).generate_textcloud
     
-          input[:textcloud] ? Success(input) : Failure('No textcloud')
+          if input[:textcloud]
+            Success(Response::ApiResult.new(status: :ok, message: input[:textcloud]))
+          else 
+            Failure(Response::ApiResult.new(status: :bad_request, message: TEXT_CLOUD_NO_RESULT_ERR_MSG))
+          end
+
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure('Having some troubles conducting generate_text_cloud() calculations')
+        Failure(Response::ApiResult.new(status: :internal_error, message: TEXT_CLOUD_CALCULATION_ERR_MSG))
       end
     end
   end

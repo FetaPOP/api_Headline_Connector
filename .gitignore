@@ -1,6 +1,8 @@
+.bundle/
 config/secrets.yml
 coverage/*
 !coverage/.resultset.json
 *.db
 _snippets/
 .rake_tasks~
+_cache/
