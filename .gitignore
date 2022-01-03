@@ -6,3 +6,4 @@ coverage/*
 _snippets/
 .rake_tasks~
 _cache/
+.bundle/
