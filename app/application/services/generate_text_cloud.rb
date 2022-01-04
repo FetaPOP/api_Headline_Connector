@@ -4,7 +4,7 @@ require 'dry/transaction'
 
 module HeadlineConnector
   module Service
-    # Analyzes contributions to a project
+    # Generate TextCloud for a keyword
     class GenerateTextCloud
       include Dry::Transaction
 
