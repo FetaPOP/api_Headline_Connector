@@ -64,6 +64,12 @@ module HeadlineConnector
             end
           end        
         end
+
+        routing.on 'articles' do
+          routing.get do
+            ['Government','State', 'covid', 'usa'].to_json
+          end
+        end
       end
     end
     # rubocop:enable Metrics/BlockLength
