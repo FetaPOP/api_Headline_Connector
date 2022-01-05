@@ -1,0 +1,1035 @@
+---
+status: OK
+copyright: Copyright (c) 2022 The New York Times Company.  All Rights Reserved.
+num_results: 20
+results:
+- uri: nyt://article/a2769d0e-91d3-5820-b84d-413c3ec1e43b
+  url: https://www.nytimes.com/2022/01/02/sports/hockey/canucks-cancer-manager-fan.html
+  id: 100000008142743
+  asset_id: 100000008142743
+  source: New York Times
+  published_date: '2022-01-02'
+  updated: '2022-01-04 15:49:58'
+  section: Sports
+  subsection: Hockey
+  nytdsection: sports
+  adx_keywords: Hockey, Ice;Cancer;Melanomas;Neck;National Hockey League;Seattle Kraken;Vancouver
+    Canucks;Seattle (Wash)
+  column:
+  byline: By Eduardo Medina
+  type: Article
+  title: Hockey Fan Spots Cancerous Mole at Game and Delivers a Lifesaving Note
+  abstract: Nadia Popovici wrote a message on her phone, with “mole,” “cancer” and
+    “doctor” in bright-red type to get the attention of Brian Hamilton, an assistant
+    equipment manager for the Vancouver Canucks.
+  des_facet:
+  - Hockey, Ice
+  - Cancer
+  - Melanomas
+  - Neck
+  org_facet:
+  - National Hockey League
+  - Seattle Kraken
+  - Vancouver Canucks
+  per_facet: []
+  geo_facet:
+  - Seattle (Wash)
+  media:
+  - type: image
+    subtype: photo
+    caption: Nadia Popovici, left, and Brian Hamilton, the assistant equipment manager
+      for the Vancouver Canucks. Ms. Popovici alerted him during an October game about
+      a cancerous mole he had.
+    copyright: Christopher Mast/NHLI, via Getty Images
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/02xp-canucks-print/02xp-canucks-thumbStandard-v2.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/02xp-canucks-print/02xp-canucks-mediumThreeByTwo210-v2.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/02xp-canucks-print/02xp-canucks-mediumThreeByTwo440-v2.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/5e408189-3963-5994-8445-ac3e67801f16
+  url: https://www.nytimes.com/2022/01/03/us/twelve-tribes-12-colorado-fire.html
+  id: 100000008144355
+  asset_id: 100000008144355
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 13:31:03'
+  section: U.S.
+  subsection: ''
+  nytdsection: u.s.
+  adx_keywords: Wildfires;Christians and Christianity;Twelve Tribes Community;Boulder
+    (Colo);Colorado
+  column:
+  byline: By Simon Romero and Giulia Heyward
+  type: Article
+  title: Colorado Wildfire Inquiry Focuses on Christian Sect
+  abstract: Investigators are looking at the possibility that a fire that destroyed
+    more than 900 homes started on property owned by a fundamentalist Christian sect
+    known as Twelve Tribes.
+  des_facet:
+  - Wildfires
+  - Christians and Christianity
+  org_facet:
+  - Twelve Tribes Community
+  per_facet: []
+  geo_facet:
+  - Boulder (Colo)
+  - Colorado
+  media:
+  - type: image
+    subtype: photo
+    caption: The Marshall fire destroyed homes in suburban neighborhoods between Denver
+      and Boulder.
+    copyright: Erin Schaff/The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/us/03colorado-1/03colorado-1-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/us/03colorado-1/merlin_199791849_f0b990e0-ebff-464d-804b-f70f52a7b88f-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/us/03colorado-1/merlin_199791849_f0b990e0-ebff-464d-804b-f70f52a7b88f-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/d7c9656c-244b-51a0-aa96-53bb6485f3ea
+  url: https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html
+  id: 100000008143465
+  asset_id: 100000008143465
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 09:12:02'
+  section: Technology
+  subsection: ''
+  nytdsection: technology
+  adx_keywords: Computer and Video Games;Spelling;Crossword Puzzles;Wardle, Josh;Reddit
+    Inc
+  column:
+  byline: By Daniel Victor
+  type: Article
+  title: Wordle Is a Love Story
+  abstract: The word game has gone from dozens of players to hundreds of thousands
+    in a few months. It was created by a software engineer in Brooklyn for his partner.
+  des_facet:
+  - Computer and Video Games
+  - Spelling
+  - Crossword Puzzles
+  org_facet:
+  - Reddit Inc
+  per_facet:
+  - Wardle, Josh
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: ''
+    copyright: ''
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03xp-wordle/03xp-wordle-thumbStandard.png
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03xp-wordle/03xp-wordle-mediumThreeByTwo210.png
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03xp-wordle/03xp-wordle-mediumThreeByTwo440.png
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/1400d588-1178-59b4-b4b5-3ea0027c97a9
+  url: https://www.nytimes.com/2022/01/03/well/eat/healthy-eating-habits-new-year.html
+  id: 100000008140409
+  asset_id: 100000008140409
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-03 23:27:00'
+  section: Well
+  subsection: Eat
+  nytdsection: well
+  adx_keywords: 'Content Type: Service;Weight;Habits and Routines (Behavior);Diet
+    and Nutrition;Anxiety and Stress;Food;New Year;Brain;Brewer, Judson'
+  column:
+  byline: By Tara Parker-Pope
+  type: Article
+  title: Diets Make You Feel Bad. Try Training Your Brain Instead.
+  abstract: The new Eat Well Challenge will show you how to reshape your eating habits
+    without dieting.
+  des_facet:
+  - 'Content Type: Service'
+  - Weight
+  - Habits and Routines (Behavior)
+  - Diet and Nutrition
+  - Anxiety and Stress
+  - Food
+  - New Year
+  - Brain
+  org_facet: []
+  per_facet:
+  - Brewer, Judson
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: ''
+    copyright: Photo Illustration by Andrew B. Myers for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/04/well/30well-NL-getready/30well-NL-getready-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/04/well/30well-NL-getready/30well-NL-getready-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/04/well/30well-NL-getready/30well-NL-getready-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/5b411c3d-1f82-5e03-b0e0-31eab2cba2f1
+  url: https://www.nytimes.com/2022/01/03/us/additional-doses-covid-vaccine.html
+  id: 100000008132045
+  asset_id: 100000008132045
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 10:29:30'
+  section: U.S.
+  subsection: ''
+  nytdsection: u.s.
+  adx_keywords: Coronavirus Omicron Variant;Coronavirus (2019-nCoV);Vaccination and
+    Immunization;Immune System;Antibodies;Coronavirus Risks and Safety Concerns;Centers
+    for Disease Control and Prevention;Food and Drug Administration
+  column:
+  byline: By Amanda Morris
+  type: Article
+  title: When Three Shots Are Not Enough
+  abstract: People with compromised immune systems are getting unapproved fourth or
+    fifth Covid-19 shots, despite uncertainty about their safety or effectiveness.
+  des_facet:
+  - Coronavirus Omicron Variant
+  - Coronavirus (2019-nCoV)
+  - Vaccination and Immunization
+  - Immune System
+  - Antibodies
+  - Coronavirus Risks and Safety Concerns
+  org_facet:
+  - Centers for Disease Control and Prevention
+  - Food and Drug Administration
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: ''
+    copyright: Kriston Jae Bethel for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/29/us/00VIRUS-LOTSOFSHOTS/00VIRUS-LOTSOFSHOTS-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/29/us/00VIRUS-LOTSOFSHOTS/00VIRUS-LOTSOFSHOTS-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/29/us/00VIRUS-LOTSOFSHOTS/00VIRUS-LOTSOFSHOTS-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/418a4811-ed1b-5614-9e54-5f6d952ab4d6
+  url: https://www.nytimes.com/2022/01/04/us/i-95-closed-snowstorm-winter.html
+  id: 100000008144834
+  asset_id: 100000008144834
+  source: New York Times
+  published_date: '2022-01-04'
+  updated: '2022-01-04 18:16:08'
+  section: U.S.
+  subsection: ''
+  nytdsection: u.s.
+  adx_keywords: Snow and Snowstorms;Weather;Power Failures and Blackouts;Traffic Accidents
+    and Safety;Roads and Traffic;National Weather Service;Maryland;New Jersey;North
+    Carolina;Virginia;Tennessee;Washington (DC);Interstate 95
+  column:
+  byline: By Amanda Holpuch, Derrick Bryson Taylor and Neil Vigdor
+  type: Article
+  title: Stranded Drivers Are Freed After 24-Hour Snowy Ordeal on I-95 in Virginia
+  abstract: Hundreds were stuck overnight on the interstate south of Washington. A
+    United States senator was among those trapped.
+  des_facet:
+  - Snow and Snowstorms
+  - Weather
+  - Power Failures and Blackouts
+  - Traffic Accidents and Safety
+  - Roads and Traffic
+  org_facet:
+  - National Weather Service
+  per_facet: []
+  geo_facet:
+  - Maryland
+  - New Jersey
+  - North Carolina
+  - Virginia
+  - Tennessee
+  - Washington (DC)
+  - Interstate 95
+  media:
+  - type: image
+    subtype: photo
+    caption: Drivers were stuck on Interstate 95 near Fredericksburg, Va., on Monday
+      after a snowstorm.
+    copyright: Virginia Department of Transportation, via Associated Press
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04xp-snowrecovery-3swap/04xp-snowrecovery-hp-promo-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04xp-snowrecovery-3swap/04xp-snowrecovery-3swap-mediumThreeByTwo210-v4.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04xp-snowrecovery-3swap/04xp-snowrecovery-3swap-mediumThreeByTwo440-v4.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/a9f87458-18c5-58f0-90cb-349d5c0daec9
+  url: https://www.nytimes.com/2022/01/03/technology/elizabeth-holmes-guilty.html
+  id: 100000008120715
+  asset_id: 100000008120715
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 08:46:27'
+  section: Technology
+  subsection: ''
+  nytdsection: technology
+  adx_keywords: Frauds and Swindling;Tests (Medical);Falsification of Data;Computers
+    and the Internet;Start-ups;Decisions and Verdicts;Holmes, Elizabeth (1984- );Theranos
+    Inc
+  column:
+  byline: By Erin Griffith and Erin Woo
+  type: Article
+  title: Elizabeth Holmes is found guilty of four counts of fraud.
+  abstract: The case against the founder of the failed blood testing start-up Theranos
+    came to symbolize the pitfalls of Silicon Valley’s culture of hustle and hype.
+  des_facet:
+  - Frauds and Swindling
+  - Tests (Medical)
+  - Falsification of Data
+  - Computers and the Internet
+  - Start-ups
+  - Decisions and Verdicts
+  org_facet:
+  - Theranos Inc
+  per_facet:
+  - Holmes, Elizabeth (1984- )
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: Elizabeth Holmes, center, entering the courthouse in San Jose, Calif.,
+      on Monday.
+    copyright: Jim Wilson/The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03holmes-guilty-sub/03theranos-liveblog-promo-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03holmes-guilty-sub/03theranos-liveblog-promo-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/multimedia/03holmes-guilty-sub/03theranos-liveblog-promo-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/fbacda92-638a-5784-a4d9-e4840f1c2f23
+  url: https://www.nytimes.com/2022/01/01/business/customer-service-pandemic-rage.html
+  id: 100000008139595
+  asset_id: 100000008139595
+  source: New York Times
+  published_date: '2022-01-01'
+  updated: '2022-01-04 15:16:23'
+  section: Business
+  subsection: ''
+  nytdsection: business
+  adx_keywords: Anxiety and Stress;Customs, Etiquette and Manners;Customer Relations;Shopping
+    and Retail;Airlines and Airplanes;Quarantine (Life and Culture);Masks;Coronavirus
+    (2019-nCoV);Workplace Hazards and Violations;Social Conditions and Trends;United
+    States
+  column:
+  byline: By Sarah Lyall
+  type: Article
+  title: A Nation on Hold Wants to Speak With a Manager
+  abstract: In our anger-filled age, when people need to shop or travel or cope with
+    mild disappointment they’re “devolving into children.”
+  des_facet:
+  - Anxiety and Stress
+  - Customs, Etiquette and Manners
+  - Customer Relations
+  - Shopping and Retail
+  - Airlines and Airplanes
+  - Quarantine (Life and Culture)
+  - Masks
+  - Coronavirus (2019-nCoV)
+  - Workplace Hazards and Violations
+  - Social Conditions and Trends
+  org_facet: []
+  per_facet: []
+  geo_facet:
+  - United States
+  media:
+  - type: image
+    subtype: photo
+    caption: " "
+    copyright: Shira Inbar
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/01/business/01consumer-rage-image/01consumer-rage-image-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/01/business/01consumer-rage-image/01consumer-rage-image-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/01/business/01consumer-rage-image/01consumer-rage-image-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/2d8e553b-d641-59df-b4c4-92cd620ab030
+  url: https://www.nytimes.com/2022/01/03/business/elizabeth-holmes-theranos-trial.html
+  id: 100000008139895
+  asset_id: 100000008139895
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-03 20:01:56'
+  section: Business
+  subsection: ''
+  nytdsection: business
+  adx_keywords: Securities and Commodities Violations;Frauds and Swindling;Start-ups;Venture
+    Capital;Holmes, Elizabeth (1984- );Theranos Inc
+  column:
+  byline: By Erin Woo and Erin Griffith
+  type: Article
+  title: Jurors in the Elizabeth Holmes trial reiterate they are deadlocked on some
+    charges.
+  abstract: The jurors sent two notes saying they were unable to agree on three of
+    the 11 counts facing Ms. Holmes, the founder of the blood-testing start-up Theranos.
+  des_facet:
+  - Securities and Commodities Violations
+  - Frauds and Swindling
+  - Start-ups
+  - Venture Capital
+  org_facet:
+  - Theranos Inc
+  per_facet:
+  - Holmes, Elizabeth (1984- )
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: Elizabeth Holmes leaving the courthouse on Monday.
+    copyright: Jim Wilson/The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/business/03holmes-deliberations-sub/03holmes-deliberations-sub-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/business/03holmes-deliberations-sub/03holmes-deliberations-sub-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/business/03holmes-deliberations-sub/03holmes-deliberations-sub-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/68bcb4cb-e078-5403-8c42-514fc8f106d0
+  url: https://www.nytimes.com/article/at-home-covid-tests-accuracy.html
+  id: 100000007999604
+  asset_id: 100000007999604
+  source: New York Times
+  published_date: '2021-09-29'
+  updated: '2022-01-03 11:39:33'
+  section: Health
+  subsection: ''
+  nytdsection: health
+  adx_keywords: 'Tests (Medical);Disease Rates;Coronavirus (2019-nCoV);Content Type:
+    Service;Coronavirus Reopenings;your-feed-healthcare'
+  column:
+  byline: By Emily Anthes
+  type: Article
+  title: How Accurate Are At-Home Covid Tests? Here’s a Quick Guide
+  abstract: When used correctly, many rapid antigen tests are good at detecting people
+    carrying high levels of the virus.
+  des_facet:
+  - Tests (Medical)
+  - Disease Rates
+  - Coronavirus (2019-nCoV)
+  - 'Content Type: Service'
+  - Coronavirus Reopenings
+  - your-feed-healthcare
+  org_facet: []
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: Rapid at-home Covid test kits being handed out in Chelsea, Mass., on
+      Dec. 17.
+    copyright: Joseph Prezioso/Agence France-Presse — Getty Images
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/29/science/29sci-virus-testing-new/29sci-virus-testing-new-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/29/science/29sci-virus-testing-new/29sci-virus-testing-new-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/29/science/29sci-virus-testing-new/29sci-virus-testing-new-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/f0bd8c40-4797-542a-8fe2-1449241cdf80
+  url: https://www.nytimes.com/2022/01/04/briefing/american-children-crisis-pandemic.html
+  id: 100000008144893
+  asset_id: 100000008144893
+  source: New York Times
+  published_date: '2022-01-04'
+  updated: '2022-01-04 11:02:24'
+  section: Briefing
+  subsection: ''
+  nytdsection: briefing
+  adx_keywords: Coronavirus (2019-nCoV);Children and Childhood;Mental Health and Disorders;Education
+    (K-12);Quarantine (Life and Culture)
+  column:
+  byline: By David Leonhardt
+  type: Article
+  title: No Way to Grow Up
+  abstract: For the past two years, Americans have accepted more harm to children
+    in exchange for less harm to adults.
+  des_facet:
+  - Coronavirus (2019-nCoV)
+  - Children and Childhood
+  - Mental Health and Disorders
+  - Education (K-12)
+  - Quarantine (Life and Culture)
+  org_facet: []
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: Idle school buses in Detroit yesterday.
+    copyright: Emily Elconin for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04ambriefing-promo/04ambriefing-children-thumbStandard-v2.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04ambriefing-promo/04ambriefing-children-mediumThreeByTwo210-v2.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/04/multimedia/04ambriefing-promo/04ambriefing-children-mediumThreeByTwo440-v2.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/92fbdcb5-4cc0-565c-a059-9f4e1fc521ff
+  url: https://www.nytimes.com/2022/01/02/technology/marjorie-taylor-greene-twitter.html
+  id: 100000008142750
+  asset_id: 100000008142750
+  source: New York Times
+  published_date: '2022-01-02'
+  updated: '2022-01-03 09:53:27'
+  section: Technology
+  subsection: ''
+  nytdsection: technology
+  adx_keywords: Social Media;Coronavirus (2019-nCoV);Censorship;Vaccination and Immunization;Rumors
+    and Misinformation;United States Politics and Government;Greene, Marjorie Taylor
+    (1974- );Twitter;House of Representatives;Georgia
+  column:
+  byline: By Davey Alba
+  type: Article
+  title: Twitter Permanently Suspends Marjorie Taylor Greene’s Account
+  abstract: The social media service said the Republican congresswoman had violated
+    its policy on coronavirus misinformation.
+  des_facet:
+  - Social Media
+  - Coronavirus (2019-nCoV)
+  - Censorship
+  - Vaccination and Immunization
+  - Rumors and Misinformation
+  - United States Politics and Government
+  org_facet:
+  - Twitter
+  - House of Representatives
+  per_facet:
+  - Greene, Marjorie Taylor (1974- )
+  geo_facet:
+  - Georgia
+  media:
+  - type: image
+    subtype: photo
+    caption: Representative Marjorie Taylor Greene, of Georgia, at an event last month
+      with another Republican, Representative Matt Gaetz of Florida.
+    copyright: T.J. Kirkpatrick for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/02/multimedia/02twitter-greene-1/02twitter-greene-1-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/02/multimedia/02twitter-greene-1/02twitter-greene-1-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/02/multimedia/02twitter-greene-1/02twitter-greene-1-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/9abbd315-266b-5113-8fa0-f032845cde88
+  url: https://www.nytimes.com/2022/01/04/business/economy/job-openings-coronavirus.html
+  id: 100000008144183
+  asset_id: 100000008144183
+  source: New York Times
+  published_date: '2022-01-04'
+  updated: '2022-01-04 16:42:30'
+  section: Business
+  subsection: Economy
+  nytdsection: business
+  adx_keywords: Labor and Jobs;Wages and Salaries;Hiring and Promotion;Coronavirus
+    (2019-nCoV);United States Economy;Unemployment;Inflation (Economics);Prices (Fares,
+    Fees and Rates);Shortages;Polls and Public Opinion;Labor Department (US);Momentive
+    Inc
+  column:
+  byline: By Ben Casselman
+  type: Article
+  title: More quit jobs than ever, but most turnover is in low-wage work.
+  abstract: Government data for November shows the continuing disruption of the coronavirus
+    in the labor market.
+  des_facet:
+  - Labor and Jobs
+  - Wages and Salaries
+  - Hiring and Promotion
+  - Coronavirus (2019-nCoV)
+  - United States Economy
+  - Unemployment
+  - Inflation (Economics)
+  - Prices (Fares, Fees and Rates)
+  - Shortages
+  - Polls and Public Opinion
+  org_facet:
+  - Labor Department (US)
+  - Momentive Inc
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: 'More than 4.5 million Americans quit their jobs in November, the Labor
+      Department said Tuesday. '
+    copyright: Gabby Jones for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/04/business/04econ-jolts-grid02/04econ-jolts-grid02-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/04/business/04econ-jolts-grid02/04econ-jolts-grid02-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/04/business/04econ-jolts-grid02/04econ-jolts-grid02-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/b71db4e9-ad73-50aa-902e-0c23ba83f4af
+  url: https://www.nytimes.com/2022/01/01/upshot/pregnancy-birth-genetic-testing.html
+  id: 100000008120685
+  asset_id: 100000008120685
+  source: New York Times
+  published_date: '2022-01-01'
+  updated: '2022-01-04 07:46:15'
+  section: The Upshot
+  subsection: ''
+  nytdsection: the upshot
+  adx_keywords: Pregnancy and Childbirth;Tests (Medical);Blood;Defective Products;DNA
+    (Deoxyribonucleic Acid);Advertising and Marketing;Regulation and Deregulation
+    of Industry;Abortion;Amniocentesis
+  column:
+  byline: By Sarah Kliff and Aatish Bhatia
+  type: Article
+  title: When They Warn of Rare Disorders, These Prenatal Tests Are Usually Wrong
+  abstract: The false positives aren’t mentioned in the brochures for these blood
+    screenings, which are sold by some of the biggest labs in the country.
+  des_facet:
+  - Pregnancy and Childbirth
+  - Tests (Medical)
+  - Blood
+  - Defective Products
+  - DNA (Deoxyribonucleic Acid)
+  - Advertising and Marketing
+  - Regulation and Deregulation of Industry
+  - Abortion
+  - Amniocentesis
+  org_facet: []
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: ''
+    copyright: ''
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/31/us/-promo-1640969992206/-promo-1640969992206-thumbStandard.png
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/31/us/-promo-1640969992206/-promo-1640969992206-mediumThreeByTwo210.png
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/31/us/-promo-1640969992206/-promo-1640969992206-mediumThreeByTwo440.png
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/6f45b821-a697-523e-829e-66556e55bf63
+  url: https://www.nytimes.com/2021/12/21/well/live/omicron-variant-symptoms-covid.html
+  id: 100000008129516
+  asset_id: 100000008129516
+  source: New York Times
+  published_date: '2021-12-21'
+  updated: '2022-01-03 18:19:36'
+  section: Well
+  subsection: Live
+  nytdsection: well
+  adx_keywords: Coronavirus Omicron Variant;Coronavirus Delta Variant;Coronavirus
+    (2019-nCoV);Disease Rates;Tests (Medical)
+  column:
+  byline: By Melinda Wenner Moyer
+  type: Article
+  title: What Are the Symptoms of Omicron?
+  abstract: While there are subtle differences between the latest coronavirus strain
+    and previous ones, so far the signs of infection look pretty similar.
+  des_facet:
+  - Coronavirus Omicron Variant
+  - Coronavirus Delta Variant
+  - Coronavirus (2019-nCoV)
+  - Disease Rates
+  - Tests (Medical)
+  org_facet: []
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: ''
+    copyright: Jon Han
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/bf10e9ef-00c1-5f10-a1cb-a97c3d8d7689
+  url: https://www.nytimes.com/2022/01/03/world/asia/india-auction-muslim-women.html
+  id: 100000008143371
+  asset_id: 100000008143371
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 11:00:55'
+  section: World
+  subsection: Asia Pacific
+  nytdsection: world
+  adx_keywords: Women and Girls;Muslims and Islam;Cyberharassment;Mobile Applications;Threats
+    and Threatening Messages;India
+  column:
+  byline: By Sameer Yasir
+  type: Article
+  title: Online ‘Auction’ Is Latest Attack on Muslim Women in India
+  abstract: The fake site, the second in months, is a sign of the organized nature
+    of virtual bullying, with threats of sexualized violence aimed at silencing the
+    outspoken.
+  des_facet:
+  - Women and Girls
+  - Muslims and Islam
+  - Cyberharassment
+  - Mobile Applications
+  - Threats and Threatening Messages
+  org_facet: []
+  per_facet: []
+  geo_facet:
+  - India
+  media:
+  - type: image
+    subtype: photo
+    caption: A Muslim woman walking past an image of Prime Minister Narendra Modi
+      in Kochi, Kerala State, last year.
+    copyright: R S Iyer/Associated Press
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/world/03india-app-01/03india-app-01-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/world/03india-app-01/03india-app-01-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/world/03india-app-01/03india-app-01-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/6f71c6d9-224c-5e44-9acc-6d5509479de3
+  url: https://www.nytimes.com/2022/01/03/nyregion/letitia-james-ivanka-donald-trump-jr-subpoena.html
+  id: 100000008143460
+  asset_id: 100000008143460
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-03 23:58:18'
+  section: New York
+  subsection: ''
+  nytdsection: new york
+  adx_keywords: Suits and Litigation (Civil);Attorneys General;Frauds and Swindling;Trump,
+    Donald J Jr;Trump, Donald J;Trump, Ivanka;James, Letitia;Trump, Eric F (1984-
+    );Trump Organization;New York State
+  column:
+  byline: By William K. Rashbaum and Jonah E. Bromwich
+  type: Article
+  title: New York A.G. Seeks to Question Trump Children in Fraud Inquiry
+  abstract: The attorney general, Letitia James, has subpoenaed Donald Trump Jr. and
+    Ivanka Trump as part of a civil investigation.
+  des_facet:
+  - Suits and Litigation (Civil)
+  - Attorneys General
+  - Frauds and Swindling
+  org_facet:
+  - Trump Organization
+  per_facet:
+  - Trump, Donald J Jr
+  - Trump, Donald J
+  - Trump, Ivanka
+  - James, Letitia
+  - Trump, Eric F (1984- )
+  geo_facet:
+  - New York State
+  media:
+  - type: image
+    subtype: photo
+    caption: Donald Trump Jr. and Ivanka Trump have both been deeply involved in their
+      family business, the Trump Organization. 
+    copyright: Erin Schaff/The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2022/01/03/nyregion/03nytrump-james01/03nytrump-james01-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2022/01/03/nyregion/03nytrump-james01/merlin_181984938_f8dae78d-84d8-4467-94b3-e50224aff45f-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2022/01/03/nyregion/03nytrump-james01/merlin_181984938_f8dae78d-84d8-4467-94b3-e50224aff45f-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/636886ae-4483-5488-9e31-83cc03fd2a97
+  url: https://www.nytimes.com/2022/01/02/us/nooksack-306-evictions-tribal-sovereignty.html
+  id: 100000008138918
+  asset_id: 100000008138918
+  source: New York Times
+  published_date: '2022-01-02'
+  updated: '2022-01-03 09:42:12'
+  section: U.S.
+  subsection: ''
+  nytdsection: u.s.
+  adx_keywords: Nooksack Indians;Native Americans;Evictions;Civil Rights and Liberties;Indigenous
+    People;United States Politics and Government;Land Use Policies;Bureau of Indian
+    Affairs;Washington (State)
+  column:
+  byline: By Mike Baker
+  type: Article
+  title: 'A Tribe’s Bitter Purge Brings an Unusual Request: Federal Intervention'
+  abstract: After cutting 306 people from its rolls, the Nooksack tribe is moving
+    to evict those who remain in tribal housing. The dispute has raised questions
+    about individual rights and tribal sovereignty.
+  des_facet:
+  - Nooksack Indians
+  - Native Americans
+  - Evictions
+  - Civil Rights and Liberties
+  - Indigenous People
+  - United States Politics and Government
+  - Land Use Policies
+  org_facet:
+  - Bureau of Indian Affairs
+  per_facet: []
+  geo_facet:
+  - Washington (State)
+  media:
+  - type: image
+    subtype: photo
+    caption: Saturnino Javier’s home, from which he may soon be evicted after being
+      disenrolled from the Nooksack tribe.
+    copyright: Grant Hindsley for The New York Times
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/29/us/00Nooksack-1/00Nooksack-1-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/29/us/00Nooksack-1/merlin_199731636_e3ceea3e-b2ad-4891-b852-246526625afa-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/29/us/00Nooksack-1/merlin_199731636_e3ceea3e-b2ad-4891-b852-246526625afa-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/f4f320f3-a847-5dd6-85ff-baf22cf3504c
+  url: https://www.nytimes.com/2022/01/03/technology/elizabeth-holmes-theranos.html
+  id: 100000008124761
+  asset_id: 100000008124761
+  source: New York Times
+  published_date: '2022-01-03'
+  updated: '2022-01-04 15:16:36'
+  section: Technology
+  subsection: ''
+  nytdsection: technology
+  adx_keywords: 'Computers and the Internet;Tests (Medical);Frauds and Swindling;Start-ups;Content
+    Type: Personal Profile;Holmes, Elizabeth (1984- );Theranos Inc'
+  column:
+  byline: By David Streitfeld
+  type: Article
+  title: The Epic Rise and Fall of Elizabeth Holmes
+  abstract: In Silicon Valley’s world of make-believe, the philosophy of “fake it
+    until you make it” finally gets its comeuppance.
+  des_facet:
+  - Computers and the Internet
+  - Tests (Medical)
+  - Frauds and Swindling
+  - Start-ups
+  - 'Content Type: Personal Profile'
+  org_facet:
+  - Theranos Inc
+  per_facet:
+  - Holmes, Elizabeth (1984- )
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: For a decade, Ms. Holmes fooled savvy investors, hundreds of smart employees,
+      an all-star board and a media eager to anoint a new star.
+    copyright: Jenny Hueston
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/28/business/00holmes-siliconvalley1/00holmes-siliconvalley1-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/28/business/00holmes-siliconvalley1/00holmes-siliconvalley1-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/28/business/00holmes-siliconvalley1/00holmes-siliconvalley1-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0
+- uri: nyt://article/d4cc9075-f608-574f-80bc-0ce8a99c8c14
+  url: https://www.nytimes.com/article/testing-positive-covid-omicron-variant.html
+  id: 100000008123900
+  asset_id: 100000008123900
+  source: New York Times
+  published_date: '2021-12-18'
+  updated: '2021-12-28 09:29:57'
+  section: Well
+  subsection: Live
+  nytdsection: well
+  adx_keywords: 'Coronavirus Omicron Variant;Coronavirus (2019-nCoV);Tests (Medical);Antibodies;Quarantines;Contact
+    Tracing (Public Health);Content Type: Service;internal-essential;Coronavirus Risks
+    and Safety Concerns'
+  column:
+  byline: By Dani Blum and Nicole Stock
+  type: Article
+  title: You Tested Positive for Covid. Now What?
+  abstract: The Omicron variant has fueled a rise in Covid-19 cases across the United
+    States. Here’s what you need to know if you get infected.
+  des_facet:
+  - Coronavirus Omicron Variant
+  - Coronavirus (2019-nCoV)
+  - Tests (Medical)
+  - Antibodies
+  - Quarantines
+  - Contact Tracing (Public Health)
+  - 'Content Type: Service'
+  - internal-essential
+  - Coronavirus Risks and Safety Concerns
+  org_facet: []
+  per_facet: []
+  geo_facet: []
+  media:
+  - type: image
+    subtype: photo
+    caption: A positive result from a Covid-19 rapid antigen test.
+    copyright: Octavio Jones/Reuters
+    approved_for_syndication: 1
+    media-metadata:
+    - url: https://static01.nyt.com/images/2021/12/17/well/17well-virus-positive2/17well-virus-positive2-thumbStandard.jpg
+      format: Standard Thumbnail
+      height: 75
+      width: 75
+    - url: https://static01.nyt.com/images/2021/12/17/well/17well-virus-positive2/17well-virus-positive2-mediumThreeByTwo210.jpg
+      format: mediumThreeByTwo210
+      height: 140
+      width: 210
+    - url: https://static01.nyt.com/images/2021/12/17/well/17well-virus-positive2/17well-virus-positive2-mediumThreeByTwo440.jpg
+      format: mediumThreeByTwo440
+      height: 293
+      width: 440
+  eta_id: 0

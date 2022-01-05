@@ -32,7 +32,7 @@ module HeadlineConnector
         end
 
         def request_articles(period = 1)
-          get("/viewed/#{period}.json?api-key=#{@api_key}")
+          get("#{@resource_root}/viewed/#{period}.json?api-key=#{@api_key}")
         end
       end
 
