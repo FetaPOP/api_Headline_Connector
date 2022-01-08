@@ -26,48 +26,79 @@ module HeadlineConnector
         result_response.to_json
       end
 
-      routing.on 'textcloud' do
-        routing.on String do |keyword|
-          # GET api/v1/textcloud/{keyword}
+      routing.on 'api/v1' do
+        routing.on 'topics' do
+          routing.on String do |keyword|
+            # POST api/v1/topic/{keyword}
+            routing.post do
+              add_topic_request = Request::TopicRequest.new(keyword, request)
+              topic_entity_result = Service::AddTopic.new.call(requested: add_topic_request)
+              
+              if topic_entity_result.failure?
+                failed = Representer::HttpResponse.new(topic_entity_result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end 
+
+              response.status = Representer::HttpResponse.new(topic_entity_result.value!).http_status_code
+
+              Representer::Topic.new(topic_entity_result.value!.message).to_json
+            end
+          end
+        end
+
+        routing.on 'textcloud' do
+          routing.on String do |keyword|
+            # GET api/v1/textcloud/{keyword}
+            routing.get do
+              generate_textcloud_request = Request::TextCloudRequest.new(keyword, request)
+              result = Service::GenerateTextCloud.new.call(requested: generate_textcloud_request)
+
+              if result.failure?
+                failed = Representer::HttpResponse.new(result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end         
+
+              response.status = Representer::HttpResponse.new(result.value!).http_status_code
+
+              Representer::TextCloud.new(result.value!.message).to_json
+            end
+          end        
+        end
+
+        routing.on 'headline_cluster' do
+          # GET api/v1/headline_cluster
           routing.get do
-            add_topic_request = Request::TopicRequest.new(keyword, request)
-            topic_entity_result = Service::AddTopic.new.call(requested: add_topic_request)
-            
-            if topic_entity_result.failure?
-              failed = Representer::HttpResponse.new(topic_entity_result.failure)
-              routing.halt failed.http_status_code, failed.to_json
-            end 
-
-            generate_textcloud_request = Request::TextCloudRequest.new(keyword, request)
-            result = Service::GenerateTextCloud.new.call(requested: generate_textcloud_request)
-
+            headline_cluster_request = Request::HeadlineClusterRequest.new(request)
+            result = Service::GenerateHeadlineCluster.new.call(requested: headline_cluster_request)
+  
             if result.failure?
               failed = Representer::HttpResponse.new(result.failure)
               routing.halt failed.http_status_code, failed.to_json
             end         
-
+  
             response.status = Representer::HttpResponse.new(result.value!).http_status_code
+            Representer::HeadlineCluster.new(result.value!.message).to_json
+          end     
+        end
 
-            Representer::TextCloud.new(result.value!.message).to_json
-          end
-        end        
-      end
+        routing.on 'video_list' do
+          routing.on String do |keyword|
+            # GET api/v1/video_list/{keyword}
+            routing.get do
+              generate_video_list_request = Request::VideoListRequest.new(keyword, request)
+              result = Service::GenerateVideoList.new.call(requested: generate_video_list_request)
 
-      routing.on 'headline_cluster' do
-        # GET api/v1/headline_cluster
-        routing.get do
-          headline_cluster_request = Request::HeadlineClusterRequest.new(request)
-          result = Service::HeadlineCluster.new.call(requested: headline_cluster_request)
+              if result.failure?
+                failed = Representer::HttpResponse.new(result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end         
 
-          if result.failure?
-            failed = Representer::HttpResponse.new(result.failure)
-            routing.halt failed.http_status_code, failed.to_json
-          end         
+              response.status = Representer::HttpResponse.new(result.value!).http_status_code
 
-          response.status = Representer::HttpResponse.new(result.value!).http_status_code
-
-          Representer::HeadlineCluster.new(result.value!.message).to_json
-        end     
+              Representer::VideoList.new(result.value!.message).to_json
+            end
+          end     
+        end
       end
     end
     # rubocop:enable Metrics/BlockLength

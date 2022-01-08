@@ -2,7 +2,7 @@
 
 module HeadlineConnector
   module Request
-    # Application value for the path of a requested topic
+    # Application value for the path of a requested headline cluster
     class HeadlineClusterRequest
       def initialize(request)
         @request = request

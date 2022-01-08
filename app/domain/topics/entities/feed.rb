@@ -16,6 +16,7 @@ module HeadlineConnector
       attribute :feed_id,       Strict::String
       attribute :feed_title,    Strict::String
       attribute :description,   Strict::String
+      attribute :publishedAt,   Strict::String
       attribute :tags,          Strict::Array
       attribute :provider,      Provider
     end

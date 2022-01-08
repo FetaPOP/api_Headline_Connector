@@ -14,7 +14,7 @@ module HeadlineConnector
 
             def build_entity(sorted_by_sections)
                 # sorted_by_sections is a Hash
-                Entity::HeadlineCluster.new(id: nil, by_sections: sorted_by_sections)
+                Entity::HeadlineCluster.new(id: nil, sections: sorted_by_sections)
             end
         end
     end

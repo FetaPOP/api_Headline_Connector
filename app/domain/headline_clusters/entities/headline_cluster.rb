@@ -10,8 +10,8 @@ module HeadlineConnector
       # Entity class of HeadlineCLuster
       include Dry.Types
 
-      attribute :id,                    Integer.optional
-      attribute :by_sections,   Strict::Hash
+      attribute :id,            Integer.optional
+      attribute :sections,   Strict::Hash
     end
   end
 end

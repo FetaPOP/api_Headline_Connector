@@ -3,8 +3,6 @@
 require 'roar/decorator'
 require 'roar/json'
 
-#require_relative 'section_representer'
-
 # Represents essential feeds and text_cloud of a topic for API output
 module HeadlineConnector
   module Representer
@@ -12,8 +10,7 @@ module HeadlineConnector
     class HeadlineCluster < Roar::Decorator
       include Roar::JSON
 
-      #collection :sections, extend: Representer::Section, class: OpenStruct
-
+      property :sections
     end
   end
 end

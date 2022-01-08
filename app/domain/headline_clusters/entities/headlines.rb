@@ -14,6 +14,13 @@ module HeadlineConnector
 
       attribute :id,            Integer.optional
       attribute :headlines,     Strict::Array.of(Headline)
+
+      # useful method for debugging
+      def print_on_terminal        
+        headlines.each do |headline|
+          headline.print_on_terminal
+        end
+      end
     end
   end
 end

@@ -32,11 +32,16 @@ module HeadlineConnector
                         id: nil,
                         article_url: result['url'],
                         section: result['section'],
-                        tag: result['adx_keywords'],
+                        tag: extracts_first_tag(result),
                         title: result['title'],
                         abstract: result['abstract'],
                         img: extracts_media_metadata(result)
                     )
+                end
+
+                headlines.reject! do |headline|
+                    # We don't want US local news from "New York Times"
+                    headline.section == "New York" || headline.section == "U.S."
                 end
 
                 HeadlineConnector::Entity::Headlines.new(
@@ -54,6 +59,10 @@ module HeadlineConnector
 
                 # if no height==293 image found, return the first image
                 return result['media'][0]['media-metadata'][0]['url']
+            end
+
+            def extracts_first_tag(article)
+                article['adx_keywords'].split(';')[0]
             end
 
             def results

@@ -17,30 +17,23 @@ describe 'Tests NYTimes API library' do
   describe 'Headlines information' do
     it 'HAPPY: should generate our headlines entity' do
       headlines = HeadlineConnector::NYTimes::HeadlinesMapper.new(NYTIMES_TOKEN).request_headlines
-      #puts headlines
+      _(headlines.headlines).must_be_instance_of Array
+      headlines.headlines.each do |headline|
+        _(headline).must_be_instance_of HeadlineConnector::Entity::Headline
+      end
     end
   end
   
   describe 'Headline Cluster information' do
     it 'HAPPY: should generate our headline cluster structure' do
       cluster = HeadlineConnector::Mapper::HeadlineClusterMapper.new().generate_headline_cluster
-      _(cluster.by_sections).must_be_instance_of Hash
+      _(cluster.sections).must_be_instance_of Hash
 
-      puts cluster.by_sections
-
-      cluster.by_sections.each do |section, article_array|
-        
+      cluster.sections.each do |section, article_array|
         _(article_array).must_be_instance_of Array
-
         article_array.each do |article|
-          _(article[:article_url]).must_be_instance_of String
-          _(article[:section]).must_be_instance_of String
-          _(article[:tag]).must_be_instance_of String
-          _(article[:title]).must_be_instance_of String
-          _(article[:abstract]).must_be_instance_of String
-          _(article[:img]).must_be_instance_of String
+          _(article).must_be_instance_of Hash
         end
-
       end
     end
   end

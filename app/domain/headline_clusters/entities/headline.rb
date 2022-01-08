@@ -17,6 +17,17 @@ module HeadlineConnector
       attribute :title,         Strict::String
       attribute :abstract,      Strict::String
       attribute :img,           Strict::String.optional
+
+      # useful method for debugging
+      def print_on_terminal        
+        puts "1. article_url: " + article_url if article_url
+        puts "2. section: " + section if section
+        puts "3. tag: " + tag if tag
+        puts "4. title: " + title if title
+        puts "5. abstract: " + abstract if abstract
+        puts "6. img: " + img if img
+        puts 
+      end
     end
   end
 end

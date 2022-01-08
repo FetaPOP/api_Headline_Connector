@@ -2,8 +2,8 @@
 
 module HeadlineConnector
   module Request
-    # Application value for the path of a requested textcloud
-    class TextCloudRequest
+    # Application value for the path of a requested video list
+    class VideoListRequest
       def initialize(keyword, request)
         @keyword = keyword
         @request = request

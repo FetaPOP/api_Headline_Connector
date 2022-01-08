@@ -4,7 +4,7 @@ require_relative 'provider_mapper'
 
 module HeadlineConnector
   module Youtube
-    # Youtube Mapper: YoutubeApi -> Video entity
+    # Youtube Mapper: YoutubeApi -> Feed entity
     class FeedMapper
       def initialize(api_key, gateway_class = Youtube::Api)
         @api_key = api_key
@@ -39,6 +39,7 @@ module HeadlineConnector
             feed_id: feed_id,
             feed_title: feed_title,
             description: description,
+            publishedAt: publishedAt,
             tags: tags,
             provider: provider
           )
@@ -54,6 +55,10 @@ module HeadlineConnector
 
         def description
           @data['items'][0]['snippet']['description']
+        end
+
+        def publishedAt
+          @data['items'][0]['snippet']['publishedAt']
         end
 
         def tags
