@@ -16071,4 +16071,312 @@ http_interactions:
           }
         }
   recorded_at: Sun, 19 Dec 2021 11:10:39 GMT
+- request:
+    method: get
+    uri: https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=efmGtJ3PKyj8W9E2G327an8Rj5h3QuzN
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.nytimes.com
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 08 Jan 2022 08:46:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35171'
+      Connection:
+      - close
+      Cache-Control:
+      - max-age=60
+      X-Nyt-Most-Popular-Values:
+      - VIEWED 1
+      X-Request-Id:
+      - '1641631578259855461'
+      X-Cloud-Trace-Context:
+      - 5e7fc040b459b1056158e6e3e3292b13
+      Server:
+      - Google Frontend
+      Accept-Ranges:
+      - bytes
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Served-By:
+      - cache-sea4453-SEA
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1641631578.215223,VS0,VE157
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, Content-Type, X-Forwarded-For, X-Prototype-Version, X-Requested-With
+      Access-Control-Expose-Headers:
+      - Content-Length, X-JSON
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+    body:
+      encoding: UTF-8
+      string: '{"status":"OK","copyright":"Copyright (c) 2022 The New York Times Company.  All
+        Rights Reserved.","num_results":20,"results":[{"uri":"nyt://article/14cffef1-8737-5510-ad47-7e5e06c81515","url":"https://www.nytimes.com/2022/01/07/movies/sidney-poitier-dead.html","id":100000006678558,"asset_id":100000006678558,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-08 01:11:53","section":"Movies","subsection":"","nytdsection":"movies","adx_keywords":"Deaths
+        (Obituaries);Movies;Black People;Actors and Actresses;Academy Awards (Oscars);Civil
+        Rights Movement (1954-68);Discrimination;Civil Rights and Liberties;Poitier,
+        Sidney","column":null,"byline":"By William Grimes","type":"Article","title":"Sidney
+        Poitier, Who Paved the Way for Black Actors in Film, Dies at 94","abstract":"The
+        first Black performer to win the Academy Award for best actor, for “Lilies
+        of the Field,” he once said he felt “as if I were representing 15, 18 million
+        people with every move I made.”","des_facet":["Deaths (Obituaries)","Movies","Black
+        People","Actors and Actresses","Academy Awards (Oscars)","Civil Rights Movement
+        (1954-68)","Discrimination","Civil Rights and Liberties"],"org_facet":[],"per_facet":["Poitier,
+        Sidney"],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"Sidney
+        Poitier’s Academy Award for the 1963 film “Lilies of the Field” made him the
+        first Black performer to win in the best-actor category. He rose to prominence
+        when the civil rights movement was beginning to make headway in the United
+        States.","copyright":"Sam Falk/The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2019/11/21/obituaries/00poitier-toppix/00poitier-toppix-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2019/11/21/obituaries/00poitier-toppix/00poitier-toppix-mediumThreeByTwo210-v2.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2019/11/21/obituaries/00poitier-toppix/00poitier-toppix-mediumThreeByTwo440-v2.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/0550ff4d-d77d-54bf-b6c1-9c55b5c7c40e","url":"https://www.nytimes.com/2022/01/06/opinion/omicron-covid-us.html","id":100000008144154,"asset_id":100000008144154,"source":"New
+        York Times","published_date":"2022-01-06","updated":"2022-01-07 21:38:16","section":"Opinion","subsection":"","nytdsection":"opinion","adx_keywords":"Coronavirus
+        Omicron Variant;Disease Rates;United States","column":null,"byline":"By Jeffrey
+        Shaman","type":"Article","title":"Here’s When We Expect Omicron to Peak","abstract":"An
+        epidemic modeler explains why cases of the variant will peak in the U.S. in
+        January.","des_facet":["Coronavirus Omicron Variant","Disease Rates"],"org_facet":[],"per_facet":[],"geo_facet":["United
+        States"],"media":[{"type":"image","subtype":"photo","caption":"","copyright":"","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/05/us/-promo-1641416869158/-promo-1641416869158-thumbStandard.png","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/05/us/-promo-1641416869158/-promo-1641416869158-mediumThreeByTwo210.png","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/05/us/-promo-1641416869158/-promo-1641416869158-mediumThreeByTwo440.png","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/13e2e1d6-00bd-5a81-bead-e8a335d20e73","url":"https://www.nytimes.com/2022/01/07/us/politics/biden-vaccine-mandate-supreme-court.html","id":100000008146798,"asset_id":100000008146798,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 22:04:03","section":"U.S.","subsection":"Politics","nytdsection":"u.s.","adx_keywords":"Coronavirus
+        (2019-nCoV);Vaccination and Immunization;Workplace Hazards and Violations;Labor
+        and Jobs;United States Politics and Government;Supreme Court (US);Occupational
+        Safety and Health Administration","column":null,"byline":"By Adam Liptak","type":"Article","title":"Supreme
+        Court’s Conservative Majority Appears Skeptical of Biden’s Virus Plan","abstract":"The
+        court seemed more likely to sustain a separate requirement that health care
+        workers at facilities that receive federal money be vaccinated.","des_facet":["Coronavirus
+        (2019-nCoV)","Vaccination and Immunization","Workplace Hazards and Violations","Labor
+        and Jobs","United States Politics and Government"],"org_facet":["Supreme Court
+        (US)","Occupational Safety and Health Administration"],"per_facet":[],"geo_facet":[],"media":[],"eta_id":0},{"uri":"nyt://article/7cea0a2e-7153-5bdd-b5b2-3c806d24a195","url":"https://www.nytimes.com/2022/01/07/us/mcmichael-bryan-sentencing-ahmaud-arbery-killing.html","id":100000008143474,"asset_id":100000008143474,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 22:45:39","section":"U.S.","subsection":"","nytdsection":"u.s.","adx_keywords":"Sentences
+        (Criminal);Mandatory Sentencing;Murders, Attempted Murders and Homicides;Black
+        People;Hate Crimes;Arbery, Ahmaud (1994-2020);Bryan, William Roddie;McMichael,
+        Gregory (1955- );McMichael, Travis (1986- );Walmsley, Timothy R;Brunswick
+        (Ga)","column":null,"byline":"By Richard Fausset","type":"Article","title":"Three
+        Men Sentenced to Life in Prison in Arbery Killing","abstract":"One man will
+        be eligible for parole after 30 years. The three face a federal trial on hate
+        crime charges next month.","des_facet":["Sentences (Criminal)","Mandatory
+        Sentencing","Murders, Attempted Murders and Homicides","Black People","Hate
+        Crimes"],"org_facet":[],"per_facet":["Arbery, Ahmaud (1994-2020)","Bryan,
+        William Roddie","McMichael, Gregory (1955- )","McMichael, Travis (1986- )","Walmsley,
+        Timothy R"],"geo_facet":["Brunswick (Ga)"],"media":[],"eta_id":0},{"uri":"nyt://article/150740ea-043a-53bb-ba1b-4cfc71c14855","url":"https://www.nytimes.com/2022/01/06/health/covid-vaccine-menstrual-cycles.html","id":100000008148544,"asset_id":100000008148544,"source":"New
+        York Times","published_date":"2022-01-06","updated":"2022-01-07 13:04:22","section":"Health","subsection":"","nytdsection":"health","adx_keywords":"your-feed-science;Menstruation;Women
+        and Girls;Vaccination and Immunization;Coronavirus (2019-nCoV);Obstetrics
+        \u0026 Gynecology (Journal);United States","column":null,"byline":"By Roni
+        Caryn Rabin","type":"Article","title":"Women’s Periods May Be Late After Coronavirus
+        Vaccination, Study Suggests","abstract":"An analysis of thousands of menstrual
+        records offers support for anecdotal reports of erratic cycles after shots.","des_facet":["your-feed-science","Menstruation","Women
+        and Girls","Vaccination and Immunization","Coronavirus (2019-nCoV)"],"org_facet":["Obstetrics
+        \u0026 Gynecology (Journal)"],"per_facet":[],"geo_facet":["United States"],"media":[{"type":"image","subtype":"photo","caption":"Scientists
+        said the study should be reassuring. “Their providers can say, ‘If you have
+        an extra day, that is normal, it’s not something to be concerned about,’”
+        one expert said.","copyright":"Adriana Zehbrauskas for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/science/06virus-menstruation/06virus-menstruation-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/science/06virus-menstruation/06virus-menstruation-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/science/06virus-menstruation/06virus-menstruation-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/88a11aee-de77-51fd-97cb-adc9eaddb7f2","url":"https://www.nytimes.com/2022/01/07/world/europe/grichka-and-igor-bogdanoff-dead.html","id":100000008147502,"asset_id":100000008147502,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 15:10:06","section":"World","subsection":"Europe","nytdsection":"world","adx_keywords":"Deaths
+        (Obituaries);Hoaxes and Pranks;Science and Technology;Coronavirus (2019-nCoV);Plastic
+        Surgery;Television;Grichka and Igor Bogdanoff;France","column":null,"byline":"By
+        Clay Risen","type":"Article","title":"Grichka and Igor Bogdanoff, Twins in
+        an Uneasy Spotlight, Die at 72","abstract":"In France they were science-loving
+        TV celebrities (molded by plastic surgery) whose own research was suspect,
+        maybe a hoax. They died within days of each other.","des_facet":["Deaths (Obituaries)","Hoaxes
+        and Pranks","Science and Technology","Coronavirus (2019-nCoV)","Plastic Surgery","Television"],"org_facet":[],"per_facet":["Grichka
+        and Igor Bogdanoff"],"geo_facet":["France"],"media":[{"type":"image","subtype":"photo","caption":"Igor,
+        left, and Grichka Bogdanoff in 2001. They found fame through television stardom,
+        questionable scientific research, extreme plastic surgery and a high-society
+        lifestyle. ","copyright":"Louise Oligny/Gamma-Rapho via Getty Images","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/07/obituaries/07Bogdanoff1/07Bogdanoff1-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/07/obituaries/07Bogdanoff1/07Bogdanoff1-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/07/obituaries/07Bogdanoff1/07Bogdanoff1-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/dd8fb715-17de-508f-be4c-a41773eab1ca","url":"https://www.nytimes.com/2022/01/05/style/middle-age-satc-just-like-that.html","id":100000008138659,"asset_id":100000008138659,"source":"New
+        York Times","published_date":"2022-01-05","updated":"2022-01-05 23:54:02","section":"Style","subsection":"","nytdsection":"style","adx_keywords":"Age,
+        Chronological;Women and Girls;Television;Manhattan (NYC)","column":null,"byline":"By
+        Rhonda Garelick","type":"Article","title":"Middle Age Doesn’t Happen ‘Just
+        Like That’","abstract":"Why is the “Sex and the City” reboot populated by
+        adults who seem perplexed by everything from politics to their own bodies?","des_facet":["Age,
+        Chronological","Women and Girls","Television"],"org_facet":[],"per_facet":[],"geo_facet":["Manhattan
+        (NYC)"],"media":[{"type":"image","subtype":"photo","caption":"Sarah Jessica
+        Parker and Kristin Davis ponder the complexities of their aging bodies in
+        “And Just Like That.”","copyright":"Craig Blankenhorn/HBO Max","approved_for_syndication":0,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/fashion/05SATC-bed/05SATC-bed-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/fashion/05SATC-bed/merlin_199885221_978300be-469c-4a07-9f53-a40ec2c32352-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/fashion/05SATC-bed/merlin_199885221_978300be-469c-4a07-9f53-a40ec2c32352-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/6f45b821-a697-523e-829e-66556e55bf63","url":"https://www.nytimes.com/2021/12/21/well/live/omicron-variant-symptoms-covid.html","id":100000008129516,"asset_id":100000008129516,"source":"New
+        York Times","published_date":"2021-12-21","updated":"2022-01-03 18:19:36","section":"Well","subsection":"Live","nytdsection":"well","adx_keywords":"Coronavirus
+        Omicron Variant;Coronavirus Delta Variant;Coronavirus (2019-nCoV);Disease
+        Rates;Tests (Medical)","column":null,"byline":"By Melinda Wenner Moyer","type":"Article","title":"What
+        Are the Symptoms of Omicron?","abstract":"While there are subtle differences
+        between the latest coronavirus strain and previous ones, so far the signs
+        of infection look pretty similar.","des_facet":["Coronavirus Omicron Variant","Coronavirus
+        Delta Variant","Coronavirus (2019-nCoV)","Disease Rates","Tests (Medical)"],"org_facet":[],"per_facet":[],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"","copyright":"Jon
+        Han","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2021/12/20/well/00well-omicron-symptoms/00well-omicron-symptoms-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/47944028-5456-5734-bff7-e6fdb0c035df","url":"https://www.nytimes.com/2022/01/06/dining/drinks/fake-bourbon.html","id":100000008079887,"asset_id":100000008079887,"source":"New
+        York Times","published_date":"2022-01-06","updated":"2022-01-06 11:09:14","section":"Food","subsection":"Wine,
+        Beer \u0026 Cocktails","nytdsection":"food","adx_keywords":"Whiskey;Bourbon
+        (Whiskey);Counterfeit Merchandise;Shopping and Retail;E-Commerce;Luxury Goods
+        and Services;Collectors and Collections;Frauds and Swindling;Quarantine (Life
+        and Culture);United States","column":null,"byline":"By Clay Risen","type":"Article","title":"That
+        $1,000 Bourbon You Bought May Be a Phony","abstract":"Counterfeiting — filling
+        luxury bottles with cheap liquor — has hit American whiskey hard as sky-high
+        prices raise the payoff for scammers.","des_facet":["Whiskey","Bourbon (Whiskey)","Counterfeit
+        Merchandise","Shopping and Retail","E-Commerce","Luxury Goods and Services","Collectors
+        and Collections","Frauds and Swindling","Quarantine (Life and Culture)"],"org_facet":[],"per_facet":[],"geo_facet":["United
+        States"],"media":[{"type":"image","subtype":"photo","caption":"This refilled
+        bottle of Pappy Van Winkle’s 15 Year Old Family Reserve bourbon is part of
+        the collection of counterfeits kept by Adam Herz, a whiskey expert in Los
+        Angeles.","copyright":"Rozette Rago for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/12/dining/12fake-whiskey-2/12fake-whiskey-2-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/12/dining/12fake-whiskey-2/12fake-whiskey-2-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/12/dining/12fake-whiskey-2/12fake-whiskey-2-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/e9b836ed-d49c-5db4-9abe-aa2339c56ae7","url":"https://www.nytimes.com/2022/01/05/health/covid-rapid-test-omicron-detection.html","id":100000008143597,"asset_id":100000008143597,"source":"New
+        York Times","published_date":"2022-01-05","updated":"2022-01-06 10:23:09","section":"Health","subsection":"","nytdsection":"health","adx_keywords":"Tests
+        (Medical);Coronavirus Risks and Safety Concerns;Coronavirus Omicron Variant;Coronavirus
+        Delta Variant;Throat;your-feed-science;your-feed-health;Centers for Disease
+        Control and Prevention;Food and Drug Administration;Quidel Corporation;Abbott
+        Laboratories;California;New York City","column":null,"byline":"By Emily Anthes
+        and Christina Jewett","type":"Article","title":"Emerging Data Raise Questions
+        About Antigen Tests and Nasal Swabs","abstract":"A new study adds to evidence
+        that common rapid tests may fail to detect some Omicron cases in the first
+        days of infection.","des_facet":["Tests (Medical)","Coronavirus Risks and
+        Safety Concerns","Coronavirus Omicron Variant","Coronavirus Delta Variant","Throat","your-feed-science","your-feed-health"],"org_facet":["Centers
+        for Disease Control and Prevention","Food and Drug Administration","Quidel
+        Corporation","Abbott Laboratories"],"per_facet":[],"geo_facet":["California","New
+        York City"],"media":[{"type":"image","subtype":"photo","caption":"Rapid antigen
+        Covid test kits at Miami International Airport on Tuesday.","copyright":"Saul
+        Martinez for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/04/science/00virus-omicron-testing4/00virus-omicron-testing4-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/04/science/00virus-omicron-testing4/merlin_199919271_45b04823-60d2-42a1-a5f3-49b2fc1aadfd-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/04/science/00virus-omicron-testing4/merlin_199919271_45b04823-60d2-42a1-a5f3-49b2fc1aadfd-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/b56df1a3-006f-597a-b88b-1fc2671205bc","url":"https://www.nytimes.com/2022/01/07/world/india-12-booster-shots.html","id":100000008148136,"asset_id":100000008148136,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 22:50:19","section":"World","subsection":"","nytdsection":"world","adx_keywords":"Coronavirus
+        (2019-nCoV);Vaccination and Immunization;Bihar (India)","column":null,"byline":"By
+        Hari Kumar and Mujib Mashal","type":"Article","title":"An 85-year-old man
+        in India says he got 12 Covid vaccine shots, and still wants more.","abstract":"The
+        retired postman said he gamed the offline vaccination drive to keep boosting
+        regularly — long before booster shots were a thing anywhere.","des_facet":["Coronavirus
+        (2019-nCoV)","Vaccination and Immunization"],"org_facet":[],"per_facet":[],"geo_facet":["Bihar
+        (India)"],"media":[{"type":"image","subtype":"photo","caption":"Brahmdeo Mandal,
+        85, said he believed Covid vaccine doses healed many of his ailments. ","copyright":"Mandal
+        Family","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/business/06virus-briefing-india-12-shots/06virus-briefing-india-12-shots-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/business/06virus-briefing-india-12-shots/06virus-briefing-india-12-shots-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/business/06virus-briefing-india-12-shots/06virus-briefing-india-12-shots-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/d7c9656c-244b-51a0-aa96-53bb6485f3ea","url":"https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html","id":100000008143465,"asset_id":100000008143465,"source":"New
+        York Times","published_date":"2022-01-03","updated":"2022-01-05 23:51:56","section":"Technology","subsection":"","nytdsection":"technology","adx_keywords":"Computer
+        and Video Games;Spelling;Crossword Puzzles;Wardle, Josh;Reddit Inc","column":null,"byline":"By
+        Daniel Victor","type":"Article","title":"Wordle Is a Love Story","abstract":"The
+        word game has gone from dozens of players to hundreds of thousands in a few
+        months. It was created by a software engineer in Brooklyn for his partner.","des_facet":["Computer
+        and Video Games","Spelling","Crossword Puzzles"],"org_facet":["Reddit Inc"],"per_facet":["Wardle,
+        Josh"],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"","copyright":"","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/multimedia/03xp-wordle/03xp-wordle-thumbStandard.png","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/multimedia/03xp-wordle/03xp-wordle-mediumThreeByTwo210.png","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/multimedia/03xp-wordle/03xp-wordle-mediumThreeByTwo440.png","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/26d74a1f-1f55-51e8-a209-dcd66b843306","url":"https://www.nytimes.com/2022/01/06/nyregion/connecticut-high-school-girls-basketball-coach.html","id":100000008148425,"asset_id":100000008148425,"source":"New
+        York Times","published_date":"2022-01-06","updated":"2022-01-07 13:11:14","section":"New
+        York","subsection":"","nytdsection":"new york","adx_keywords":"Coaches and
+        Managers;Interscholastic Athletics;Basketball;Private and Sectarian Schools;Education
+        (Secondary);Hamden (Conn);Connecticut","column":null,"byline":"By Neil Vigdor","type":"Article","title":"A
+        School Won 92-4 in Basketball. Then the Coach Was Suspended.","abstract":"Sacred
+        Heart Academy, a Catholic high school for girls in Hamden, Conn., said that
+        running up the score against Lyman Hall High School did not mesh with its
+        values.","des_facet":["Coaches and Managers","Interscholastic Athletics","Basketball","Private
+        and Sectarian Schools","Education (Secondary)"],"org_facet":[],"per_facet":[],"geo_facet":["Hamden
+        (Conn)","Connecticut"],"media":[{"type":"image","subtype":"photo","caption":"
+        Jason Kirck, the head coach at Sacred Heart Academy, during a girls basketball
+        game against West Haven in West Haven, Conn., in 2020.","copyright":"Christian
+        Abraham/Hearst Connecticut Media","approved_for_syndication":0,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/lens/06xp-sacretheart1/06xp-sacretheart1-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/lens/06xp-sacretheart1/06xp-sacretheart1-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/lens/06xp-sacretheart1/06xp-sacretheart1-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/263fa419-e2af-5fdc-9c27-8db5a68a7e53","url":"https://www.nytimes.com/2022/01/07/arts/television/amy-schneider-jeopardy.html","id":100000008150632,"asset_id":100000008150632,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 21:34:38","section":"Arts","subsection":"Television","nytdsection":"arts","adx_keywords":"Game
+        Shows;Women and Girls;Records and Achievements;Schneider, Amy (1979- );Amodio,
+        Matt;Holzhauer, James;Jennings, Ken","column":null,"byline":"By Julia Jacobs","type":"Article","title":"Amy
+        Schneider Becomes First Woman to Surpass $1 Million on ‘Jeopardy!’","abstract":"Schneider,
+        a software engineering manager, is the fourth contestant in the game show’s
+        history to reach the milestone.","des_facet":["Game Shows","Women and Girls","Records
+        and Achievements"],"org_facet":[],"per_facet":["Schneider, Amy (1979- )","Amodio,
+        Matt","Holzhauer, James","Jennings, Ken"],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"Amy
+        Schneider hit the $1 million mark on Friday in her 28th game, during which
+        she won over $42,000.","copyright":"Jeopardy Productions, Inc., via Associated
+        Press","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07jeopardy-schneider-2/07jeopardy-schneider-2-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07jeopardy-schneider-2/07jeopardy-schneider-2-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07jeopardy-schneider-2/07jeopardy-schneider-2-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/baeae7c9-f898-50ee-bb64-a6ae2f35a5e5","url":"https://www.nytimes.com/2022/01/07/nyregion/nj-nursing-home-covid-settlement.html","id":100000008143483,"asset_id":100000008143483,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 22:42:42","section":"New
+        York","subsection":"","nytdsection":"new york","adx_keywords":"Veterans;Suits
+        and Litigation (Civil);Coronavirus (2019-nCoV);Deaths (Fatalities);Compensation
+        for Damages (Law);Nursing Homes;Elder Care;Politics and Government;Workplace
+        Hazards and Violations;Menlo Park Veterans Memorial Home;New Jersey Veterans
+        Home at Paramus;New Jersey","column":null,"byline":"By Tracey Tully","type":"Article","title":"Families
+        of Veterans Who Died of Covid Win $53 Million Legal Settlement","abstract":"The
+        New Jersey nursing home settlement is believed to be the first of its kind
+        nationwide.","des_facet":["Veterans","Suits and Litigation (Civil)","Coronavirus
+        (2019-nCoV)","Deaths (Fatalities)","Compensation for Damages (Law)","Nursing
+        Homes","Elder Care","Politics and Government","Workplace Hazards and Violations"],"org_facet":["Menlo
+        Park Veterans Memorial Home","New Jersey Veterans Home at Paramus"],"per_facet":[],"geo_facet":["New
+        Jersey"],"media":[{"type":"image","subtype":"photo","caption":"Madeline and
+        Charles Costantino were among the 101 residents of a state-run nursing home
+        for former soldiers who died as the coronavirus swept through the New Jersey
+        facility. ","copyright":"Stephen Speranza for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/05/nyregion/00nj-vets1/00nj-vets1-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/05/nyregion/00nj-vets1/00nj-vets1-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/05/nyregion/00nj-vets1/00nj-vets1-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/8d2850f5-5e20-55e5-94da-299d512bfa83","url":"https://www.nytimes.com/2022/01/07/realestate/pandemic-move-friends.html","id":100000008140045,"asset_id":100000008140045,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 19:28:37","section":"Real
+        Estate","subsection":"","nytdsection":"real estate","adx_keywords":"Real Estate
+        and Housing (Residential);Quarantine (Life and Culture);Coronavirus (2019-nCoV);Content
+        Type: Personal Profile;Moving and Moving Industry;Manhattan (NYC)","column":null,"byline":"By
+        Joanne Kaufman","type":"Article","title":"They Had Reasons for Leaving the
+        City. So Why Are Their Friends Mad?","abstract":"When Covid hit, some New
+        Yorkers abandoned the city for good. They left some angry friends.","des_facet":["Real
+        Estate and Housing (Residential)","Quarantine (Life and Culture)","Coronavirus
+        (2019-nCoV)","Content Type: Personal Profile","Moving and Moving Industry"],"org_facet":[],"per_facet":[],"geo_facet":["Manhattan
+        (NYC)"],"media":[{"type":"image","subtype":"photo","caption":"“I always look
+        for the best in New York, and there I was leaving — like a deserter,” said
+        Joel Schnell, who moved to Lauderdale-by-the-Sea, Fla., during the pandemic,
+        with his wife, Lynne White.","copyright":"James Jackman for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/09/realestate/07pandemicdeserters1/merlin_199526346_20e89a00-ecb6-45c1-afe9-fbc6f98f9e4a-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/09/realestate/07pandemicdeserters1/merlin_199526346_20e89a00-ecb6-45c1-afe9-fbc6f98f9e4a-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/09/realestate/07pandemicdeserters1/merlin_199526346_20e89a00-ecb6-45c1-afe9-fbc6f98f9e4a-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/52071637-5bea-5870-a222-5634605c3db9","url":"https://www.nytimes.com/2022/01/07/health/kids-covid-diabetes-cdc.html","id":100000008150472,"asset_id":100000008150472,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 17:48:25","section":"Health","subsection":"","nytdsection":"health","adx_keywords":"Diabetes;Coronavirus
+        (2019-nCoV);Centers for Disease Control and Prevention","column":null,"byline":"By
+        Roni Caryn Rabin","type":"Article","title":"Covid may raise the risk of diabetes
+        in children, C.D.C. researchers reported.","abstract":"A heightened risk had
+        already been seen among adults who had recovered from a coronavirus infection.","des_facet":["Diabetes","Coronavirus
+        (2019-nCoV)"],"org_facet":["Centers for Disease Control and Prevention"],"per_facet":[],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"Administering
+        a coronavirus test to Penelope Ramirez, 6, in Gardena, Calif., on Thursday.","copyright":"Allison
+        Zaucha for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/07/us/07virus-briefing-diabetes-misc/07virus-briefing-diabetes-misc-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/07/us/07virus-briefing-diabetes-misc/07virus-briefing-diabetes-misc-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/07/us/07virus-briefing-diabetes-misc/07virus-briefing-diabetes-misc-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/4591f771-3d03-532a-9d7c-c17fb6dca8d0","url":"https://www.nytimes.com/2022/01/06/world/europe/pope-pets-kids.html","id":100000008148186,"asset_id":100000008148186,"source":"New
+        York Times","published_date":"2022-01-06","updated":"2022-01-06 23:36:42","section":"World","subsection":"Europe","nytdsection":"world","adx_keywords":"Animals;Pets;Francis;Roman
+        Catholic Church","column":null,"byline":"By Elisabetta Povoledo","type":"Article","title":"Pope
+        Scolds Couples Who Choose Pets Over Kids","abstract":"Expressing concern about
+        global birthrates, Francis said such couples were acting in a selfish way
+        that diminished humanity.","des_facet":["Animals","Pets"],"org_facet":["Roman
+        Catholic Church"],"per_facet":["Francis"],"geo_facet":[],"media":[{"type":"image","subtype":"photo","caption":"Pope
+        Francis at the Vatican on Wednesday.","copyright":"Angelo Carconi/EPA, via
+        Shutterstock","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/06/world/Pope-Pets01/Pope-Pets01-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/06/world/Pope-Pets01/merlin_199982115_59be34ce-b6f7-4950-b4a0-16d25048aa5f-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/06/world/Pope-Pets01/merlin_199982115_59be34ce-b6f7-4950-b4a0-16d25048aa5f-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/ee725d99-70a5-5764-9005-4e78d9ec42dd","url":"https://www.nytimes.com/article/ahmaud-arbery-shooting-georgia.html","id":100000007111220,"asset_id":100000007111220,"source":"New
+        York Times","published_date":"2020-04-28","updated":"2021-11-24 23:02:23","section":"U.S.","subsection":"","nytdsection":"u.s.","adx_keywords":"Black
+        People;Racial Profiling;Race and Ethnicity;Self-Defense;Black Lives Matter
+        Movement;Arbery, Ahmaud (1994-2020);McMichael, Gregory (1955- );McMichael,
+        Travis (1986- );Brunswick (Ga)","column":null,"byline":"By Richard Fausset","type":"Article","title":"What
+        We Know About the Shooting Death of Ahmaud Arbery","abstract":"Mr. Arbery,
+        a 25-year-old Black man, was chased by white residents of a South Georgia
+        neighborhood. They were found guilty on murder charges.","des_facet":["Black
+        People","Racial Profiling","Race and Ethnicity","Self-Defense","Black Lives
+        Matter Movement"],"org_facet":[],"per_facet":["Arbery, Ahmaud (1994-2020)","McMichael,
+        Gregory (1955- )","McMichael, Travis (1986- )"],"geo_facet":["Brunswick (Ga)"],"media":[{"type":"image","subtype":"photo","caption":"A
+        memorial for Ahmaud Arbery at the entrance of the Satilla Shores neighborhood
+        in Brunswick, Ga.","copyright":"Nicole Craine for The New York Times","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2021/11/28/us/28arbery-explainer-top/28arbery-explainer-top-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2021/11/28/us/28arbery-explainer-top/merlin_198264846_67e103ea-6728-47c9-a1aa-824446ef6002-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2021/11/28/us/28arbery-explainer-top/merlin_198264846_67e103ea-6728-47c9-a1aa-824446ef6002-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0},{"uri":"nyt://article/0ac8186b-bde4-5762-9e51-0b2da82c3e10","url":"https://www.nytimes.com/2022/01/07/world/canada/montreal-cancun-party-flight.html","id":100000008150095,"asset_id":100000008150095,"source":"New
+        York Times","published_date":"2022-01-07","updated":"2022-01-07 20:21:04","section":"World","subsection":"Canada","nytdsection":"world","adx_keywords":"Aviation
+        Accidents, Safety and Disasters;Airlines and Airplanes;Coronavirus (2019-nCoV);Air
+        Canada;Sunwing Airlines;Transport Canada;Cancun (Mexico);Montreal (Quebec)","column":null,"byline":"By
+        Maria Cramer","type":"Article","title":"Airlines Strand Passengers Who Partied
+        on Flight Without Masks","abstract":"A group of Canadian social media influencers
+        and others flouted Covid-19 rules on a flight to Cancún, Mexico, resulting
+        in airlines leaving many of them without a way home.","des_facet":["Aviation
+        Accidents, Safety and Disasters","Airlines and Airplanes","Coronavirus (2019-nCoV)"],"org_facet":["Air
+        Canada","Sunwing Airlines","Transport Canada"],"per_facet":[],"geo_facet":["Cancun
+        (Mexico)","Montreal (Quebec)"],"media":[{"type":"image","subtype":"photo","caption":"Maskless
+        Canadian passengers partied on a Sunwing Airlines plane. Now they are being
+        investigated for violating the country’s aviation rules and Covid restrictions.","copyright":"Geoff
+        Robins/AFP — Getty Images","approved_for_syndication":1,"media-metadata":[{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07xp-cancun1/07xp-cancun1-thumbStandard.jpg","format":"Standard
+        Thumbnail","height":75,"width":75},{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07xp-cancun1/07xp-cancun1-mediumThreeByTwo210.jpg","format":"mediumThreeByTwo210","height":140,"width":210},{"url":"https://static01.nyt.com/images/2022/01/07/multimedia/07xp-cancun1/07xp-cancun1-mediumThreeByTwo440.jpg","format":"mediumThreeByTwo440","height":293,"width":440}]}],"eta_id":0}]}'
+  recorded_at: Sat, 08 Jan 2022 08:46:18 GMT
 recorded_with: VCR 6.0.0

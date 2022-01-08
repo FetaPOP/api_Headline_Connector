@@ -30,7 +30,7 @@ module HeadlineConnector
 
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure()
+        Failure(TOPIC_DB_FIND_ERR_MSG)
       end
 
       def request_videos(input)
