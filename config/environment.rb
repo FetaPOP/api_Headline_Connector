@@ -32,7 +32,9 @@ module HeadlineConnector
     end
 
     configure :production do
+      puts 'RUNNING IN PRODUCTION MODE'
       # Set DATABASE_URL environment variable on production platform
+      ENV['DATABASE_URL'] = "postgres://#{config.DB_FILENAME}"
 
       use Rack::Cache,
           verbose: true,
