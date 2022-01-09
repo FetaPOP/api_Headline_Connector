@@ -26,7 +26,7 @@ module HeadlineConnector
         if input[:topic]
           Success(input)
         else
-          Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_ERR_MSG))
+          Failure(Response::ApiResult.new(status: :internal_error, message: TOPIC_ERR_MSG))
         end
 
       rescue StandardError => error
@@ -44,7 +44,7 @@ module HeadlineConnector
         
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_DB_RELATED_FEEDS_ERR_MSG))
+        Failure(Response::ApiResult.new(status: :internal_error, message: TOPIC_DB_RELATED_FEEDS_ERR_MSG))
       end
 
       def generate_text_cloud(input)
