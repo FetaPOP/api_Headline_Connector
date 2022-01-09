@@ -70,7 +70,6 @@ module HeadlineConnector
           routing.get do
             headline_cluster_request = Request::HeadlineClusterRequest.new(request)
             result = Service::GenerateHeadlineCluster.new.call(requested: headline_cluster_request)
-  
             if result.failure?
               failed = Representer::HttpResponse.new(result.failure)
               routing.halt failed.http_status_code, failed.to_json

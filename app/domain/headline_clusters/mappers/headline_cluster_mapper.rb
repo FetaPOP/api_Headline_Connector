@@ -8,8 +8,9 @@ module HeadlineConnector
             end
             
             def generate_headline_cluster
-                sorted_by_sections = Value::HeadlineCluster.sort_by_sections(@headlines_entity)
-                build_entity(sorted_by_sections)
+                Value::HeadlineCluster.sort_by_sections(@headlines_entity)
+                # sorted_by_sections = Value::HeadlineCluster.sort_by_sections(@headlines_entity)
+                # build_entity(sorted_by_sections)
             end
 
             def build_entity(sorted_by_sections)
