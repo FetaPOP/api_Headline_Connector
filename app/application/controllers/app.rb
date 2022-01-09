@@ -27,7 +27,7 @@ module HeadlineConnector
       end
 
       routing.on 'api/v1' do
-        routing.on 'topics' do
+        routing.on 'topic' do
           routing.on String do |keyword|
             # POST api/v1/topic/{keyword}
             routing.post do
