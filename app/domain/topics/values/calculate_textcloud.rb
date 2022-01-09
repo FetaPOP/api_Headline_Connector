@@ -14,7 +14,7 @@ module HeadlineConnector
         
         textcloud_array = Array.new
         tags_hash.each do |keyword, appearTimes|
-          next if appearTimes <=5
+          next if appearTimes <=2
 
           a_tag = Hash.new
           a_tag["keyword"] = keyword
