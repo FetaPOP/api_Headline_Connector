@@ -44,7 +44,6 @@ describe 'GenerateVideoList Service Integration Test' do
 
       # ..and we should get a video list
       video_list = result.value!.message
-      video_list.print_on_terminal
       _(video_list).must_be_kind_of HeadlineConnector::Entity::VideoList
       _(video_list.this_week).must_be_kind_of Array
       _(video_list.this_month).must_be_kind_of Array

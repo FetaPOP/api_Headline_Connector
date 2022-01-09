@@ -11,11 +11,11 @@ module HeadlineConnector
       include Dry.Types
 
       attribute :id,            Integer.optional
-      attribute :article_url,   Strict::String
-      attribute :section,       Strict::String
-      attribute :tag,           Strict::String
-      attribute :title,         Strict::String
-      attribute :abstract,      Strict::String
+      attribute :article_url,   Strict::String.optional
+      attribute :section,       Strict::String.optional
+      attribute :tag,           Strict::String.optional
+      attribute :title,         Strict::String.optional
+      attribute :abstract,      Strict::String.optional
       attribute :img,           Strict::String.optional
 
       # useful method for debugging
