@@ -4,21 +4,21 @@ require 'dry/transaction'
 
 module HeadlineConnector
   module Service
-    # Transactions to generate a textcloud for a keyword
+    # Transactions to generate a video_list for a keyword
     # Make sure to run "add_topic" service (to add missing videos to the database) before running this service
-    class GenerateTextCloud
+    class GenerateVideoList
       include Dry::Transaction
 
       step :retrieve_topic
       step :request_videos
-      step :generate_text_cloud
+      step :generate_video_list
 
       private
 
       TOPIC_DB_FIND_ERR_MSG = 'Topic not found'
       TOPIC_DB_RELATED_FEEDS_ERR_MSG = 'Having some troubles abount finding related feeds of a topic in the database'
-      TEXT_CLOUD_CALCULATION_ERR_MSG = 'Having some troubles conducting generate_textcloud() calculations'
-      TEXT_CLOUD_NO_RESULT_ERR_MSG = 'The generated text cloud contains nothing'
+      VIDEO_LIST_CALCULATION_ERR_MSG = 'Having some troubles conducting generate_videolist() calculations'
+      VIDEO_LIST_NO_RESULT_ERR_MSG = 'The generated video list contains nothing'
 
       def retrieve_topic(input)
         input[:topic] = Repository::For.klass(Entity::Topic).find_topic_keyword(input[:requested].keyword)
@@ -26,7 +26,7 @@ module HeadlineConnector
         if input[:topic]
           Success(input)
         else
-          Failure(Response::ApiResult.new(status: :internal_error, message: TOPIC_ERR_MSG))
+          Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_ERR_MSG))
         end
 
       rescue StandardError => error
@@ -44,21 +44,21 @@ module HeadlineConnector
         
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure(Response::ApiResult.new(status: :internal_error, message: TOPIC_DB_RELATED_FEEDS_ERR_MSG))
+        Failure(Response::ApiResult.new(status: :not_found, message: TOPIC_DB_RELATED_FEEDS_ERR_MSG))
       end
 
-      def generate_text_cloud(input)
-          input[:textcloud] = Mapper::TextCloudMapper.new(input[:related_feeds_entities]).generate_textcloud
+      def generate_video_list(input)
+          input[:videolist] = Mapper::VideoListMapper.new(input[:related_feeds_entities]).generate_videolist
     
-          if input[:textcloud]
-            Success(Response::ApiResult.new(status: :ok, message: input[:textcloud]))
+          if input[:videolist]
+            Success(Response::ApiResult.new(status: :ok, message: input[:videolist]))
           else 
-            Failure(Response::ApiResult.new(status: :bad_request, message: TEXT_CLOUD_NO_RESULT_ERR_MSG))
+            Failure(Response::ApiResult.new(status: :bad_request, message: VIDEO_LIST_NO_RESULT_ERR_MSG))
           end
 
       rescue StandardError => error
         puts error.backtrace.join("\n")
-        Failure(Response::ApiResult.new(status: :internal_error, message: TEXT_CLOUD_CALCULATION_ERR_MSG))
+        Failure(Response::ApiResult.new(status: :internal_error, message: VIDEO_LIST_CALCULATION_ERR_MSG))
       end
     end
   end

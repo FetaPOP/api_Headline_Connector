@@ -27,7 +27,7 @@ module HeadlineConnector
       end
 
       routing.on 'api/v1' do
-        routing.on 'topics' do
+        routing.on 'topic' do
           routing.on String do |keyword|
             # POST api/v1/topic/{keyword}
             routing.post do
@@ -63,6 +63,40 @@ module HeadlineConnector
               Representer::TextCloud.new(result.value!.message).to_json
             end
           end        
+        end
+
+        routing.on 'headline_cluster' do
+          # GET api/v1/headline_cluster
+          routing.get do
+            headline_cluster_request = Request::HeadlineClusterRequest.new(request)
+            result = Service::GenerateHeadlineCluster.new.call(requested: headline_cluster_request)
+            if result.failure?
+              failed = Representer::HttpResponse.new(result.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end         
+  
+            response.status = Representer::HttpResponse.new(result.value!).http_status_code
+            Representer::HeadlineCluster.new(result.value!.message).to_json
+          end     
+        end
+
+        routing.on 'video_list' do
+          routing.on String do |keyword|
+            # GET api/v1/video_list/{keyword}
+            routing.get do
+              generate_video_list_request = Request::VideoListRequest.new(keyword, request)
+              result = Service::GenerateVideoList.new.call(requested: generate_video_list_request)
+
+              if result.failure?
+                failed = Representer::HttpResponse.new(result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end         
+
+              response.status = Representer::HttpResponse.new(result.value!).http_status_code
+
+              Representer::VideoList.new(result.value!.message).to_json
+            end
+          end     
         end
       end
     end

@@ -22,6 +22,8 @@ module VcrHelper
     VCR.configure do |c|
       c.filter_sensitive_data('<YOUTUBE_TOKEN>') { YOUTUBE_TOKEN }
       c.filter_sensitive_data('<YOUTUBE_TOKEN_ESC>') { CGI.escape(YOUTUBE_TOKEN) }
+      c.filter_sensitive_data('<NYTIMES_TOKEN>') { NYTIMES_TOKEN }
+      c.filter_sensitive_data('<NYTIMES_TOKEN_ESC>') { CGI.escape(NYTIMES_TOKEN) }
     end
 
     VCR.insert_cassette(
