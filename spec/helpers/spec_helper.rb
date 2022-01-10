@@ -16,7 +16,8 @@ require_relative '../../init'
 
 VIDEO_ID = 'Sa3KXgwkiO0'
 YOUTUBE_TOKEN = HeadlineConnector::App.config.YOUTUBE_TOKEN # From config/environment.rb
-CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml'))
+NYTIMES_TOKEN = HeadlineConnector::App.config.NYTIMES_TOKEN # From config/environment.rb
+CORRECT = YAML.safe_load(File.read('spec/fixtures/youtube_results.yml')) # Correct ans for youtube
 TOPIC_NAME = 'surfing'
 
 # Helper method for acceptance tests

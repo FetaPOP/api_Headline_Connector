@@ -35,6 +35,7 @@ module HeadlineConnector
           feed_id: db_feed_record.feed_id,
           feed_title: db_feed_record.feed_title,
           description: db_feed_record.description,
+          publishedAt: db_feed_record.publishedAt,
           tags: JSON.parse(db_feed_record.tags),
           provider: Providers.rebuild_entity(db_feed_record.provider)
           # db_feed_record.provider is a Database::ProviderOrm object
@@ -54,6 +55,7 @@ module HeadlineConnector
           feed_id: feed_entity.feed_id,
           feed_title: feed_entity.feed_title,
           description: feed_entity.description,
+          publishedAt: feed_entity.publishedAt,
           tags: JSON.generate(feed_entity.tags),
           provider: Providers.db_find_or_create(feed_entity.provider)
         )

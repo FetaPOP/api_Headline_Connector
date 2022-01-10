@@ -25,11 +25,13 @@ describe 'GenerateTextCloud Service Integration Test' do
     it 'HAPPY: should generate a textcloud for an topic existing in the database' do
       # GIVEN: a valid topic that exists locally
 
-      # Only the AddTopic service can add topics AND all related videos to the database
       # Before any generate textcloud call, we should run AddTopic service first
-      HeadlineConnector::Service::AddTopic.new.call(
+      # since only the AddTopic service can add topics AND all related videos to the database
+      add_topic_result = HeadlineConnector::Service::AddTopic.new.call(
         requested: HeadlineConnector::Request::TopicRequest.new(TOPIC_NAME, nil)
       )
+
+      _(add_topic_result.success?).must_equal true
 
       # WHEN: we request to generate a text cloud
       
@@ -44,6 +46,9 @@ describe 'GenerateTextCloud Service Integration Test' do
       text_cloud = result.value!.message
       _(text_cloud).must_be_kind_of HeadlineConnector::Entity::TextCloud
       _(text_cloud.stats).wont_be_empty
+      text_cloud.stats.each do |hash|
+        _(hash).must_be_kind_of Hash
+      end
     end
 
     it 'SAD: should not generate a textcloud for a topic not existing in the database' do
@@ -54,6 +59,8 @@ describe 'GenerateTextCloud Service Integration Test' do
         keyword: TOPIC_NAME
       )
       
+      puts
+      puts "The terminal should print some errors now: "
       result = HeadlineConnector::Service::GenerateTextCloud.new.call(requested: request)
 
       # THEN: we should get failure

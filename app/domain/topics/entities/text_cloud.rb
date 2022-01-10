@@ -3,8 +3,6 @@
 require 'dry-types'
 require 'dry-struct'
 
-#require_relative 'feed'
-
 module HeadlineConnector
   module Entity
     # Entity class
@@ -12,8 +10,8 @@ module HeadlineConnector
       # Entity class of TextCloud
       include Dry.Types
 
-      attribute :stats,    Strict::Array.of(Array)
-      # stats = [[data1, count1],[data2, count2],... ]
+      attribute :stats,    Strict::Array.of(Hash)
+      # stats = [{keyword: "surfing", appearTimes: 2}, {keyword: "covid", appearTimes: 21}, ...]
     end
   end
 end

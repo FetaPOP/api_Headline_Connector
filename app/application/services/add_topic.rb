@@ -4,7 +4,7 @@ require 'dry/transaction'
 
 module HeadlineConnector
   module Service
-    # Transaction to store topic from Youtube API to database
+    # Transactions to store topic from Youtube API to database
     class AddTopic
       include Dry::Transaction
 

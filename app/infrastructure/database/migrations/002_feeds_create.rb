@@ -11,6 +11,7 @@ Sequel.migration do
       String      :feed_id, unique: true
       String      :feed_title
       String      :description
+      String      :publishedAt # Published time at Youtube
       String      :tags # JSON string of the original array of tags
 
       DateTime :created_at
